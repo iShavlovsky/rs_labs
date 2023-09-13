@@ -1,6 +1,8 @@
 <template>
   <section>
-    404
+    <div class="container">
+      <p>Mission</p>
+    </div>
   </section>
 </template>
 
@@ -8,6 +10,6 @@
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
 </style>

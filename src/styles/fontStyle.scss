@@ -1,0 +1,97 @@
+/* ------------ Heading ------------ */
+.text-heading-up4 {
+	font-family: $ft-header-fonts-medium;
+	font-style: normal;
+	font-size: fonts-size-converter(4);
+	font-weight: 500;
+	line-height: 123.077%;
+}
+
+.text-heading-up2 {
+	font-family: $ft-header-fonts-medium;
+	font-style: normal;
+	font-size: fonts-size-converter(2);
+	font-weight: 500;
+	line-height: 130%;
+}
+
+.text-heading-up1 {
+	font-family: $ft-header-fonts-medium;
+	font-style: normal;
+	font-size: fonts-size-converter(1);
+	font-weight: 500;
+	line-height: 133.333%;
+}
+
+/* ------------ Paragraph ------------ */
+.text-base-up6 {
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: fonts-size-converter(6);
+	font-weight: 400;
+	line-height: 112.5%;
+}
+
+.text-base-up1 {
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: fonts-size-converter(1);
+	font-weight: 400;
+	line-height: 133.333%;
+}
+
+.text-base {
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: em(16);
+	font-weight: 400;
+	line-height: 137.5%;
+}
+
+.text-base-down1 {
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: fonts-size-converter(-1);
+	font-weight: 400;
+	line-height: 142.857%;
+}
+
+.text-footnote {
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: em(12);
+	font-weight: 400;
+	line-height: 150%;
+}
+
+/* ----------------------- mobile styles ------------------------------ */
+@include mobile {
+	.text-heading-up4 {
+		font-size: px(47);
+	}
+
+	.text-heading-up2 {
+		font-size: px(32);
+	}
+
+	.text-base-up2 {
+		font-size: px(26);
+	}
+
+	.text-heading-up1 {
+		font-size: px(16);
+	}
+
+	.text-base-up1 {
+		font-size: px(20);
+	}
+
+	.text-base {
+		font-size: px(14);
+	}
+
+	.text-base-down1 {
+		font-size: px(14);
+	}
+
+}

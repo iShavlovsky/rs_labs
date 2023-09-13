@@ -6,20 +6,31 @@ module.exports = {
         "node": true
     },
     extends: [
-        'plugin:vue/vue3-essential',
+        'plugin:vue/base',
         'eslint:recommended',
-        "plugin:@typescript-eslint/recommended"
+        'plugin:vue/vue3-recommended',
+        'plugin:vue/vue3-essential',
+        'plugin:@typescript-eslint/recommended',
+        // 'plugin:prettier/recommended',
+        // 'eslint-config-prettier'
     ],
-    parser: "@typescript-eslint/parser",
+    parser: "vue-eslint-parser",
     parserOptions: {
         'ecmaVersion': 'latest',
-        'sourceType': 'module'
+        'sourceType': 'module',
+        "parser": "@typescript-eslint/parser"
     },
     'plugins': [
         "vue",
         "@typescript-eslint"
     ],
     rules: {
+        // "prettier/prettier": ["error", {
+        //     "endOfLine": "auto",
+        //     "singleQuote": true,       // использует одинарные кавычки вместо двойных
+        //     "trailingComma": "all"     // добавляет запятые после каждого свойства объекта/массива
+        // }],
+        "@typescript-eslint/no-unused-vars": "error",
         'vuejs-accessibility/label-has-for': 'off',
         'jsx-a11y/label-has-associated-control': 'off',
         'vue/html-self-closing': ['error', {
@@ -69,7 +80,7 @@ module.exports = {
         'vue/html-closing-bracket-spacing': ['error', {
             startTag: 'never',
             endTag: 'never',
-            selfClosingTag: 'never'
+            selfClosingTag: 'always'
         }],
         'vue/max-attributes-per-line': ['error', {
             singleline: {

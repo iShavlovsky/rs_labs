@@ -1,15 +1,13 @@
 <template>
   <section>
     <div class="container">
-      <USvgIcon name="logoDeals" />
-      <p>HomeView</p>
+      <p>404</p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 
-import USvgIcon from "@components/USvgIcon/USvgIcon.vue";
 </script>
 
 <style lang="scss">

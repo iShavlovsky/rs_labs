@@ -4,7 +4,9 @@
 		"stylelint-config-standard-scss",
 		"stylelint-config-standard-vue/scss"
 	],
-
+	"ignoreFiles": [
+		"dist/*.css"
+	],
 	"plugins": [
 		"stylelint-order"
 	],
@@ -23,9 +25,7 @@
 	],
 	"rules": {
 		"scss/no-global-function-names": false,
-		"indentation": [
-			"tab"
-		],
+		"indentation": "tab",
 		"media-query-no-invalid": null,
 		"color-hex-case": "upper",
 		"selector-class-pattern": "^.*$",

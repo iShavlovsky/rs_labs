@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
+      "~/*": ["./*"],
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@images/*": ["./src/assets/images/*"],
@@ -28,6 +29,7 @@
       "@router/*": ["./src/router/*"],
       "@utility/*": ["./src/utility/*"],
       "@views/*": ["./src/views/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   },
   "include": ["src/**/*.ts", "src/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

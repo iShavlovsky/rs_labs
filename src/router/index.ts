@@ -1,19 +1,43 @@
 import {createRouter, createWebHistory} from "vue-router";
+import { RouteNamesEnum } from "@router/router.types";
 
-
-
-import HomeView from '@views/HomeView.vue'
-const View404 = () => import("@views/View404.vue");
-
+const HomeView = () => import("@views/HomeView.vue");
 export default () => {
     const routes = [
         {
             path: '/',
-            component: HomeView
+            component: HomeView,
+            name: RouteNamesEnum.home,
+            meta: { content: "home" }
+        },
+        {
+            path: '/mission',
+            name: RouteNamesEnum.mission,
+            component: () => import("@views/MissionView.vue"),
+            meta: { content: "mission" }
+        },
+        {
+            path: '/join-us',
+            name: RouteNamesEnum.joinUs,
+            component: () => import("@views/JoinUsView.vue"),
+            meta: { content: "joinUs" }
+        },
+        {
+            path: '/articles-base',
+            name: RouteNamesEnum.articles,
+            component: () => import("@views/ArticlesBaseView.vue"),
+            meta: { content: "articles" }
+        },
+        {
+            path: '/article/:slug',
+            name: "article.item",
+            props: true,
+            component: () => import("@views/ArticleView.vue"),
+            meta: { content: "article" }
         },
         {
             path: '/:pathMatch(.*)*',
-            component: View404
+            component: () => import("@views/NotFoundView.vue")
         }
     ]
     return createRouter({
