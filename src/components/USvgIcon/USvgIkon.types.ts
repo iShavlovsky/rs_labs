@@ -6,4 +6,7 @@ export type IconNames =
   "notion" |
   "telegram" |
   "twitter" |
+  "twitter" |
+  "rsLabsLogo" |
+  "btnArrow" |
   "close-ico"; // реальные имена иконок из src/assets/images/svg/
