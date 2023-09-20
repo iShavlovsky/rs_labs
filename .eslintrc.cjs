@@ -1,7 +1,7 @@
 module.exports = {
     root: true,
     env: {
-        "es6": true,
+        "es2021": true,
         "browser": true,
         "node": true
     },
@@ -30,7 +30,16 @@ module.exports = {
         //     "singleQuote": true,       // использует одинарные кавычки вместо двойных
         //     "trailingComma": "all"     // добавляет запятые после каждого свойства объекта/массива
         // }],
+        '@typescript-eslint/indent': ['error', 4, {
+            "SwitchCase": 1,
+            "ignoredNodes": ['TSTypeReference, TSUnionType']
+        }],
+        "@typescript-eslint/no-empty-interface": "warn",
+        "@typescript-eslint/quotes": ["error", "single"],
+        "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/no-unused-vars": "error",
+
+        'object-curly-spacing': ['error', 'always'],
         'vuejs-accessibility/label-has-for': 'off',
         'jsx-a11y/label-has-associated-control': 'off',
         'vue/html-self-closing': ['error', {
@@ -185,12 +194,12 @@ module.exports = {
             enforceForRenamedProperties: false
         }
         ],
-        'no-bitwise': ['error', { allow: ['~'] }],
-        'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        'no-bitwise': ['error', {allow: ['~']}],
+        'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
         'object-curly-newline': ['error', {
-            ObjectExpression: { multiline: true, consistent: true },
-            ObjectPattern: { multiline: true, consistent: true }
+            ObjectExpression: {multiline: true, consistent: true},
+            ObjectPattern: {multiline: true, consistent: true}
         }],
-        'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }]
+        'lines-between-class-members': ['error', 'always', {exceptAfterSingleLine: true}]
     }
 };

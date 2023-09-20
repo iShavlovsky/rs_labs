@@ -9,9 +9,9 @@
 // }
 
 export enum RouteNamesEnum {
-  home = "Home",
-  mission = "Mission",
-  joinUs = "Join-us",
-  articles = "Articles",
-  // article = "Article.item",
+    home = 'Home',
+    mission = 'Mission',
+    joinUs = 'Join-us',
+    articles = 'Articles',
+    // article = "Article.item",
 }
