@@ -9,7 +9,9 @@
         </div>
 
         <div class="home-s5-span-2">
-
+          <UAccordions />
+          <UAccordions />
+          <UAccordions />
         </div>
 
       </div>
@@ -18,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-
+import UAccordions from "@components/UAccordions.vue";
 
 
 </script>
