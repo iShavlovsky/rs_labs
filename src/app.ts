@@ -1,4 +1,5 @@
 import '@/main.scss';
+
 import createRouter from '@/router/index';
 import createHttp from '@/plugins/httpCreate';
 import createGsapPlugin from '@/plugins/gsapCreate';
@@ -8,6 +9,7 @@ import createStorage from '@plugins/storage/storageCreate';
 import seoTagsConnector from '@middlewares/seo-tags';
 import { createPinia } from 'pinia';
 import httpAlertsConnector from '@middlewares/http-alerts.middleware';
+
 
 import StoreInject from '@injections/storeInject';
 import ApiInject from '@injections/apiInject';

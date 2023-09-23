@@ -17,7 +17,6 @@ const props = defineProps({
 
 const iconList = import.meta.glob('@assets/images/svg/*.svg');
 
-console.log(iconList);
 const icon = shallowRef<DefineComponent | null>(null);
 watchEffect(() => {
     if (iconList[`/src/assets/images/svg/${props.name}.svg`]) {

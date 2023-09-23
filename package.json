@@ -23,6 +23,7 @@
     "express-http-proxy": "^2.0.0",
     "gsap": "^3.12.2",
     "pinia": "^2.1.4",
+    "swiper": "^10.3.0",
     "vite-svg-loader": "^4.0.0",
     "vue": "^3.2.47",
     "vue-lazyload": "^3.0.0",

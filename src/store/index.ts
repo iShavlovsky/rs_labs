@@ -6,7 +6,7 @@ import { IStorage } from '@plugins/storage/storage.types';
 const createStore = (api: TApi, storage: IStorage) => {
     const alerts = initAlertsStore();
     const seo = initSeoStore();
-    console.log(api, storage);
+
     return {
         alerts,
         seo
