@@ -24,9 +24,8 @@ const handleScrollToBlock = (position: string) => {
 };
 
 const { seo } = useStore();
-seo.setPage({
-    setTitle: 'RS LABS'
-});
+seo.setPage({ description: 'good' });
+seo.status.value = 200;
 </script>
 
 <style lang="scss">

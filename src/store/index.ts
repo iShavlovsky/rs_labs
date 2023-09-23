@@ -1,5 +1,5 @@
 import initAlertsStore from './alerts';
-import initSeoStore from './seo';
+import initSeoStore from './seo/seo';
 import { TApi } from '@/api';
 import { IStorage } from '@plugins/storage/storage.types';
 

@@ -22,10 +22,7 @@
                 :resize-observer="true"
                 :round-lengths="true"
                 :simulated-touch="false"
-                :slides-offset-after="0"
-                :slides-offset-before="0"
                 :slides-per-view="1"
-                :space-between="0"
                 :update-on-window-resize="true"
                 class="swiper-map"
                 @swiper="onSwiper"
@@ -113,7 +110,7 @@ import { computed, ComputedRef, reactive, ref } from 'vue';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-// import 'swiper/css';
+import 'swiper/css';
 
 interface Positions {
     chapter: number;
@@ -326,6 +323,7 @@ function clickMap(index: number) {
   width: 100%;
   height: em(14);
   margin-top: em(16);
+  overflow: visible;
 }
 
 .chapters {

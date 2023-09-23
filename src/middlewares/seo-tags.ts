@@ -2,17 +2,18 @@ import { TStore } from '@/store';
 
 export default (useSeoStore: TStore['seo'], document: Document) => {
     const seoStore = useSeoStore;
-
     seoStore.afterPageUpdated(function () {
-        const title = seoStore.title.value;
-        const description = seoStore.description.value;
-        const keywords = seoStore.keywords.value;
-        const author = seoStore.author.value;
-        const robots = seoStore.robots.value;
-        const ogType = seoStore.ogType.value;
-        const siteName = seoStore.siteName.value;
-        const ogImage = seoStore.ogImage.value;
-        const url = seoStore.baseUrl.value;
+        const {
+            title,
+            description,
+            keywords,
+            author,
+            robots,
+            ogType,
+            siteName,
+            ogImage,
+            baseUrl
+        } = seoStore.seoState.value;
 
         const titleElement = document.querySelector('title');
         if (titleElement) titleElement.innerHTML = title;
@@ -27,7 +28,7 @@ export default (useSeoStore: TStore['seo'], document: Document) => {
         setMetaProperty('og:image', ogImage);
 
         const canonicalElement = document.querySelector('link[rel="canonical"]');
-        if (canonicalElement) canonicalElement.setAttribute('href', `${url}`);
+        if (canonicalElement) canonicalElement.setAttribute('href', `${baseUrl}`);
     });
 
     function setMetaAttribute(name: string, value: string) {

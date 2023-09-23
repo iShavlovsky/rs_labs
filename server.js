@@ -18,6 +18,7 @@ const port = 3000;
 server.use('/assets', express.static('./dist/assets'));
 server.use('/favicon.ico', express.static('./dist/favicon.ico'));
 server.use('/sitemap.xml', express.static('./dist/sitemap.xml'));
+server.use('/robots.txt', express.static('./dist/robots.txt'));
 
 server.use(compression());
 
@@ -31,7 +32,7 @@ server.get('*', async function (req, resp) {
     // 	"default-src 'none'; script-src 'self'; connect-src 'self' https://api.deployteam.ru; img-src * 'self' data: https:; style-src 'self' https://api.deployteam.ru 'unsafe-inline'; base-uri 'self'; form-action 'self'; font-src 'self' https://fonts.googleapis.com"
     // );
 
-    // eslint-disable-next-line no-unused-vars
+
     const { app, stores } = await createApp({ url: req.url });
     renderToString(app).then(html => {
 
@@ -44,32 +45,42 @@ server.get('*', async function (req, resp) {
             ogType,
             siteName,
             ogImage,
-            baseUrl,
-            status
-        } = stores.seo;
+            baseUrl
+        } = stores.seo.seoState.value;
         let url;
 
-        if (baseUrl.value === 'server') {
+        if (baseUrl === '') {
             const { protocol } = req;
             const { hostname } = req;
             url = `${protocol}://${hostname}:3000/`;
+        } else {
+            url = baseUrl;
         }
 
-        if (status.value !== 200) {
-            resp.status(status.value);
+        if (stores.seo.status.value !== 200) {
+            resp.status(stores.seo.status.value);
         }
 
-        let page = template.replace('<!--ssr-->', html)
-            .replace(/(<title>).+(<\/title>)/, `<title>${title.value}</title>`)
-            .replace(/(<meta name="description" content=").+(">)/, `$1${description.value}$2`)
-            .replace(/(<meta name="keywords" content=").+(">)/, `$1${keywords.value}$2`)
-            .replace(/(<meta name="robots" content=").+(">)/, `$1${robots.value}$2`)
-            .replace(/(<meta name="author" content=").+(">)/, `$1${author.value}$2`)
-            .replace(/(<meta property="og:image" content=").+(">)/, `$1${ogImage.value}$2`)
-            .replace(/(<meta property="og:type" content=").+(">)/, `$1${ogType.value}$2`)
-            .replace(/(<meta property="og:site_name" content=").+(">)/, `$1${siteName.value}$2`)
-            .replace(/(<link rel="canonical" href=").+(">)/, `$1${url}$2`);
+        let page = template.replace('<!--ssr-->', html);
+        const replacements = [
+            { meta: '<title>', content: title, end: '</title>' },
+            { meta: '<meta content="', content: description, end: '" name="description">' },
+            { meta: '<meta content="', content: keywords, end: '" name="keywords">' },
+            { meta: '<meta content="', content: robots, end: '" name="robots">' },
+            { meta: '<meta content="', content: author, end: '" name="author">' },
+            { meta: '<meta content="', content: ogImage, end: '" property="og:image">' },
+            { meta: '<meta content="', content: ogType, end: '" property="og:type">' },
+            { meta: '<meta content="', content: siteName, end: '" property="og:site_name">' },
+            { meta: '<link href="', content: url, end: '" rel="canonical">' }
+        ];
+
+        for (const { meta, content, end } of replacements) {
+            const regex = new RegExp(`(${meta}).+(${end})`);
+            page = page.replace(regex, `$1${content}$2`);
+        }
+
         resp.end(page);
+
     });
 });
 server.listen(port, () => {
