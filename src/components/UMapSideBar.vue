@@ -289,7 +289,6 @@ function clickMap(index: number) {
 </script>
 
 <style lang="scss">
-//@import 'swiper/css';
 
 .map-side-bar {
   position: fixed;
@@ -299,7 +298,7 @@ function clickMap(index: number) {
   left: auto;
   top: auto;
   width: em(153);
-  right: 0%;
+  right: 0;
   bottom: em(94);
 }
 
@@ -317,7 +316,7 @@ function clickMap(index: number) {
 
 .swiper-map {
   width: 100%;
-  height: em(16);
+  height: em(14);
   margin-top: em(16);
 }
 
