@@ -27,17 +27,12 @@
           </p>
         </div>
       </div>
-
-      <div style="width: 40px;">
-        <USvgIcon name="logoDeals" />
-      </div>
-      <p>HomeView</p>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+
 </script>
 
 <style lang="scss">

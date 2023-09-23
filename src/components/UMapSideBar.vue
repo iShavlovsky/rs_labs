@@ -115,7 +115,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // import 'swiper/css';
 
-interface Rect {
+interface Positions {
     chapter: number;
     title: string;
     line: string;
@@ -143,7 +143,7 @@ function onSwiper(swiper: SwiperType) {
     swiperInstance.value = swiper;
 }
 
-const positions = reactive<Rect[]>([
+const positions = reactive<Positions[]>([
     {
         chapter: 1,
         title: 'Revenue Share Labs',
@@ -266,7 +266,7 @@ const positions = reactive<Rect[]>([
     }
 ]);
 
-const isActive: ComputedRef<Rect> = computed(() => {
+const isActive: ComputedRef<Positions> = computed(() => {
     return positions.find(el => el.active === true)!;
 });
 
@@ -278,12 +278,20 @@ function hoverMap(index: number, bool: boolean) {
     positions[index].hover = bool;
 }
 
+const emit = defineEmits<{
+    (
+        event: 'map-position',
+        value: string,
+    ): void;
+}>();
+
 function clickMap(index: number) {
     positions.forEach(el => {
         el.active = false;
     });
     positions[index].active = true;
     swiperInstance.value.slideTo(index, 300);
+    emit('map-position', isActive.value.title);
 }
 
 </script>
