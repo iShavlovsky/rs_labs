@@ -1,109 +1,193 @@
 <template>
-  <div class="map-side-bar">
-    <div class="chapters-and-block-name-w">
-      <div class="map-chapters-w">
-        <p class="mono-s">
-          Chapter {{ isActive.chapter }}
-        </p>
-        <Swiper :allow-touch-move="false"
-                :auto-height="false"
-                :centered-slides="false"
-                :coverflow-effect="{
-                  rotate: 20,
-                  stretch:0,
-                  depth: 100,
-                  modifier: 1,
-                  slideShadows: true,
-                }"
-                :direction="'vertical'"
-                :effect="'coverflow'"
-                :grab-cursor="false"
-                :observer="true"
-                :resize-observer="true"
-                :round-lengths="true"
-                :simulated-touch="false"
-                :slides-offset-after="0"
-                :slides-offset-before="0"
-                :slides-per-view="1"
-                :space-between="0"
-                :update-on-window-resize="true"
-                class="swiper-map"
-                @swiper="onSwiper"
-        >
-          <SwiperSlide v-for="(el, i) in positions"
-                       :key="i"
-          >
-            <p :class="['chapters', {
-                 'active': el.active,
-                 'next-1': i === activeIndex+1 ,
-                 'next-2': i === activeIndex+2,
-                 'next-3': i === activeIndex+3,
-               }]"
-               class="mono-s"
-            >
-              {{ el.title }}
+  <div class="map-arrow-nav-w">
+    <div class="container">
+      <div class="map-side-bar">
+        <div class="chapters-and-block-name-w">
+          <div class="map-chapters-w">
+            <p class="mono-s">
+              Chapter {{ isActive.chapter }}
             </p>
-          </SwiperSlide>
-        </Swiper>
+            <Swiper :allow-touch-move="false"
+                    :auto-height="false"
+                    :centered-slides="false"
+                    :coverflow-effect="{
+                      rotate: 20,
+                      stretch:0,
+                      depth: 100,
+                      modifier: 1,
+                      slideShadows: true,
+                    }"
+                    :direction="'vertical'"
+                    :effect="'coverflow'"
+                    :grab-cursor="false"
+                    :observer="true"
+                    :resize-observer="true"
+                    :round-lengths="true"
+                    :simulated-touch="false"
+                    :slides-offset-after="0"
+                    :slides-offset-before="0"
+                    :slides-per-view="1"
+                    :space-between="0"
+                    :update-on-window-resize="true"
+                    class="swiper-map"
+                    @swiper="onSwiper"
+            >
+              <SwiperSlide v-for="(el, i) in positions"
+                          :key="i"
+              >
+                <p :class="['chapters', {
+                    'active': el.active,
+                    'next-1': i === activeIndex+1 ,
+                    'next-2': i === activeIndex+2,
+                    'next-3': i === activeIndex+3,
+                  }]"
+                  class="mono-s"
+                >
+                  {{ el.title }}
+                </p>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+
+
+        <div class="map-wrapper">
+          <svg fill="transparent"
+              height="100%"
+              viewBox="0 0 50 82"
+              width="100%"
+              xmlns="http://www.w3.org/2000/svg"
+          >
+            <path v-for="(line, i) in positions"
+                  :key="i"
+                  :d="line.line"
+                  class="map-line"
+                  stroke="#343339"
+                  stroke-width="0.5"
+            />
+
+            <rect v-for="(rect, i) in positions"
+                  :key="i"
+                  :class="['map-rects', {'active': rect.active, 'hover': rect.hover }]"
+                  :x="rect.rectMap.x"
+                  :y="rect.rectMap.y"
+                  class="map-rects"
+                  fill="transparent"
+                  height="16"
+                  stroke="#97969C"
+                  stroke-width="0.5"
+                  width="16"
+
+                  @click="clickMap(i)"
+                  @mouseleave="hoverMap(i, false)"
+                  @mouseover="hoverMap(i, true)"
+            />
+            <g v-for="(rect, i) in positions"
+              :key="i"
+              :class="['map-rects-selected', {'active': rect.active, 'hover': rect.hover }]"
+              color="white"
+            >
+              <path :d="`
+              ${rect.path.a}
+              ${rect.path.b}
+              ${rect.path.c}
+              ${rect.path.d}
+              `"
+                    class="map-line"
+                    stroke="currentColor"
+              />
+              <rect :transform="`rotate(90 ${rect.rectSelected.x} ${rect.rectSelected.y})`"
+                    :x="rect.rectSelected.x"
+                    :y="rect.rectSelected.y"
+                    class="map-line"
+                    fill="currentColor"
+                    height="4"
+                    width="4"
+              />
+            </g>
+          </svg>
+        </div>
       </div>
-    </div>
 
 
-    <div class="map-wrapper">
-      <svg fill="transparent"
-           height="100%"
-           viewBox="0 0 50 82"
-           width="100%"
-           xmlns="http://www.w3.org/2000/svg"
-      >
-        <path v-for="(line, i) in positions"
-              :key="i"
-              :d="line.line"
-              class="map-line"
-              stroke="#343339"
-              stroke-width="0.5"
-        />
+      <div class="grid-12col-w">
 
-        <rect v-for="(rect, i) in positions"
-              :key="i"
-              :class="['map-rects', {'active': rect.active, 'hover': rect.hover }]"
-              :x="rect.rectMap.x"
-              :y="rect.rectMap.y"
-              class="map-rects"
-              fill="transparent"
-              height="16"
-              stroke="#97969C"
-              stroke-width="0.5"
-              width="16"
+          <div class="left-srrows-w w-1col-8gap">
 
-              @click="clickMap(i)"
-              @mouseleave="hoverMap(i, false)"
-              @mouseover="hoverMap(i, true)"
-        />
-        <g v-for="(rect, i) in positions"
-           :key="i"
-           :class="['map-rects-selected', {'active': rect.active, 'hover': rect.hover }]"
-           color="white"
-        >
-          <path :d="`
-          ${rect.path.a}
-          ${rect.path.b}
-          ${rect.path.c}
-          ${rect.path.d}
-          `"
-                class="map-line"
-                stroke="currentColor"
-          />
-          <rect :transform="`rotate(90 ${rect.rectSelected.x} ${rect.rectSelected.y})`"
-                :x="rect.rectSelected.x"
-                :y="rect.rectSelected.y"
-                class="map-line"
-                fill="currentColor"
-                height="4"
-                width="4"
-          />
-        </g>
-      </svg>
+            <div class="map-arrow-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.44809 4.60002H11.9996V3.40002H3.39956V12H4.59956V5.44855L11.5753 12.4243L12.4238 11.5758L5.44809 4.60002Z"/>
+              </svg>
+            </div>
+
+            <div class="bot-arrows-w">
+
+              <div class="map-arrow-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.79191 8.59999L8.4245 13.2326L7.57598 14.0811L1.49486 7.99999L7.57598 1.91887L8.4245 2.76739L3.79191 7.39999L13.6571 7.39998L13.6571 8.59998L3.79191 8.59999Z"/>
+                </svg>
+              </div>
+
+              <div class="map-arrow-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.44809 11.4H11.9996V12.6H3.39956V3.99998H4.59956V10.5514L11.5753 3.57571L12.4238 4.42424L5.44809 11.4Z"/>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="scroll-indicatow-holder w-1col-8gap">
+
+            <p class="mono-s">Scroll for usual behaviour</p>
+
+            <div class="scroll-indicator-w">
+              <figure class="scroll-line-indicator"></figure>
+              <figure class="indicator-bg"></figure>
+            </div>
+
+          </div>
+
+          <div class="mid-arrows-w bot-arrows-w">
+            <div class="map-arrow-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.40026 12.2082L2.76767 7.57562L1.91914 8.42415L8.00026 14.5053L14.0814 8.42415L13.2328 7.57562L8.60026 12.2082L8.60026 2.34303L7.40026 2.34303L7.40026 12.2082Z"/>
+              </svg>
+            </div>
+            <div class="map-arrow-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.40026 3.79155L2.76767 8.42414L1.91914 7.57561L8.00026 1.49449L14.0814 7.57561L13.2328 8.42414L8.60026 3.79155L8.60026 13.6567L7.40026 13.6567L7.40026 3.79155Z" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="rigt-arrows-w w-1col-8gap">
+
+            <div class="map-arrow-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5519 4.60002H4.00044V3.40002H12.6004V12H11.4004V5.44855L4.4247 12.4243L3.57617 11.5758L10.5519 4.60002Z"/>
+              </svg>
+            </div>
+
+            <div class="bot-arrows-w">
+
+              <div class="map-arrow-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2081 8.59999L7.5755 13.2326L8.42402 14.0811L14.5051 7.99999L8.42402 1.91887L7.5755 2.76739L12.2081 7.39999L2.34291 7.39998L2.34291 8.59998L12.2081 8.59999Z"/>
+                </svg>
+              </div>
+
+              <div class="map-arrow-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5519 11.4H4.00044V12.6H12.6004V3.99998H11.4004V10.5514L4.4247 3.57571L3.57617 4.42424L10.5519 11.4Z"/>
+                </svg>
+              </div>
+
+            </div>
+
+          </div>
+
+      </div>
     </div>
   </div>
 </template>
@@ -291,8 +375,68 @@ function clickMap(index: number) {
 <style lang="scss">
 //@import 'swiper/css';
 
-.map-side-bar {
+// map arrows navigatin
+
+.map-arrow-nav-w{
   position: fixed;
+  bottom: em(24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.map-arrow-btn{
+  width: em(16);
+  height: em(16);
+  cursor: pointer;
+  color: $c-gray-60;
+}
+.map-arrow-btn:hover{
+  color: $c-gray-100;
+}
+.bot-arrows-w{
+  display: flex;
+  flex-direction: row;
+  gap: em(16);
+  padding-bottom: em(6);
+}
+.mid-arrows-w{
+  align-self: flex-end;
+  grid-column-start: 9;
+}
+.rigt-arrows-w{
+  justify-items: end;
+  justify-self: end;
+  grid-column-start: 12;
+}
+.scroll-indicatow-holder{
+  align-self: flex-end;
+  grid-column-start: 4;
+  grid-column-end: 6;
+}
+.scroll-indicator-w{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.scroll-line-indicator{
+  height: em(1);
+  background-color: $c-gray-100;
+  width: 10%;
+  margin-right: em(4);
+}
+.indicator-bg{
+  height: em(1);
+  background-color: $c-gray-100;
+  opacity: 0.2;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+// right map
+.map-side-bar {
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: em(40);
@@ -300,7 +444,7 @@ function clickMap(index: number) {
   top: auto;
   width: em(153);
   right: 0%;
-  bottom: em(94);
+  bottom: em(104);
 }
 
 .chapters-and-block-name-w {

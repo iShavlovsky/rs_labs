@@ -1,6 +1,6 @@
 /* ------------ Heading ------------ */
 .h1 {
-	font-family: $ft-header-fonts-medium;
+	font-family: $ft-header-fonts-bold;
 	font-style: normal;
 	font-size: em(92);
 	font-weight: 700;
@@ -9,7 +9,7 @@
 }
 
 .h2 {
-	font-family: $ft-header-fonts-medium;
+	font-family: $ft-header-fonts-bold;
 	font-style: normal;
 	font-size: em(56);
 	font-weight: 700;
@@ -18,7 +18,7 @@
 }
 
 .h3{
-	font-family: $ft-header-fonts-medium;
+	font-family: $ft-header-fonts-bold;
 	font-style: normal;
 	font-size: em(28);
 	font-weight: 700;
@@ -28,6 +28,15 @@
 }
 
 /* ------------ Paragraph ------------ */
+.disclaimer{
+	font-family: $ft-body-fonts-regular;
+	font-style: normal;
+	font-size: em(94);
+	font-weight: 900;
+	line-height: 85%;
+	text-transform: uppercase;
+}
+
 .body-l {
 	font-family: $ft-body-fonts-regular;
 	font-style: normal;
@@ -45,7 +54,7 @@
 }
 
 .mono-l {
-	font-family: $ft-body-fonts-regular;
+	font-family: $ft-body-fonts-mono-regular;
 	font-style: normal;
 	font-size: em(14);
 	font-weight: 400;
@@ -54,7 +63,7 @@
 }
 
 .mono-m {
-	font-family: $ft-body-fonts-regular;
+	font-family: $ft-body-fonts-mono-regular;
 	font-style: normal;
 	font-size: em(12);
 	font-weight: 400;
@@ -63,7 +72,7 @@
 }
 
 .mono-s {
-	font-family: $ft-body-fonts-regular;
+	font-family: $ft-body-fonts-mono-regular;
 	font-style: normal;
 	font-size: em(10);
 	font-weight: 400;
