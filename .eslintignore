@@ -1,2 +1,4 @@
 dist/*
 dist
+dist-ssr
+shims-vue.d.ts

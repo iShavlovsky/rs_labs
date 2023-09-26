@@ -1,7 +1,7 @@
 import createApp from './app';
 
 (async function () {
-    const { app, router } = await createApp();
+    const { app, router } = await createApp(false);
 
     // if(window.__SSR_STATE__){
     // 	for(let module in window.__SSR_STATE__){

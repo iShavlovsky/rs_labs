@@ -1,7 +1,7 @@
 import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router';
-import { RouteNamesEnum } from '@router/router.types';
-
-const HomeView = () => import('@views/HomeView.vue');
+import { RouteNamesEnum } from '@/router/router.types';
+import HomeView from '@pages/IndexPage.vue';
+// const HomeView = () => import('@views/HomeView.vue');
 export default (isSsr: boolean) => {
     const createHistory = isSsr ? createMemoryHistory : createWebHistory;
     const routes = [
@@ -14,31 +14,31 @@ export default (isSsr: boolean) => {
         {
             path: '/mission',
             name: RouteNamesEnum.mission,
-            component: () => import('@views/MissionView.vue'),
+            component: () => import('@pages/MissionPage.vue'),
             meta: { content: 'mission' }
         },
         {
             path: '/join-us',
             name: RouteNamesEnum.joinUs,
-            component: () => import('@views/JoinUsView.vue'),
+            component: () => import('@pages/JoinUsPage.vue'),
             meta: { content: 'joinUs' }
         },
         {
             path: '/articles-base',
             name: RouteNamesEnum.articles,
-            component: () => import('@views/ArticlesBaseView.vue'),
+            component: () => import('@pages/ArticlesBasePage.vue'),
             meta: { content: 'articles' }
         },
         {
             path: '/article/:slug',
             name: 'article.item',
             props: true,
-            component: () => import('@views/ArticleView.vue'),
+            component: () => import('@pages/ArticlePage.vue'),
             meta: { content: 'article' }
         },
         {
             path: '/:pathMatch(.*)*',
-            component: () => import('@views/NotFoundView.vue')
+            component: () => import('@pages/NotFoundPage.vue')
         }
     ];
 

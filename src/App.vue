@@ -11,5 +11,5 @@ import MainNavBar from '@components/MainNavBar.vue';
 </script>
 
 <style lang="scss">
-
+@import "main";
 </style>

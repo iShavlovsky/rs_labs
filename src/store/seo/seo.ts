@@ -19,7 +19,7 @@ export default function seo() {
         ogType: 'website',
         siteName: 'RSLabs',
         ogImage: 'https://api.deployteam.ru/uploads/Basic_frane_7460e45f9b.jpg',
-        baseUrl: 'https://rslabs.com/'
+        baseUrl: ''
     });
 
     function setPage(newValues: Partial<SEOState>) {

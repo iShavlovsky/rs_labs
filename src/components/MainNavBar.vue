@@ -2,7 +2,8 @@
   <header class="navbar-holder">
     <div class="container">
       <nav class="grid-12col-w">
-        <RouterLink class="navbar-logo"
+        <RouterLink aria-label="Home page"
+                    class="navbar-logo"
                     to="/"
         >
           <USvgIcon name="rsLabsLogo" />
@@ -14,16 +15,23 @@
 
         <div class="navbar-menu">
           <ul class="navbar-links">
-            <li v-for="routeName in RouteNamesEnum "
-                :key="routeName"
-                class="mono-s"
-            >
-              <RouterLink :to="{ name: routeName }">
-                {{ routeName }}
+            <li class="mono-s">
+              <RouterLink :to="{ name: 'Mission' }">
+                mission
+              </RouterLink>
+            </li>
+            <li class="mono-s">
+              <RouterLink to="/">
+                mission
+              </RouterLink>
+            </li>
+            <li class="mono-s">
+              <RouterLink :to="{ name: 'Articles' }">
+                knowledge base
               </RouterLink>
             </li>
           </ul>
-          <UButtonSmallArrow :title="'Join us'" />
+          <UButtonSmallArrow :title="'rs tech'" />
         </div>
       </nav>
     </div>
@@ -31,7 +39,6 @@
 </template>
 
 <script lang="ts" setup>
-import { RouteNamesEnum } from '@router/router.types';
 import USvgIcon from '@components//USvgIcon/USvgIcon.vue';
 import UButtonSmall from '@components/UButtonSmall.vue';
 import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';

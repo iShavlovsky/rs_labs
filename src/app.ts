@@ -10,7 +10,6 @@ import seoTagsConnector from '@middlewares/seo-tags';
 import { createPinia } from 'pinia';
 import httpAlertsConnector from '@middlewares/http-alerts.middleware';
 
-
 import StoreInject from '@injections/storeInject';
 import ApiInject from '@injections/apiInject';
 import { createApp, createSSRApp } from 'vue';

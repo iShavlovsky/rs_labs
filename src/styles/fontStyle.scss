@@ -1,115 +1,124 @@
 /* ------------ Heading ------------ */
 .h1 {
-	font-family: $ft-header-fonts-medium;
-	font-style: normal;
-	font-size: em(92);
-	font-weight: 700;
-	line-height: 80.435%;
-	text-transform: uppercase;
+  font-family: $ft-header-fonts-bold;
+  font-style: normal;
+  font-size: em(92);
+  font-weight: 700;
+  line-height: 80.435%;
+  text-transform: uppercase;
 }
 
 .h2 {
-	font-family: $ft-header-fonts-medium;
-	font-style: normal;
-	font-size: em(56);
-	font-weight: 700;
-	line-height: 89.286%;
-	text-transform: uppercase;
+  font-family: $ft-header-fonts-bold;
+  font-style: normal;
+  font-size: em(56);
+  font-weight: 700;
+  line-height: 89.286%;
+  text-transform: uppercase;
 }
 
-.h3{
-	font-family: $ft-header-fonts-medium;
-	font-style: normal;
-	font-size: em(28);
-	font-weight: 700;
-	line-height: 107.143%;
-	letter-spacing: -0.015em;
-	text-transform: uppercase;
+.h3 {
+  font-family: $ft-header-fonts-bold;
+  font-style: normal;
+  font-size: em(28);
+  font-weight: 700;
+  line-height: 107.143%;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
 }
 
 /* ------------ Paragraph ------------ */
+.disclaimer {
+  font-family: $ft-body-fonts-regular;
+  font-style: normal;
+  font-size: em(94);
+  font-weight: 900;
+  line-height: 85%;
+  text-transform: uppercase;
+}
+
 .body-l {
-	font-family: $ft-body-fonts-regular;
-	font-style: normal;
-	font-size: em(18);
-	font-weight: 400;
-	line-height: 144.444%;
+  font-family: $ft-body-fonts-regular;
+  font-style: normal;
+  font-size: em(18);
+  font-weight: 400;
+  line-height: 144.444%;
 }
 
 .body-m {
-	font-family: $ft-body-fonts-regular;
-	font-style: normal;
-	font-size: em(14);
-	font-weight: 400;
-	line-height: 157.143%;
+  font-family: $ft-body-fonts-regular;
+  font-style: normal;
+  font-size: em(14);
+  font-weight: 400;
+  line-height: 157.143%;
 }
 
 .mono-l {
-	font-family: $ft-body-fonts-regular;
-	font-style: normal;
-	font-size: em(14);
-	font-weight: 400;
-	line-height: 128.571%;
-	text-transform: uppercase;
+  font-family: $ft-body-fonts-mono-regular;
+  font-style: normal;
+  font-size: em(14);
+  font-weight: 400;
+  line-height: 128.571%;
+  text-transform: uppercase;
 }
 
 .mono-m {
-	font-family: $ft-body-fonts-regular;
-	font-style: normal;
-	font-size: em(12);
-	font-weight: 400;
-	line-height: 133.333%;
-	text-transform: uppercase;
+  font-family: $ft-body-fonts-mono-regular;
+  font-style: normal;
+  font-size: em(12);
+  font-weight: 400;
+  line-height: 133.333%;
+  text-transform: uppercase;
 }
 
 .mono-s {
-	font-family: $ft-body-fonts-regular;
-	font-style: normal;
-	font-size: em(10);
-	font-weight: 400;
-	line-height: 140%;
-	text-transform: uppercase;
+  font-family: $ft-body-fonts-mono-regular;
+  font-style: normal;
+  font-size: em(10);
+  font-weight: 400;
+  line-height: 140%;
+  text-transform: uppercase;
 }
 
 /* ------------ text indent ------------ */
-.h2-indent{
-	text-indent: em(90);
+.h2-indent {
+  text-indent: em(90);
 }
 
 /* ----------------------- mobile styles ------------------------------ */
 @include mobile {
-	/* ------------ Heading ------------ */
-	.h1 {
-		font-size: 44px;
-	}
+  /* ------------ Heading ------------ */
+  .h1 {
+    font-size: 44px;
+  }
 
-	.h2 {
-		font-size: 34px;
-	}
+  .h2 {
+    font-size: 34px;
+  }
 
-	.h3{
-		font-size: 24px;
-	}
+  .h3 {
+    font-size: 24px;
+  }
 
-	/* ------------ Paragraph ------------ */
-	.body-l {
-		font-size: 16px;
-	}
+  /* ------------ Paragraph ------------ */
+  .body-l {
+    font-size: 16px;
+  }
 
-	.body-m {
-		font-size: 14px;
-	}
+  .body-m {
+    font-size: 14px;
+  }
 
-	.mono-l {
-		font-size: 14px;
-	}
+  .mono-l {
+    font-size: 14px;
+  }
 
-	.mono-m {
-		font-size: 12px;
-	}
+  .mono-m {
+    font-size: 12px;
+  }
 
-	.mono-s {
-		font-size: 10px;
-	}
+  .mono-s {
+    font-size: 10px;
+  }
 
 }

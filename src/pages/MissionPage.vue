@@ -1,4 +1,5 @@
 <template>
+  <BackedBy />
   <section>
     <div class="container">
       <p>Mission</p>
@@ -6,10 +7,11 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
+import BackedBy from '@components/BackedBy.vue';
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

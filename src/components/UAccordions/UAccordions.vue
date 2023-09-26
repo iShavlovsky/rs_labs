@@ -80,19 +80,15 @@ onMounted(() => {
 .dd-text-w {
   grid-column: span 3;
   overflow: hidden;
-  visibility: hidden;
   height: 0;
   opacity: 0;
 }
 
 .dd-text-w {
   transition: opacity 0.35s $var-transition-timing,
-  visibility 0.5s $var-transition-timing,
   height 0.37s $var-transition-timing;
 
   &.open {
-
-    visibility: visible;
     height: auto;
     opacity: 1;
   }

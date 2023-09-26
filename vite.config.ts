@@ -17,6 +17,7 @@ export default defineConfig({
             sourceMap: build
         }
     },
+    assetsInclude: ['**/*.woff2', '**/*.otf'],
     plugins: [
         vue(),
         viteSvgLoader({
@@ -43,7 +44,7 @@ export default defineConfig({
             '@plugins': fileURLToPath(new URL('./src/plugins', import.meta.url)),
             '@router': fileURLToPath(new URL('./src/router', import.meta.url)),
             '@utility': fileURLToPath(new URL('./src/utility', import.meta.url)),
-            '@views': fileURLToPath(new URL('./src/views', import.meta.url)),
+            '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
             '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
             '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url))
         }
@@ -59,7 +60,17 @@ export default defineConfig({
                         const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '');
                         return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || [];
                     },
-                    safelist: ['html', 'body', /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/, /data-v-.*/]
+                    safelist: [
+                        'html',
+                        'body',
+                        'section',
+                        'main',
+                        /-(leave|enter|appear)(|-(to|from|active))$/,
+                        /^(?!(|.*?:)cursor-move).+-move$/,
+                        /^router-link(|-exact)-active$/,
+                        /data-v-.*/,
+                        /^swiper/
+                    ]
                 })
             ]
         },

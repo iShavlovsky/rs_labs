@@ -1,41 +1,46 @@
 {
-	"extends": [
-		"stylelint-config-standard",
-		"stylelint-config-standard-scss",
-		"stylelint-config-standard-vue/scss"
-	],
-	"ignoreFiles": [
-		"dist/*.css"
-	],
-	"plugins": [
-		"stylelint-order"
-	],
-	"overrides": [
-		{
-			"files": ["**/*.html"],
-			"processor": "stylelint-html"
-		},
-		{
-			"files": ["**/*.js", "**/*.vue"],
-			"parser": "babel-eslint",
-			"parserOptions": {
-				"sourceType": "module"
-			}
-		}
-	],
-	"rules": {
-		"scss/no-global-function-names": false,
-		"indentation": "tab",
-		"media-query-no-invalid": null,
-		"color-hex-case": "upper",
-		"selector-class-pattern": "^.*$",
-		"declaration-block-no-redundant-longhand-properties": [
-			true,
-			{
-				"ignoreShorthands": [
-					"/grid/"
-				]
-			}
-		]
-	}
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-standard-vue/scss"
+  ],
+  "ignoreFiles": [
+    "dist/*.css"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.html"
+      ],
+      "processor": "stylelint-html"
+    },
+    {
+      "files": [
+        "**/*.js",
+        "**/*.vue"
+      ],
+      "parser": "babel-eslint",
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ],
+  "rules": {
+    "scss/no-global-function-names": false,
+    "indentation": 2,
+    "media-query-no-invalid": null,
+    "color-hex-case": "upper",
+    "selector-class-pattern": "^.*$",
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": [
+          "/grid/"
+        ]
+      }
+    ]
+  }
 }
