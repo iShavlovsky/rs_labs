@@ -1,6 +1,14 @@
 /* - от этого разрешения и ниже - */
+
+@mixin tablet {
+  @media (max-width: map-get($var-breakpoints, bp-l)) {
+    @content
+  }
+}
+
+
 @mixin mobile {
-	@media (max-width: map-get($var-breakpoints, bp-s)) {
-		@content
+  @media (max-width: map-get($var-breakpoints, bp-s)) {
+    @content
   }
 }
