@@ -8,73 +8,85 @@
 /* scrollBar */
 
 
-
-
 /* general */
 body {
-	font-size: $var-body-main-size-font;
-	color: $c-gray-100;
-	background-color: $c-gray-00;
+  font-size: $var-body-main-size-font;
+  color: $c-gray-100;
+  background-color: $c-gray-00;
 }
 
+
 section {
-	position: relative;
-	width: 100%;
-	padding: em(48) em(48);
+  position: relative;
+  width: 100%;
+  padding: em(48) em(48);
 }
 
 .container {
-	width: 100%;
-	max-width: em(1344);
+  width: 100%;
+  max-width: em(1344);
 }
 
 .grid-4col {
-	display: grid;
-	grid-auto-columns: 1fr;
-	grid-column-gap: em(8);
-	grid-row-gap: em(8);
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto auto;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: em(8);
+  grid-row-gap: em(8);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
 }
 
 .grid-3col-article-w {
-	display: grid;
-	grid-auto-columns: 1fr;
-	grid-column-gap: em(8);
-	grid-row-gap: em(80);
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: auto auto;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: em(8);
+  grid-row-gap: em(80);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
 }
 
 .grid-12col-w {
-	display: grid;
-	grid-auto-columns: 1fr;
-	grid-column-gap: em(8);
-	grid-row-gap: em(80);
-	grid-template-columns: repeat(12, 1fr);
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: em(8);
+  grid-row-gap: em(80);
+  grid-template-columns: repeat(12, 1fr);
 }
 
 
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 a {
-	cursor: pointer;
-	text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: currentcolor;
 }
 
 img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.input-field{
-	font-size: em(14);
-	height: em(48);
-	border-radius: em(12);
-	border: em(1) solid $c-gray-96;
-	padding: em(12);
+.input-field {
+  font-size: em(14);
+  height: em(48);
+  border-radius: em(12);
+  border: em(1) solid $c-gray-96;
+  padding: em(12);
+}
+
+@include tablet {
+  body {
+    background-color: green;
+  }
+}
+
+@include mobile {
+  body {
+    background-color: red;
+  }
 }

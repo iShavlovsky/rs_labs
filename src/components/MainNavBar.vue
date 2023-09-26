@@ -2,8 +2,9 @@
   <header class="navbar-holder">
     <div class="container">
       <nav class="grid-12col-w">
-        <RouterLink to="/"
+        <RouterLink aria-label="Home page"
                     class="navbar-logo"
+                    to="/"
         >
           <USvgIcon name="rsLabsLogo" />
         </RouterLink>
@@ -14,43 +15,50 @@
 
         <div class="navbar-menu">
           <ul class="navbar-links">
-            <li class="mono-s" v-for="routeName in RouteNamesEnum "
-                :key="routeName"
-            >
-              <RouterLink :to="{ name: routeName }">
-                {{ routeName }}
+            <li class="mono-s">
+              <RouterLink :to="{ name: 'Mission' }">
+                mission
+              </RouterLink>
+            </li>
+            <li class="mono-s">
+              <RouterLink to="/">
+                mission
+              </RouterLink>
+            </li>
+            <li class="mono-s">
+              <RouterLink :to="{ name: 'Articles' }">
+                knowledge base
               </RouterLink>
             </li>
           </ul>
-          <UButtonSmallArrow :title="'Join us'" />
+          <UButtonSmallArrow :title="'rs tech'" />
         </div>
       </nav>
     </div>
   </header>
 </template>
 
-<script setup lang="ts">
-import {RouteNamesEnum} from "@router/router.types";
-import USvgIcon from "@components//USvgIcon/USvgIcon.vue";
-import UButtonSmall from "@components/UButtonSmall.vue";
-import UButtonSmallArrow from "@components/UButtonSmallArrow.vue";
-
-console.log(RouteNamesEnum)
+<script lang="ts" setup>
+import USvgIcon from '@components//USvgIcon/USvgIcon.vue';
+import UButtonSmall from '@components/UButtonSmall.vue';
+import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 </script>
 
 <style lang="scss">
 
-.navbar-holder{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: em(4) em(48) em(4) em(48);
+.navbar-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: em(4) em(48) em(4) em(48);
 }
-.nav-bar-btn-w{
+
+.nav-bar-btn-w {
   grid-column-start: 4;
   grid-column-end: 6;
 }
+
 .navbar-logo {
   align-self: center;
   width: em(53);
@@ -60,7 +68,7 @@ console.log(RouteNamesEnum)
   display: flex;
 }
 
-.navbar-menu{
+.navbar-menu {
   grid-column-start: 9;
   grid-column-end: 13;
   display: flex;
@@ -69,7 +77,7 @@ console.log(RouteNamesEnum)
   align-self: center;
 }
 
-.navbar-links{
+.navbar-links {
   display: flex;
   flex-direction: row;
   gap: em(24);

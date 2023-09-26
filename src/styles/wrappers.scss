@@ -7,8 +7,8 @@
 	@include m-col-1-grid;
 }
 
-.w-1col-15gap {
-	@include m-col-1-grid($row-gap: em(15));
+.w-1col-16gap {
+	@include m-col-1-grid($row-gap: em(16));
 }
 
 .w-2col-8gap {
@@ -22,4 +22,8 @@
 
 .max-width-330{
 	max-width: em(330);
+}
+
+.max-width-413{
+	max-width: em(413);
 }

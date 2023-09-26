@@ -2,39 +2,49 @@
   <section>
     <div class="container">
       <div class="grid-12col-w">
-
         <div class="home-s4-span-1">
-          <h2 class="h1">Revenue share technology</h2>
+          <h2 class="h1">
+            Revenue share technology
+          </h2>
         </div>
 
         <div class="home-s4-span-2">
-            <p class="body-m">We are building economic relationships between companies 
-              and people based on revenue share principles using smart contracts.</p>
+          <p class="body-m">
+            We are building economic relationships between companies
+            and people based on revenue share principles using smart contracts.
+          </p>
         </div>
 
         <div class="home-s4-card">
           <div class="w-1col-8gap">
-            <h3 class="h3">Revenue Share Contract</h3>
-            <p class="body-m">Dive into technical specs of contract and embed into your app</p>
+            <h3 class="h3">
+              Revenue Share Contract
+            </h3>
+            <p class="body-m">
+              Dive into technical specs of contract and embed into your app
+            </p>
           </div>
           <UButtonMain :title="'Learn more'" />
         </div>
 
         <div class="home-s4-card">
           <div class="w-1col-8gap">
-            <h3 class="h3">Revenue share Contract SDK</h3>
-            <p class="body-m">Build your own revenue share mechanics with powerful SDK.</p>
+            <h3 class="h3">
+              Revenue share Contract SDK
+            </h3>
+            <p class="body-m">
+              Build your own revenue share mechanics with powerful SDK.
+            </p>
           </div>
           <UButtonMain :title="'Learn more'" />
         </div>
-        
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import UButtonMain from "@components/UButtonMain.vue";
+import UButtonMain from '@components/UButtonMain.vue';
 
 
 </script>

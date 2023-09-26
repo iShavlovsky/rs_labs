@@ -3,21 +3,21 @@
           class="main-small-button"
           :disabled="props.disabled"
   >
-    <span class="mono-m"> {{ props.title }} </span>    
+    <span class="mono-m"> {{ props.title }} </span>
   </button>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
-  title:{
-    type: String,
-    default: 'Button1'
-  },
-  disabled:{
-    type: Boolean,
-    default: false
-  }
-})
+    title:{
+        type: String,
+        default: 'Button1'
+    },
+    disabled:{
+        type: Boolean,
+        default: false
+    }
+});
 </script>
 
 <style lang="scss">
