@@ -68,7 +68,7 @@
                   stroke-width="0.5"
                   width="16"
 
-                  @click="clickMap(i)"
+                  @click="selectedMap(i, true)"
                   @mouseleave="hoverMap(i, false)"
                   @mouseover="hoverMap(i, true)"
             />
@@ -77,10 +77,7 @@
                :class="['map-rects-selected', {'active': rect.active, 'hover': rect.hover }]"
                color="white"
             >
-              <path :d="`${rect.path.a}
-              ${rect.path.b}
-              ${rect.path.c}
-              ${rect.path.d}`"
+              <path :d="`${rect.path.a}${rect.path.b}${rect.path.c}${rect.path.d}`"
                     class="map-line"
                     stroke="currentColor"
               />
@@ -98,7 +95,47 @@
       </div>
 
       <div class="grid-12col-w">
-        <div class="scroll-indicatow-holder w-1col-8gap">
+        <div class="left-arrows-w w-1col-8gap">
+          <div class="map-arrow-btn">
+            <transition name="fade">
+              <USvgIcon v-show="Object.keys(isActive.arrows).includes('up-left')"
+                        :style="{transform: `rotate(-90deg)`}"
+                        name="arrows.arrowBtn"
+                        @click="clickArrow('up-left')"
+                        @mouseleave="hoverArrow('up-left', false)"
+                        @mouseover="hoverArrow('up-left', true)"
+              />
+            </transition>
+          </div>
+
+          <div class="bot-arrows-w">
+            <div class="map-arrow-btn">
+              <transition name="fade">
+                <USvgIcon v-show="Object.keys(isActive.arrows).includes('down-left')"
+                          :style="{transform: `rotate(180deg)`}"
+                          name="arrows.arrowBtn"
+                          @click="clickArrow('down-left')"
+                          @mouseleave="hoverArrow('down-left', false)"
+                          @mouseover="hoverArrow('down-left', true)"
+                />
+              </transition>
+            </div>
+
+            <div class="map-arrow-btn">
+              <transition name="fade">
+                <USvgIcon v-show="Object.keys(isActive.arrows).includes('left')"
+                          :style="{transform: `rotate(-135deg)`}"
+                          name="arrows.arrowBtn"
+                          @click="clickArrow('left')"
+                          @mouseleave="hoverArrow('left', false)"
+                          @mouseover="hoverArrow('left', true)"
+                />
+              </transition>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-indicator-holder w-1col-8gap">
           <p class="mono-s">
             Scroll for usual behaviour
           </p>
@@ -112,62 +149,67 @@
           </div>
         </div>
 
-        <div v-for="i in 3"
-             :key="i"
-             class="left-arrows-w w-1col-8gap"
-        >
-          <div class="map-arrow-btn">
-            <USvgIcon :style="{transform: `rotate(-90deg)`}"
-                      name="arrows.arrowBtn"
-            />
-          </div>
-
-          <div class="bot-arrows-w">
-            <div class="map-arrow-btn ">
-              <USvgIcon :style="{transform: `rotate(180deg)`}"
-                        name="arrows.arrowBtn"
-              />
-            </div>
-
-            <div class="map-arrow-btn">
-              <USvgIcon :style="{transform: `rotate(-135deg)`}"
-                        name="arrows.arrowBtn"
-              />
-            </div>
-          </div>
-        </div>
-
         <div class="mid-arrows-w bot-arrows-w">
           <div class="map-arrow-btn">
-            <USvgIcon :style="{transform: `rotate(-45deg)`}"
-                      name="arrows.arrowBtn"
-            />
+            <transition name="fade">
+              <USvgIcon v-show="Object.keys(isActive.arrows).includes('up')"
+                        :style="{transform: `rotate(-45deg)`}"
+                        name="arrows.arrowBtn"
+                        @click="clickArrow('up')"
+                        @mouseleave="hoverArrow('up', false)"
+                        @mouseover="hoverArrow('up', true)"
+              />
+            </transition>
           </div>
           <div class="map-arrow-btn">
-            <USvgIcon :style="{transform: `rotate(135deg)`}"
-                      name="arrows.arrowBtn"
-            />
+            <transition name="fade">
+              <USvgIcon v-show="Object.keys(isActive.arrows).includes('down')"
+                        :style="{transform: `rotate(135deg)`}"
+                        name="arrows.arrowBtn"
+                        @click="clickArrow('down')"
+                        @mouseleave="hoverArrow('down', false)"
+                        @mouseover="hoverArrow('down', true)"
+              />
+            </transition>
           </div>
         </div>
 
-        <div class="rigt-arrows-w w-1col-8gap">
+        <div class="right-arrows-w w-1col-8gap">
           <div class="map-arrow-btn">
-            <USvgIcon :style="{transform: `rotate(0)`}"
-                      name="arrows.arrowBtn"
-            />
+            <transition name="fade">
+              <USvgIcon v-show="Object.keys(isActive.arrows).includes('up-right')"
+                        :style="{transform: `rotate(0)`}"
+                        name="arrows.arrowBtn"
+                        @click="clickArrow('up-right')"
+                        @mouseleave="hoverArrow('up-right', false)"
+                        @mouseover="hoverArrow('up-right', true)"
+              />
+            </transition>
           </div>
 
           <div class="bot-arrows-w">
             <div class="map-arrow-btn">
-              <USvgIcon :style="{transform: `rotate(45deg)`}"
-                        name="arrows.arrowBtn"
-              />
+              <transition name="fade">
+                <USvgIcon v-show="Object.keys(isActive.arrows).includes('right')"
+                          :style="{transform: `rotate(45deg)`}"
+                          name="arrows.arrowBtn"
+                          @click="clickArrow('right')"
+                          @mouseleave="hoverArrow('right', false)"
+                          @mouseover="hoverArrow('right', true)"
+                />
+              </transition>
             </div>
 
             <div class="map-arrow-btn">
-              <USvgIcon :style="{transform: `rotate(90deg)`}"
-                        name="arrows.arrowBtn"
-              />
+              <transition name="fade">
+                <USvgIcon v-show="Object.keys(isActive.arrows).includes('down-right')"
+                          :style="{transform: `rotate(90deg)`}"
+                          name="arrows.arrowBtn"
+                          @click="clickArrow('down-right')"
+                          @mouseleave="hoverArrow('down-right', false)"
+                          @mouseover="hoverArrow('down-right', true)"
+                />
+              </transition>
             </div>
           </div>
         </div>
@@ -185,38 +227,22 @@ import {
     onUnmounted,
     reactive,
     Ref,
-    ref
+    ref,
+    watch
 } from 'vue';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/scss';
 import useScrollPosition from '@composables/usePageScroll';
 import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+import { arrowsDirection, Positions, sectionsName } from './UMapSideBar.types';
 
-
-interface Positions {
-    chapter: number;
-    title: string;
-    line: string;
-    rectMap: {
-        x: number,
-        y: number
-    };
-    rectSelected: {
-        x: number,
-        y: number
-    };
-    path: {
-        a: string;
-        b: string;
-        c: string;
-        d: string;
-    };
-    active: boolean;
-    hover: boolean;
-}
+const props = defineProps<{
+    currentSection: number | null;
+}>();
 
 const swiperInstance: Ref<SwiperType | null> = ref(null);
+const prevNumberSection: Ref<number | null> = ref(null);
 
 const onSwiper = (swiper: SwiperType): void => {
     swiperInstance.value = swiper;
@@ -225,7 +251,7 @@ const onSwiper = (swiper: SwiperType): void => {
 const positions = reactive<Positions[]>([
     {
         chapter: 1,
-        title: 'Revenue Share Labs',
+        title: sectionsName.S1,
         line: 'M9 1V33',
         rectMap: { x: 1, y: 1 },
         rectSelected: { x: 11, y: 7 },
@@ -236,11 +262,15 @@ const positions = reactive<Positions[]>([
             d: 'M11.6667 17H17V11.6667'
         },
         active: true,
-        hover: false
+        hover: false,
+        arrows: {
+            'down': 2,
+            'down-right': 3
+        }
     },
     {
         chapter: 2,
-        title: 'mission',
+        title: sectionsName.S2,
         line: 'M41 17V49',
         rectMap: { x: 1, y: 17 },
         rectSelected: { x: 11, y: 23 },
@@ -251,11 +281,16 @@ const positions = reactive<Positions[]>([
             d: 'M11.6667 33H17V27.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'up': 1,
+            'right': 3,
+            'down-right': 5
+        }
     },
     {
         chapter: 3,
-        title: 'about',
+        title: sectionsName.S3,
         line: 'M49 25L0.999999 25',
         rectMap: { x: 17, y: 17 },
         rectSelected: { x: 27, y: 23 },
@@ -266,11 +301,18 @@ const positions = reactive<Positions[]>([
             d: 'M27.6667 33H33V27.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'down': 5,
+            'left': 2,
+            'right': 4,
+            'up-left': 1,
+            'down-right': 6
+        }
     },
     {
         chapter: 4,
-        title: 'technology',
+        title: sectionsName.S4,
         line: 'M49 41H17',
         rectMap: { x: 33, y: 17 },
         rectSelected: { x: 43, y: 23 },
@@ -281,11 +323,16 @@ const positions = reactive<Positions[]>([
             d: 'M43.6667 33H49V27.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'down': 6,
+            'left': 3,
+            'down-left': 5
+        }
     },
     {
         chapter: 5,
-        title: 'team',
+        title: sectionsName.S5,
         line: 'M33 57H17',
         rectMap: { x: 17, y: 33 },
         rectSelected: { x: 27, y: 39 },
@@ -296,11 +343,18 @@ const positions = reactive<Positions[]>([
             d: 'M27.6667 49H33V43.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'up': 3,
+            'down': 7,
+            'right': 2,
+            'up-left': 2,
+            'up-right': 4
+        }
     },
     {
         chapter: 6,
-        title: 'knowledge base',
+        title: sectionsName.S6,
         line: 'M33 73H17',
         rectMap: { x: 33, y: 33 },
         rectSelected: { x: 43, y: 39 },
@@ -311,11 +365,16 @@ const positions = reactive<Positions[]>([
             d: 'M43.6667 49H49V43.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'up': 4,
+            'left': 5,
+            'up-left': 3
+        }
     },
     {
         chapter: 7,
-        title: 'mission2',
+        title: sectionsName.S7,
         line: 'M25 81L25 17',
         rectMap: { x: 17, y: 49 },
         rectSelected: { x: 27, y: 55 },
@@ -326,11 +385,15 @@ const positions = reactive<Positions[]>([
             d: 'M27.6667 65H33V59.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'up': 5,
+            'down': 8
+        }
     },
     {
         chapter: 8,
-        title: 'mission3',
+        title: sectionsName.S8,
         line: 'M17 9L0.999999 9',
         rectMap: { x: 17, y: 65 },
         rectSelected: { x: 27, y: 71 },
@@ -341,7 +404,10 @@ const positions = reactive<Positions[]>([
             d: 'M27.6667 81H33V75.6667'
         },
         active: false,
-        hover: false
+        hover: false,
+        arrows: {
+            'up': 7
+        }
     }
 ]);
 
@@ -362,26 +428,51 @@ const progressStyles: ComputedRef<CSSProperties> = computed(() => {
     };
 });
 
+const emit = defineEmits<{
+    (
+        event: 'map-position',
+        value: number,
+    ): void;
+}>();
+
+function hoverArrow(direction: arrowsDirection, bool: boolean) {
+    const value = isActive.value.arrows[direction];
+    if (value !== undefined) {
+        hoverMap(value - 1, bool);
+    } else {
+        return;
+    }
+}
+
+function clickArrow(direction: arrowsDirection) {
+    const value = isActive.value.arrows[direction];
+    if (value !== undefined) {
+        selectedMap(value - 1, true);
+        hoverMap(value - 1, false);
+    } else {
+        return;
+    }
+}
+
 function hoverMap(index: number, bool: boolean) {
     positions[index].hover = bool;
 }
 
-const emit = defineEmits<{
-    (
-        event: 'map-position',
-        value: string,
-    ): void;
-}>();
-
-function clickMap(index: number) {
+function selectedMap(index: number, eventEmit: boolean) {
     positions.forEach(el => {
         el.active = false;
     });
     positions[index].active = true;
     swiperInstance.value?.slideTo(index, 300);
-    emit('map-position', isActive.value.title);
+    if (eventEmit) emit('map-position', isActive.value.chapter);
 }
 
+watch(() => props.currentSection, (newSection, oldSection) => {
+    if (newSection !== null) {
+        prevNumberSection.value = oldSection;
+        selectedMap(newSection, false);
+    }
+});
 onMounted(() => {
     body.value = document.documentElement || document.body;
 });
@@ -391,6 +482,14 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s $var-transition-timing,
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
 .map-arrow-nav-w {
   position: fixed;
@@ -426,13 +525,13 @@ onUnmounted(() => {
   grid-column-start: 9;
 }
 
-.rigt-arrows-w {
+.right-arrows-w {
   justify-items: end;
   justify-self: end;
   grid-column-start: 12;
 }
 
-.scroll-indicatow-holder {
+.scroll-indicator-holder {
   align-self: flex-end;
   grid-column-start: 4;
   grid-column-end: 6;
@@ -457,9 +556,7 @@ onUnmounted(() => {
   height: em(1);
   background-color: $c-gray-100;
   opacity: 0.2;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+  flex: 1 1 0;
 }
 
 // right map
@@ -468,11 +565,8 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: em(40);
-  left: auto;
-  top: auto;
+  inset: auto 0 em(104) auto;
   width: em(153);
-  right: 0;
-  bottom: em(104);
 }
 
 .chapters-and-block-name-w {
@@ -547,6 +641,10 @@ onUnmounted(() => {
 
 .map-wrapper {
   width: em(48);
+}
+
+.g {
+  color: #7B0404;
 }
 
 </style>

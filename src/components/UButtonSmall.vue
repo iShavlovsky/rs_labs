@@ -22,15 +22,15 @@ const props = defineProps({
 
 <style lang="scss">
 .main-small-button{
-	background-color: $c-primary-accent;
-	font-size: em(16);
-	color: $c-gray-100;
-	display: flex;
+  background-color: $c-primary-accent;
+  font-size: em(16);
+  color: $c-gray-100;
+  display: flex;
   width: 100%;
-	justify-content: center;
-	padding: em(8);
-	border-width: em(0);
+  justify-content: center;
+  padding: em(8);
+  border-width: em(0);
   border-radius: em(2);
-	cursor: pointer;
+  cursor: pointer;
 }
 </style>

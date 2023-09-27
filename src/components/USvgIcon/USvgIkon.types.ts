@@ -7,7 +7,6 @@ export const icons = {
     arrows: [
         'arrowBack',
         'arrowBtn',
-        'arrowForward',
         'arrowRight'
     ],
     social: [

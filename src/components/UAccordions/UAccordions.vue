@@ -63,9 +63,7 @@ onMounted(() => {
 <style lang="scss">
 .dd-accordion-w {
   padding: em(24) em(0) em(24) em(0);
-  border-bottom-style: solid;
-  border-bottom-width: em(1);
-  border-bottom-color: $c-gray-20;
+  border-bottom: em(1) solid $c-gray-20;
   cursor: pointer;
 }
 
@@ -82,9 +80,6 @@ onMounted(() => {
   overflow: hidden;
   height: 0;
   opacity: 0;
-}
-
-.dd-text-w {
   transition: opacity 0.35s $var-transition-timing,
   height 0.37s $var-transition-timing;
 

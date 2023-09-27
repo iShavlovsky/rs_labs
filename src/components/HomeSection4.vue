@@ -51,7 +51,7 @@ import UButtonMain from '@components/UButtonMain.vue';
 
 <style lang="scss">
 .home-s4-span-1{
-	grid-column: span 6;
+  grid-column: span 6;
 }
 
 .home-s4-span-2{

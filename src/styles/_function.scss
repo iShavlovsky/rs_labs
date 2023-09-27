@@ -1,13 +1,13 @@
 @function em($pixels, $context: $var-browser-context-em) {
-	@return calc($pixels / $context) * 1em
+  @return calc($pixels / $context) * 1em
 }
 
 @function vw($pixels, $context: $var-browser-context-px){
-	@return calc($pixels * $context) * 1vw
+  @return calc($pixels * $context) * 1vw
 }
 
 @function px($pixels, $context: $var-browser-context-px){
-	@return calc($pixels * $context) * 1px
+  @return calc($pixels * $context) * 1px
 }
 
 /* ------------
@@ -16,34 +16,34 @@
 если больше или равно то в большую
 ------------ */
 @function custom-round($number) {
-	$rounded-number: round($number);
-	$decimal-part: $number - $rounded-number;
+  $rounded-number: round($number);
+  $decimal-part: $number - $rounded-number;
 
-	@if $decimal-part < 0.5 {
-		@return $rounded-number;
-	} @else {
-		@return $rounded-number + 1;
-	}
+  @if $decimal-part < 0.5 {
+    @return $rounded-number;
+  } @else {
+    @return $rounded-number + 1;
+  }
 }
 
 /* ------------
 функция fC которая
 ------------ */
 @function fonts-size-converter($exp) {
-	$base: $var-browser-context-em;
-	$result: $base;
+  $base: $var-browser-context-em;
+  $result: $base;
 
-	@for $i from 1 through abs($exp) {
-		@if $exp > 0 {
-			$result: calc($result * $var-multiply);
-		} @else {
-			$result: calc($result / $var-multiply);
-		}
-	}
+  @for $i from 1 through abs($exp) {
+    @if $exp > 0 {
+      $result: calc($result * $var-multiply);
+    } @else {
+      $result: calc($result / $var-multiply);
+    }
+  }
 
-	@if $exp > 0 {
-		@return calc(custom-round($result) / 16) * 1em;
-	} @else {
-		@return calc(custom-round($result) / -16 ) * -1em;
-	}
+  @if $exp > 0 {
+    @return calc(custom-round($result) / 16) * 1em;
+  } @else {
+    @return calc(custom-round($result) / -16 ) * -1em;
+  }
 }

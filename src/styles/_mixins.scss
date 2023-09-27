@@ -7,29 +7,29 @@
 
 /* ------------ Grids ------------ */
 @mixin m-col-1-grid($mt: em(0), $row-gap: em(8)){
-	margin-top: $mt;
-	display: grid;
-	row-gap: $row-gap;
-	grid-template-columns: 1fr;
-	grid-template-rows: auto;
+  margin-top: $mt;
+  display: grid;
+  row-gap: $row-gap;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
 }
 
 @mixin m-col-2-grid($mt: em(0), $row-gap: em(8), $column-gap: em(8)){
-	margin-top: $mt;
-	display: grid;
-	row-gap: $row-gap;
-	column-gap: $column-gap;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto;
+  margin-top: $mt;
+  display: grid;
+  row-gap: $row-gap;
+  column-gap: $column-gap;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
 }
 
 @mixin m-col-3-grid($mt: em(0), $row-gap: em(8), $column-gap: em(8)){
-	margin-top: $mt;
-	display: grid;
-	row-gap: $row-gap;
-	column-gap: $column-gap;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: auto;
+  margin-top: $mt;
+  display: grid;
+  row-gap: $row-gap;
+  column-gap: $column-gap;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
 }
 
 // is used to indent text blocks
