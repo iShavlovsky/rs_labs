@@ -1,12 +1,12 @@
 <template>
   <button type="button"
-          class="small-arrow-button"
+          class="main-big-button stroke-big-btn"
           :disabled="props.disabled"
   >
     <span class="mono-m"> {{ props.title }} </span>
 
     <span class="ico-16px-w">
-      <USvgIcon name="btnArrow" />
+      <USvgIcon name="arrowRight" />
     </span>
   </button>
 </template>
@@ -27,14 +27,5 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-.small-arrow-button{
-  background-color: transparent;
-	font-size: em(16);
-	color: $c-gray-100;
-	display: flex;
-  flex-direction: row;
-  gap: em(4);
-	border-width: em(0);
-	cursor: pointer;
-}
+
 </style>

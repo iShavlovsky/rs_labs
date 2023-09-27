@@ -22,7 +22,7 @@
 
       <div class="grid-12col-w mt-40">
         <div class="read-more-btn-w">
-          <UButtonMain :title="'Read more'" />
+          <UButtonMainStroke :title="'Read more'" />
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
 
 <script lang="ts" setup>
 import UArticleCard from '@components/UArticleCard.vue';
-import UButtonMain from '@components/UButtonMain.vue';
+import UButtonMainStroke from './UButtonMainStroke.vue';
 </script>
 
 <style lang="scss">

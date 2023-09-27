@@ -12,3 +12,9 @@
     @content
   }
 }
+
+@mixin horizmobile {
+  @media (max-width: map-get($var-breakpoints, bp-m)) {
+    @content
+  }
+}
