@@ -24,7 +24,7 @@
             </li>
           </ul>
       </nav>
-      <div class="footer-disclaimer-w">
+      <div class="footer-disclaimer-w t-gray-10">
         <p class="disclaimer">You are leaving the world of unfair distribution. fair economic could cause an addiction. consult your inner mind and make a wise choice.</p>
       </div>
       <div class="bottom-footer-info mt-16 mono-m">

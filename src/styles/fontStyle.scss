@@ -89,6 +89,10 @@
   text-indent: em(59);
 }
 
+/* ------------ text collor ------------ */
+.t-gray-10{
+  color: $c-gray-10;
+}
 /* ----------------------- mobile styles ------------------------------ */
 @include mobile {
   /* ------------ Heading ------------ */
