@@ -58,8 +58,7 @@ const handleScrollToBlock = (chapter: number) => {
 };
 
 onMounted(() => {
-    // eslint-disable-next-line no-undef
-    const options: IntersectionObserverInit = {
+    const options = {
         root: null,
         rootMargin: '0px',
         threshold: 0.69

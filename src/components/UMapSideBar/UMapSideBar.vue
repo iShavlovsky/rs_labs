@@ -242,7 +242,6 @@ const props = defineProps<{
 }>();
 
 const swiperInstance: Ref<SwiperType | null> = ref(null);
-const prevNumberSection: Ref<number | null> = ref(null);
 
 const onSwiper = (swiper: SwiperType): void => {
     swiperInstance.value = swiper;
@@ -467,9 +466,8 @@ function selectedMap(index: number, eventEmit: boolean) {
     if (eventEmit) emit('map-position', isActive.value.chapter);
 }
 
-watch(() => props.currentSection, (newSection, oldSection) => {
+watch(() => props.currentSection, (newSection: number | null) => {
     if (newSection !== null) {
-        prevNumberSection.value = oldSection;
         selectedMap(newSection, false);
     }
 });
