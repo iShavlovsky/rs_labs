@@ -1,14 +1,29 @@
 <template>
   <section>
     <div class="container">
-      <p>articles base</p>
+      <div class="grid-12col-w">
+        <div class="home-s1-span-2">
+          <h1 class="h2">
+            Articles all
+          </h1>
+        </div>
+      </div>
     </div>
   </section>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
+import useStore from '@composables/useStore';
 
+const { seo } = useStore();
+
+
+seo.setPage({
+    title: 'RSLabs | Articles',
+    ogImage: 'http://localhost:3000/OG/OG-Home.webp'
+});
+seo.status.value = 200;
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

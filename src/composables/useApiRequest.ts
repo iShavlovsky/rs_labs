@@ -1,12 +1,7 @@
 import useApi from './useApi';
 import { TApi } from '@/api';
 import { ref, UnwrapRef } from 'vue';
-import {
-    FlattenObjectKeys,
-    GetByDotKey,
-    getByDotKey,
-    runFnWithTuple
-} from '@utility/objects';
+import { FlattenObjectKeys, GetByDotKey, getByDotKey, runFnWithTuple } from '@/utils/objects';
 
 type TApiKeys = FlattenObjectKeys<TApi, true>;
 
@@ -16,33 +11,33 @@ function useApiRequest<T extends TApiKeys>(
 ) {
     const api = useApi();
     const apiFn = getByDotKey(api, key);
-  type DataType = Awaited<ReturnType<typeof apiFn>>;
+    type DataType = Awaited<ReturnType<typeof apiFn>>;
 
-  const result = ref<ApiRequest<DataType>>({
-      done: false,
-      data: null,
-      error: null
-  });
+    const result = ref<ApiRequest<DataType>>({
+        done: false,
+        data: null,
+        error: null
+    });
 
-  runFnWithTuple(apiFn, params)
-      .then(
-          data =>
-              (result.value = {
-                  done: true,
-                  data: data as UnwrapRef<DataType>,
-                  error: null
-              })
-      )
-      .catch(
-          e =>
-              (result.value = {
-                  done: false,
-                  data: null,
-                  error: e
-              })
-      );
+    runFnWithTuple(apiFn, params)
+        .then(
+            data =>
+                (result.value = {
+                    done: true,
+                    data: data as UnwrapRef<DataType>,
+                    error: null
+                })
+        )
+        .catch(
+            e =>
+                (result.value = {
+                    done: false,
+                    data: null,
+                    error: e
+                })
+        );
 
-  return result;
+    return result;
 }
 
 export default useApiRequest;

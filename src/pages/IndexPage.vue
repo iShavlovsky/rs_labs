@@ -7,7 +7,6 @@
   <HomeSection6 />
   <KnowledgeBaseSection />
   <BackedBy />
-  <JoinUs />
 
   <UMapSideBar @map-position="handleScrollToBlock" />
 </template>
@@ -23,7 +22,6 @@ import KnowledgeBaseSection from '@components/KnowledgeBaseSection.vue';
 import BackedBy from '@components/BackedBy.vue';
 
 import UMapSideBar from '@components/UMapSideBar.vue';
-import JoinUs from '../components/JoinUs.vue';
 
 const handleScrollToBlock = (position: string) => {
     console.log(position);

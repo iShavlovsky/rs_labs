@@ -11,13 +11,15 @@
 
     <div class="article-card-subtitle-w">
       <p class="body-m">
-        Revenue Share model expands the crypto world. Visionary approach to new
+        Revenue Share model expands the crypto world. Visionary approach to new
         economic environment
       </p>
     </div>
 
     <figure class="articles-card-img-w">
-      <img>
+      <img alt=""
+           src=""
+      >
     </figure>
   </div>
 </template>

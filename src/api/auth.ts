@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import createErrorAlertConfig from '@utility/fallback';
+import createErrorAlertConfig from '@/utils/fallback';
 import {
     IEmail,
     IEmailConfirm,
@@ -31,7 +31,7 @@ export default (http: AxiosInstance) => ({
     },
     async registerConfirm(body: IEmailConfirm) {
         const fallbackConfig =
-      createErrorAlertConfig<IUserResponse>('Confirm new user: ');
+            createErrorAlertConfig<IUserResponse>('Confirm new user: ');
         const response = await http.post<IUserResponse[]>(
             '/register/confirm',
             body,
@@ -41,7 +41,7 @@ export default (http: AxiosInstance) => ({
     },
     async registerResend(body: IEmail) {
         const fallbackConfig =
-      createErrorAlertConfig<IUserResponse>('Resend new user: ');
+            createErrorAlertConfig<IUserResponse>('Resend new user: ');
         const response = await http.post<IUserResponse[]>(
             '/register/confirm/resend',
             body,
@@ -60,7 +60,7 @@ export default (http: AxiosInstance) => ({
     },
     async loginGoogle() {
         const fallbackConfig =
-      createErrorAlertConfig<TLoginGoogle>('Login Google: ');
+            createErrorAlertConfig<TLoginGoogle>('Login Google: ');
         const response = await http.post<TLoginGoogle>(
             '/auth/login/google',
             fallbackConfig
@@ -95,7 +95,7 @@ export default (http: AxiosInstance) => ({
     },
     async resetPassword(body: IEmail) {
         const fallbackConfig =
-      createErrorAlertConfig<TPassword>('Reset password: ');
+            createErrorAlertConfig<TPassword>('Reset password: ');
         const response = await http.post<TPassword>(
             '/auth/password/reset',
             { body },

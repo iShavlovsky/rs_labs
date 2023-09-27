@@ -6,7 +6,7 @@
                     class="navbar-logo"
                     to="/"
         >
-          <USvgIcon name="rsLabsLogo" />
+          <USvgIcon name="svg.rsLabsLogo" />
         </RouterLink>
 
         <div class="nav-bar-btn-w">
@@ -22,7 +22,7 @@
             </li>
             <li class="mono-s">
               <RouterLink to="/">
-                mission
+                team
               </RouterLink>
             </li>
             <li class="mono-s">

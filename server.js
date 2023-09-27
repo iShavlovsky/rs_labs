@@ -4,6 +4,7 @@ import express from 'express';
 import { readFileSync } from 'fs';
 // import proxy from 'express-http-proxy';
 import compression from 'compression';
+import morgan from 'morgan';
 
 const template = readFileSync('./dist/index.html').toString('utf-8');
 const server = express();
@@ -21,17 +22,18 @@ server.use(compression({
 }));
 
 server.use('/assets', express.static('./dist/assets'));
-server.use('/favicon.ico', express.static('./dist/favicon.ico'));
+server.use('/og', express.static('./dist/og'));
+server.use('/favicon.png', express.static('./dist/favicon.png'));
+server.use('/webclip.png', express.static('./dist/webclip.png'));
 server.use('/sitemap.xml', express.static('./dist/sitemap.xml'));
 server.use('/robots.txt', express.static('./dist/robots.txt'));
 
+server.use(morgan('dev'));
+// server.use(morgan('combined'));
+// server.use(morgan('short'));
 
-server.use((req, res, next) => {
-    console.log('Middleware executed!');
-    next();
-});
 server.get('*', async function (req, resp) {
-    resp.setHeader('Content-Security-Policy', 'default-src \'self\'; font-src \'self\' data:;');
+    resp.setHeader('Content-Security-Policy', 'default-src \'self\'; font-src \'self\' data:; style-src \'self\' \'unsafe-inline\'');
 
     const { app, stores } = await createApp({ url: req.url });
     const html = await renderToString(app);
@@ -55,7 +57,6 @@ server.get('*', async function (req, resp) {
         const { hostname } = req;
         url = `${protocol}://${hostname}:3000/`;
     }
-    console.log(title);
     if (stores.seo.status.value !== 200) {
         resp.status(stores.seo.status.value);
     }
@@ -72,7 +73,8 @@ server.get('*', async function (req, resp) {
         { meta: '<meta content="', content: ogType, end: '" property="og:type">' },
         { meta: '<meta content="', content: siteName, end: '" property="og:site_name">' },
         { meta: '<link href="', content: url, end: '" rel="canonical"/>' },
-        { meta: '<link href="', content: url, end: '" rel="preconnect"/>' }
+        { meta: '<link href="', content: url, end: '" rel="preconnect"/>' },
+        { meta: '<link href="', content: url, end: '" rel="dns-prefetch"/>' }
     ];
 
     for (const { meta, content, end } of replacements) {

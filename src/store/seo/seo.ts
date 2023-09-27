@@ -12,25 +12,28 @@ export default function seo() {
 
     const seoState = ref<SEOState>({
         title: 'RSLabs',
-        description: 'We are unrealistically good at what we do and we are on fire with digital products. Develop something together!',
-        keywords: 'software, engineers, develop',
+        description: 'We build future of  web3  economy',
+        keywords: 'technology, web3, economy, game, dev',
         author: 'The RSLabs',
         robots: 'index, follow',
         ogType: 'website',
         siteName: 'RSLabs',
-        ogImage: 'https://api.deployteam.ru/uploads/Basic_frane_7460e45f9b.jpg',
-        baseUrl: ''
+        ogImage: 'http://localhost:3000/OG/OG-Home.webp',
+        baseUrl: 'http://localhost:3000'
     });
 
-    function setPage(newValues: Partial<SEOState>) {
-        for (const [key, value] of Object.entries(newValues)) {
-            if (value !== undefined) {
-                const typedKey = key as keyof SEOState;
-                seoState.value[typedKey] = value;
+    function setPage(newValues?: Partial<SEOState>) {
+        if (newValues) {
+            for (const [key, value] of Object.entries(newValues)) {
+                if (value !== undefined) {
+                    const typedKey = key as keyof SEOState;
+                    seoState.value[typedKey] = value;
+                }
             }
         }
         afterPageUpdatedListeners.forEach(listener => listener());
     }
+
 
     return {
         seoState,

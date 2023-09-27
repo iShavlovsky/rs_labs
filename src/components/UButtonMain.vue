@@ -1,25 +1,25 @@
 <template>
-  <button type="button"
+  <button :disabled="props.disabled"
           class="main-big-button accent-big-btn"
-          :disabled="props.disabled"
+          type="button"
   >
     <span class="mono-m"> {{ props.title }} </span>
 
     <span class="ico-16px-w">
-      <USvgIcon name="btnArrow" />
+      <USvgIcon name="arrows.arrowBtn" />
     </span>
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
 
 const props = defineProps({
-    title:{
+    title: {
         type: String,
         default: 'Button1'
     },
-    disabled:{
+    disabled: {
         type: Boolean,
         default: false
     }

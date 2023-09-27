@@ -3,6 +3,7 @@ import '@/main.scss';
 import createRouter from '@/router/index';
 import createHttp from '@/plugins/httpCreate';
 import createGsapPlugin from '@/plugins/gsapCreate';
+import marqueeCreatePlugin from '@/plugins/marqueeCreate';
 import createApi from '@/api';
 import createStores from '@/store';
 import createStorage from '@plugins/storage/storageCreate';
@@ -39,14 +40,18 @@ export default async (isSsr = false) => {
     const createAppByMode = import.meta.env.DEV ? createApp : createSSRApp;
     const app = createAppByMode(App);
 
+    marqueeCreatePlugin();
     app.use(pinia);
     app.use(router);
+    // app.use(marquee);
     app.use(gsapPlugin);
+
     app.provide(StoreInject, stores);
     app.provide(ApiInject, api);
-
+    app.provide('isSsr', isSsr);
 
     if (!isSsr) {
+        console.log('isSsr', isSsr);
         seoTagsConnector(stores.seo, document);
     }
 

@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 
 import MainNavBar from '@components/MainNavBar.vue';
-import MainFooter from './components/MainFooter.vue';
+import MainFooter from '@components/MainFooter.vue';
 </script>
 
 <style lang="scss">

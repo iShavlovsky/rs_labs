@@ -1,25 +1,25 @@
 <template>
-  <button type="button"
+  <button :disabled="props.disabled"
           class="small-arrow-button"
-          :disabled="props.disabled"
+          type="button"
   >
     <span class="mono-m"> {{ props.title }} </span>
 
     <span class="ico-16px-w">
-      <USvgIcon name="btnArrow" />
+      <USvgIcon name="arrows.arrowBtn" />
     </span>
   </button>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
 
 const props = defineProps({
-    title:{
+    title: {
         type: String,
         default: 'Button1'
     },
-    disabled:{
+    disabled: {
         type: Boolean,
         default: false
     }
@@ -27,14 +27,14 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-.small-arrow-button{
+.small-arrow-button {
   background-color: transparent;
-	font-size: em(16);
-	color: $c-gray-100;
-	display: flex;
+  font-size: em(16);
+  color: $c-gray-100;
+  display: flex;
   flex-direction: row;
   gap: em(4);
-	border-width: em(0);
-	cursor: pointer;
+  border-width: em(0);
+  cursor: pointer;
 }
 </style>

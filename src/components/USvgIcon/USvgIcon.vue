@@ -5,23 +5,35 @@
 </template>
 <script lang="ts" setup>
 /// <reference types="vite-svg-loader" />
-import { defineAsyncComponent, DefineComponent, shallowRef, watchEffect } from 'vue';
-import type { IconNames } from '@components/USvgIcon/USvgIkon.types';
+import {
+    computed,
+    ComputedRef,
+    defineAsyncComponent,
+    DefineComponent,
+    shallowRef,
+    watchEffect
+} from 'vue';
+import { getByDotName, ValidKeys } from '@components/USvgIcon/USvgIkon.types';
 
 const props = defineProps({
     name: {
-        type: String as () => IconNames,
+        type: String as () => ValidKeys,
         required: true
     }
 });
+const { folder, name } = getByDotName(props.name);
+const path: ComputedRef<string> = computed(() => {
+    return (folder != 'svg') ? `${folder}/${name}` : `${name}`;
+});
 
-const iconList = import.meta.glob('@assets/images/svg/*.svg');
+const iconList = import.meta.glob('@assets/images/svg/**/*.svg');
+
 
 const icon = shallowRef<DefineComponent | null>(null);
 watchEffect(() => {
-    if (iconList[`/src/assets/images/svg/${props.name}.svg`]) {
+    if (iconList[`/src/assets/images/svg/${path.value}.svg`]) {
         icon.value = defineAsyncComponent(() =>
-            iconList[`/src/assets/images/svg/${props.name}.svg`]
+            iconList[`/src/assets/images/svg/${path.value}.svg`]
             () as Promise<DefineComponent>
         );
     }

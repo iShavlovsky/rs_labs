@@ -2,6 +2,7 @@ import { TStore } from '@/store';
 
 export default (useSeoStore: TStore['seo'], document: Document) => {
     const seoStore = useSeoStore;
+
     seoStore.afterPageUpdated(function () {
         const {
             title,
@@ -27,7 +28,9 @@ export default (useSeoStore: TStore['seo'], document: Document) => {
         setMetaProperty('og:site_name', siteName);
         setMetaProperty('og:image', ogImage);
 
+        const preconnectElement = document.querySelector('link[rel="preconnect"]');
         const canonicalElement = document.querySelector('link[rel="canonical"]');
+        if (preconnectElement) preconnectElement.setAttribute('href', `${baseUrl}`);
         if (canonicalElement) canonicalElement.setAttribute('href', `${baseUrl}`);
     });
 

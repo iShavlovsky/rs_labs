@@ -6,15 +6,30 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "allowJs": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsxImportSource": "vue",
+    "noImplicitThis": true,
+    "sourceMap": true,
     "skipLibCheck": true,
     "noEmit": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+    ],
     "paths": {
       "~/*": [
         "./*"
@@ -59,7 +74,7 @@
         "./src/router/*"
       ],
       "@utility/*": [
-        "./src/utility/*"
+        "./src/utils/*"
       ],
       "@pages/*": [
         "./src/pages/*"
@@ -69,7 +84,11 @@
       ]
     }
   },
+  "types": [
+    "swiper/vue"
+  ],
   "include": [
+    "./typed-router/typed-router.d.ts",
     "src/**/*.ts",
     "src/*.ts",
     "src/**/*.d.ts",
@@ -80,5 +99,15 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "exclude": [
+    "../node_modules",
+    "../node_modules/nuxt/node_modules",
+    "../dist",
+    "../dist-ssr"
+  ],
+  "vueCompilerOptions": {
+    "jsxTemplates": true,
+    "experimentalRfc436": true
+  }
 }

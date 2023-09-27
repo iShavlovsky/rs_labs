@@ -2,30 +2,32 @@
   <footer class="footer-holder">
     <div class="container">
       <nav>
-          <ul class="footer-links">
-            
-            <li class="mono-s">
-              <RouterLink :to="{ name: 'Mission' }">
-                mission
-              </RouterLink>
-            </li>
-            <li class="mono-s">
-              <RouterLink to="/">
-                mission
-              </RouterLink>
-            </li>
-            <li class="mono-s">
-              <RouterLink :to="{ name: 'Articles' }">
-                knowledge base
-              </RouterLink>
-            </li>
-            <li>
-              <UButtonSmallArrow :title="'rs tech'" />
-            </li>
-          </ul>
+        <ul class="footer-links">
+          <li class="mono-s">
+            <RouterLink :to="{ name: 'Mission' }">
+              mission
+            </RouterLink>
+          </li>
+          <li class="mono-s">
+            <RouterLink to="/">
+              mission
+            </RouterLink>
+          </li>
+          <li class="mono-s">
+            <RouterLink :to="{ name: 'Articles' }">
+              knowledge base
+            </RouterLink>
+          </li>
+          <li>
+            <UButtonSmallArrow :title="'rs tech'" />
+          </li>
+        </ul>
       </nav>
-      <div class="footer-disclaimer-w">
-        <p class="disclaimer">You are leaving the world of unfair distribution. fair economic could cause an addiction. consult your inner mind and make a wise choice.</p>
+      <div class="footer-disclaimer-w t-gray-10">
+        <p class="disclaimer">
+          You are leaving the world of unfair distribution. fair economic could
+          cause an addiction. consult your inner mind and make a wise choice.
+        </p>
       </div>
       <div class="bottom-footer-info mt-16 mono-m">
         <p>rs tech © 2023</p>
@@ -51,16 +53,17 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
   padding: em(24) em(48) em(24) em(48);
 }
 
-.footer-links{
+.footer-links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.footer-disclaimer-w{
+.footer-disclaimer-w {
   margin-top: em(355);
 }
-.bottom-footer-info{
+
+.bottom-footer-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
