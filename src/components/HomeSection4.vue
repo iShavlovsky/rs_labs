@@ -36,30 +36,30 @@
               Build your own revenue share mechanics with powerful SDK.
             </p>
           </div>
-          <UButtonMain :title="'Learn more'" />
+          <UButtonMain :title="'Learn more'"
+                       class=" "
+          />
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import UButtonMain from '@components/UButtonMain.vue';
-
-
 </script>
 
 <style lang="scss">
-.home-s4-span-1{
+.home-s4-span-1 {
   grid-column: span 6;
 }
 
-.home-s4-span-2{
+.home-s4-span-2 {
   grid-column-start: 11;
   grid-column-end: 13;
 }
 
-.home-s4-card{
+.home-s4-card {
   grid-column: span 6;
   height: em(330);
   padding: em(24);

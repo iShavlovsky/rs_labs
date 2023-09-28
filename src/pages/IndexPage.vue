@@ -1,27 +1,35 @@
 <template>
   <HomeSection1 :ref="sections[0]"
+                class="vh"
                 data-section-name="0"
   />
   <HomeSection2 :ref="sections[1]"
+                class="vh"
                 data-section-name="1"
   />
   <HomeSection3 :ref="sections[2]"
+                class="vh"
                 data-section-name="2"
   />
   <HomeSection4 :ref="sections[3]"
+                class="vh"
                 data-section-name="3"
   />
   <HomeSection5 :ref="sections[4]"
+                class="vh"
                 data-section-name="4"
   />
   <HomeSection6 :ref="sections[5]"
+                class="vh"
                 data-section-name="5"
   />
   <KnowledgeBaseSection :ref="sections[6]"
+                        class="vh"
                         data-section-name="6"
   />
   <BackedBy />
   <JoinUs :ref="sections[7]"
+          class="vh"
           data-section-name="7"
   />
 
@@ -42,43 +50,104 @@ import KnowledgeBaseSection from '@/components/KnowledgeBaseSection.vue';
 import BackedBy from '@/components/BackedBy.vue';
 import UMapSideBar from '@/components/UMapSideBar/UMapSideBar.vue';
 import useStore from '@/composables/useStore';
-// import useGsap from '@/composables/useGsap';
+import useGsap from '@/composables/useGsap';
 import JoinUs from '@components/JoinUs.vue';
 
-// const { timeLine } = useGsap();
-
+const { timeLine, gsap } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
 
-const scrollToSection = (sectionRef: Ref<ComponentPublicInstance | null>) => {
-    if (sectionRef.value) {
-    // sectionRef.value.$el.scrollIntoView({ behavior: 'smooth' });
-        sectionRef.value.$el.scrollIntoView();
+function resetAnimationParams(params: GSAPTimelineVars): GSAPTimelineVars {
+    const resetParams: GSAPTimelineVars = {};
+    for (const key in params) {
+        if (typeof params[key] === 'function') {
+            continue;
+        }
+        if (key === 'duration') {
+            resetParams[key] = 0;
+            continue;
+        }
+        if (key === 'opacity' || key === 'alpha') {
+            resetParams[key] = 1;
+            continue;
+        }
+        if (key === 'ease') {
+            continue;
+        }
+        if (typeof params[key] === 'number') {
+            resetParams[key] = 0;
+        } else if (typeof params[key] === 'boolean') {
+            resetParams[key] = false;
+        } else if (typeof params[key] === 'string') {
+            if (params[key].includes('%')) {
+                resetParams[key] = '0%';
+            } else {
+                resetParams[key] = '';
+            }
+        } else if (Array.isArray(params[key])) {
+            resetParams[key] = [];
+        } else if (typeof params[key] === 'object') {
+            resetParams[key] = {};
+        }
     }
-};
+    return resetParams;
+}
+
 
 const handleScrollToBlock = (chapter: number) => {
-    scrollToSection(sections[chapter - 1]);
+    const time: number = 0.50;
+    const first: GSAPTimelineVars = {
+        duration: time,
+        opacity: .1,
+        x: `${-100}%`,
+        ease: 'Power0.easeIn'
+    };
+    const reset = resetAnimationParams(first);
+    console.log(reset);
+
+    const currentSection = sections[currentVisibleSection.value].value?.$el;
+    const nextSection = sections[chapter - 1].value?.$el;
+
+    timeLine?.to(currentSection, {
+        duration: time,
+        opacity: .1,
+        x: `${-100}%`,
+        ease: 'Power0.easeIn',
+        onComplete: () => {
+            gsap?.fromTo(nextSection,
+                {
+                    duration: 0,
+                    opacity: .1,
+                    x: `${100}%`,
+                    ease: 'Power0.easeIn'
+                },
+                {
+                    duration: time,
+                    opacity: 1,
+                    x: `${0}%`,
+                    ease: 'Power0.easeIn'
+                }
+            );
+            if (nextSection) nextSection.scrollIntoView();
+        }
+    });
+    timeLine?.to(currentSection, {
+        duration: 0,
+        opacity: 1,
+        x: '0%',
+        ease: 'Power0.easeIn'
+    });
 };
 
-// const sectionsAnimation = () => {
-//     const time = 0.50;
-//     const white = '#F9FEFF';
-//     const ease = 'Power0.easeIn';
-//     timeLine?.to(sections[1], {
-//         duration: time,
-//         backgroundColor: white,
-//         ease: ease
-//     });
-// };
 
 onMounted(() => {
     const options = {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '-10% 0px 0px 0px', // Отрицательный отступ сверху на 10%
         threshold: 0.69
     };
+
     observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -100,7 +169,6 @@ onUnmounted(() => {
         observer.disconnect();
     }
     sections = [];
-
 });
 
 const { seo } = useStore();
@@ -112,5 +180,7 @@ seo.status.value = 200;
 </script>
 
 <style lang="scss">
-
+.vh {
+  height: 100vh;
+}
 </style>

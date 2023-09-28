@@ -1,23 +1,20 @@
-import { inject, onMounted, onUnmounted } from 'vue';
+import { inject, onUnmounted } from 'vue';
 import { GsapInject, ScrollTriggerInject } from '@injections/gsapInject';
 
 interface UseGsapReturn {
     timeLine: GSAPTimeline | null;
     gsap: GSAP | undefined;
-    scrollTrigger: GSAPPlugin | undefined; // Типизируйте соответствующим образом
+    scrollTrigger: typeof ScrollTrigger | undefined;
 }
 
 export default function (): UseGsapReturn {
     const isSsr: boolean | undefined = inject('isSsr');
     const gsap: GSAP | undefined = inject(GsapInject);
-    const scrollTrigger: GSAPPlugin | undefined = inject(ScrollTriggerInject);
-    let timeLine: GSAPTimeline | null = null;
+    const scrollTrigger: typeof ScrollTrigger | undefined = inject(ScrollTriggerInject);
+    let timeLine: GSAPTimeline | null = gsap ? gsap.timeline() : null;
 
 
     if (!isSsr) {
-        onMounted(() => {
-            timeLine = gsap ? gsap.timeline() : null;
-        });
         onUnmounted(() => {
             if (timeLine) {
                 timeLine.kill();
@@ -25,7 +22,6 @@ export default function (): UseGsapReturn {
             }
         });
     }
-
 
     return {
         timeLine,

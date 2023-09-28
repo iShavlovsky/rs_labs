@@ -13,6 +13,7 @@ body {
   font-size: $var-body-main-size-font;
   color: $c-gray-100;
   background-color: $c-gray-00;
+  overflow-x: hidden;
 }
 
 section {

@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <h2 class="mono-m">
-        Backed by {{ playState }}.
+        Backed by.
       </h2>
 
       <div class="logos-stripe-w mt-50">
