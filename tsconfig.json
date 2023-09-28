@@ -28,7 +28,8 @@
     ],
     "typeRoots": [
       "node_modules/@types",
-      "src/types"
+      "src/types",
+      "./types"
     ],
     "paths": {
       "~/*": [
@@ -93,7 +94,11 @@
     "src/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/types/*",
+    "./types/*",
+    "src/types",
+    "./types"
   ],
   "references": [
     {

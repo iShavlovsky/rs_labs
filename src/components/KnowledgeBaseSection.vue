@@ -14,9 +14,14 @@
       </div>
       <div class="mt-120">
         <div class="knowledge-base-articles-collection-w">
-          <UArticleCard />
-          <UArticleCard />
-          <UArticleCard />
+          <UArticleCard v-for="(post, i) in posts"
+                        :key="i"
+                        :article-date="post.date"
+                        :article-subtitle="post.subtitle"
+                        :article-type="post.type"
+                        :image-alt="post.image.alt"
+                        :image-src="post.image.src"
+          />
         </div>
       </div>
 
@@ -30,8 +35,38 @@
 </template>
 
 <script lang="ts" setup>
-import UArticleCard from '@components/UArticleCard.vue';
+import UArticleCard from '@/components/UArticleCard.vue';
 import UButtonMainStroke from './UButtonMainStroke.vue';
+
+const posts = [
+    {
+        type: 'Tech article',
+        date: '08 July',
+        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
+        image: {
+            src: '/src/assets/images/webp/Article-Placeholder.webp',
+            alt: 'Tech article'
+        }
+    },
+    {
+        type: 'Tech article',
+        date: '08 July',
+        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
+        image: {
+            src: '/src/assets/images/webp/Article-Placeholder.webp',
+            alt: 'Tech article'
+        }
+    },
+    {
+        type: 'Tech article',
+        date: '08 July',
+        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
+        image: {
+            src: '/src/assets/images/webp/Article-Placeholder.webp',
+            alt: 'Tech article'
+        }
+    }
+];
 </script>
 
 <style lang="scss">

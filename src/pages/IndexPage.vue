@@ -21,31 +21,36 @@
                         data-section-name="6"
   />
   <BackedBy />
-  <MainFooter :ref="sections[7]"
-              data-section-name="7"
+  <JoinUs :ref="sections[7]"
+          data-section-name="7"
   />
+
   <UMapSideBar :current-section="currentVisibleSection"
                @map-position="handleScrollToBlock"
   />
 </template>
 
 <script lang="ts" setup>
-import HomeSection1 from '@components/HomeSection1.vue';
-import HomeSection2 from '@components/HomeSection2.vue';
-import HomeSection3 from '@components/HomeSection3.vue';
-import HomeSection4 from '@components/HomeSection4.vue';
-import HomeSection5 from '@components/HomeSection5.vue';
-import HomeSection6 from '@components/HomeSection6.vue';
-import KnowledgeBaseSection from '@components/KnowledgeBaseSection.vue';
-import BackedBy from '@components/BackedBy.vue';
-import MainFooter from '@components/MainFooter.vue';
-import UMapSideBar from '@components/UMapSideBar/UMapSideBar.vue';
-import useStore from '@composables/useStore';
 import { ComponentPublicInstance, onMounted, onUnmounted, Ref, ref } from 'vue';
+import HomeSection1 from '@/components/HomeSection1.vue';
+import HomeSection2 from '@/components/HomeSection2.vue';
+import HomeSection3 from '@/components/HomeSection3.vue';
+import HomeSection4 from '@/components/HomeSection4.vue';
+import HomeSection5 from '@/components/HomeSection5.vue';
+import HomeSection6 from '@/components/HomeSection6.vue';
+import KnowledgeBaseSection from '@/components/KnowledgeBaseSection.vue';
+import BackedBy from '@/components/BackedBy.vue';
+import UMapSideBar from '@/components/UMapSideBar/UMapSideBar.vue';
+import useStore from '@/composables/useStore';
+// import useGsap from '@/composables/useGsap';
+import JoinUs from '@components/JoinUs.vue';
+
+// const { timeLine } = useGsap();
 
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
+
 const scrollToSection = (sectionRef: Ref<ComponentPublicInstance | null>) => {
     if (sectionRef.value) {
     // sectionRef.value.$el.scrollIntoView({ behavior: 'smooth' });
@@ -56,6 +61,17 @@ const scrollToSection = (sectionRef: Ref<ComponentPublicInstance | null>) => {
 const handleScrollToBlock = (chapter: number) => {
     scrollToSection(sections[chapter - 1]);
 };
+
+// const sectionsAnimation = () => {
+//     const time = 0.50;
+//     const white = '#F9FEFF';
+//     const ease = 'Power0.easeIn';
+//     timeLine?.to(sections[1], {
+//         duration: time,
+//         backgroundColor: white,
+//         ease: ease
+//     });
+// };
 
 onMounted(() => {
     const options = {
@@ -84,6 +100,7 @@ onUnmounted(() => {
         observer.disconnect();
     }
     sections = [];
+
 });
 
 const { seo } = useStore();

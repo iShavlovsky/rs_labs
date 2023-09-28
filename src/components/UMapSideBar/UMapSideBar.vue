@@ -233,8 +233,8 @@ import {
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/scss';
-import useScrollPosition from '@composables/usePageScroll';
-import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+import useScrollPosition from '@composables/useScrollPosition';
+import USvgIcon from '@/components/USvgIcon/USvgIcon.vue';
 import { arrowsDirection, Positions, sectionsName } from './UMapSideBar.types';
 
 const props = defineProps<{
@@ -346,7 +346,7 @@ const positions = reactive<Positions[]>([
         arrows: {
             'up': 3,
             'down': 7,
-            'right': 2,
+            'right': 6,
             'up-left': 2,
             'up-right': 4
         }
@@ -368,7 +368,8 @@ const positions = reactive<Positions[]>([
         arrows: {
             'up': 4,
             'left': 5,
-            'up-left': 3
+            'up-left': 3,
+            'down-left': 7
         }
     },
     {

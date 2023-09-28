@@ -2,30 +2,36 @@
   <div class="article-card-w w-1col-16gap">
     <div class="article-type-and-date-w">
       <p class="mono-s">
-        Tech article
+        {{ articleType }}
       </p>
       <p class="mono-s">
-        08 July
+        {{ articleDate }}
       </p>
     </div>
 
     <div class="article-card-subtitle-w">
       <p class="body-m">
-        Revenue Share model expands the crypto world. Visionary approach to new
-        economic environment
+        {{ articleSubtitle }}
       </p>
     </div>
 
     <figure class="articles-card-img-w">
-      <img alt=""
-           src=""
+      <img :alt="imageAlt"
+           :src="imageSrc"
+           class="articles-card-img"
       >
     </figure>
   </div>
 </template>
 
 <script lang="ts" setup>
-
+defineProps<{
+    articleType: string;
+    articleDate: string;
+    articleSubtitle: string;
+    imageSrc: string;
+    imageAlt: string;
+}>();
 
 </script>
 
@@ -47,5 +53,9 @@
   height: em(220);
   margin-top: em(10);
   background-color: black;
+
+  .articles-card-img {
+    object-fit: cover;
+  }
 }
 </style>

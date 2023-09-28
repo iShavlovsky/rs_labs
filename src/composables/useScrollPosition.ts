@@ -1,7 +1,7 @@
 import { inject, onMounted, onUnmounted, Ref, ref } from 'vue';
 import { debounce } from '@/utils/debounce';
 
-export default function useScrollPosition(
+export default function (
     el: Ref<HTMLElement | undefined>,
     delay: number,
     onlyProgress = false

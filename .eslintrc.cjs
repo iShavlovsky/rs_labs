@@ -1,10 +1,19 @@
 module.exports = {
     root: true,
+
     env: {
         "es2021": true,
         "browser": true,
         "node": true
     },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.vue"],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
+    ],
     extends: [
         'plugin:vue/base',
         'eslint:recommended',
@@ -17,7 +26,8 @@ module.exports = {
     parserOptions: {
         'ecmaVersion': 'latest',
         'sourceType': 'module',
-        "parser": "@typescript-eslint/parser"
+        "parser": "@typescript-eslint/parser",
+        "project": "tsconfig.json",
     },
     'plugins': [
         "vue",

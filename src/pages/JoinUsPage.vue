@@ -21,6 +21,7 @@ const { seo } = useStore();
 seo.setPage({
     title: 'RSLabs | Join Us',
     ogImage: 'http://localhost:3000/OG/OG-JoinUs.webp'
+
 });
 seo.status.value = 200;
 </script>

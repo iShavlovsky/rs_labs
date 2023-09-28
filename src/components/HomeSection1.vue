@@ -7,7 +7,6 @@
             Revenue share contracts labs
           </p>
         </div>
-
         <div class="home-s1-span-2">
           <h1 class="h2">
             We build future of web3 <br>economy
@@ -31,9 +30,7 @@
   </section>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 .section-home-head {
