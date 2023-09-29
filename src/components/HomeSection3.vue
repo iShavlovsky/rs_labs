@@ -20,7 +20,7 @@
             Meet revenue share labs
           </h2>
 
-          <div class="w-1col-15gap">
+          <div class="w-1col-16gap">
             <p class="body-l">
               The lab is dedicated to build a technological infrastructure to
               implement revenue share economics in practice.
@@ -74,5 +74,45 @@
 .home-s3-span-3 {
   grid-column-start: 11;
   grid-column-end: 13;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+  .home-s3-span-1 {
+    margin-top: px(-56);
+    grid-column: span 2;
+    grid-column-start: 7;
+    grid-column-end: 9;
+    grid-row-start: 2;
+  }
+
+  .home-s3-span-2 {
+    gap: px(80);
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
+
+  .home-s3-span-3 {
+    margin-top: px(64);
+    grid-column: span 5;
+    grid-row-start: 2;
+  }
+
+  .home-s3-img1-w {
+    height: px(193);
+    min-height: 30vh;
+  }
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

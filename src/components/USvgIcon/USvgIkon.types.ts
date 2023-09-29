@@ -28,6 +28,11 @@ export const icons = {
         'logo-VELAS',
         'logo-XLA',
         'logo-XSOLLA'
+    ],
+    mask: [
+        'mid-figure',
+        'bot-figure',
+        'top-figure'
     ]
 } as const;
 

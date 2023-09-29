@@ -34,7 +34,7 @@
 
 <style lang="scss">
 .dd-accordion-w {
-  padding: em(24) em(0) em(24) em(0);
+  padding: em(24) em(0);
   border-bottom: em(1) solid $c-gray-20;
 }
 
@@ -56,5 +56,26 @@
   grid-column-start: 8;
   grid-column-end: 10;
   align-self: last baseline;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .dd-accordion-w {
+    padding: px(24) em(0);
+  }
+  .dd-title-w {
+    gap: px(8);
+    grid-column: span 3;
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

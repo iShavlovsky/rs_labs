@@ -35,3 +35,33 @@
 .max-width-413 {
   max-width: em(413);
 }
+
+@include tablet {
+  .max-width-810 {
+    max-width: px(565);
+  }
+
+  .max-width-330 {
+    max-width: px(330);
+  }
+
+  .max-width-217 {
+    max-width: px(217);
+  }
+
+  .max-width-413 {
+    max-width: px(413);
+  }
+
+  .w-1col-16gap {
+    @include m-col-1-grid($row-gap: px(8));
+  }
+}
+
+@include horizmobile {
+
+}
+
+@include mobile {
+
+}

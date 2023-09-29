@@ -1,6 +1,6 @@
 <template>
-  <section class="section-home-head">
-    <div class="container">
+  <section class="section-home-head height-100vh">
+    <div class="container flex-column justify-space-between height-100prc">
       <div class="grid-12col-w">
         <div class="home-s1-span-1">
           <p class="mono-m">
@@ -9,7 +9,7 @@
         </div>
         <div class="home-s1-span-2">
           <h1 class="h2">
-            We build future of web3 <br>economy
+            We build future of web3 economy
           </h1>
         </div>
 
@@ -19,7 +19,9 @@
             principles.
           </p>
         </div>
+      </div>
 
+      <div class="grid-12col-w">
         <div class="home-s1-span-4">
           <p class="mono-s">
             click on arrows or use map to explore the journey
@@ -54,5 +56,48 @@
 .home-s1-span-4 {
   grid-column: span 3;
   padding: em(24) em(113) em(328) em(0);
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .section-home-head {
+    padding-top: px(88);
+  }
+
+  .home-s1-span-1 {
+    max-width: px(150);
+    grid-column: span 2;
+    align-self: last baseline;
+  }
+
+  .home-s1-span-2 {
+    max-width: px(440);
+    grid-column-start: 3;
+    grid-column-end: 9;
+  }
+
+  .home-s1-span-3 {
+    max-width: px(210);
+    grid-column-start: 3;
+    grid-column-end: 6;
+  }
+
+  .home-s1-span-4 {
+    grid-column: span 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding: px(24) px(82) px(328) em(0);
+  }
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

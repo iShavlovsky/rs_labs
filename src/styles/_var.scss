@@ -2,10 +2,10 @@ $var-browser-context-em: 16;
 $var-browser-context-px: 1;
 $var-body-main-size-font: 1.1111111111111112vw;
 $var-breakpoints: (
-  'bp-xl': 1440px,
-  'bp-l': 991px,
-  'bp-m': 767px,
-  'bp-s': 479px
+        'bp-xl': 1440px,
+        'bp-l': 991px,
+        'bp-m': 767px,
+        'bp-s': 479px
 );
 $var-base-animation-time: 300ms;
 $var-transition-timing: cubic-bezier(.39, .575, .565, 1);
@@ -24,4 +24,5 @@ $ft-header-fonts-bold: 'Header-Bold', sans-serif;
 
 // Body
 $ft-body-fonts-regular: 'Base-Regular', sans-serif;
+$ft-disclaimer: 'Disclaimer', sans-serif;
 $ft-body-fonts-mono-regular: 'Base-MonoRegular', sans-serif;

@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div class="container">
+  <section class="height-100vh">
+    <div class="container flex-column justify-space-between height-100prc">
       <div class="grid-12col-w">
         <div class="home-s4-span-1">
           <h2 class="h1">
@@ -14,7 +14,9 @@
             and people based on revenue share principles using smart contracts.
           </p>
         </div>
+      </div>
 
+      <div class="grid-12col-w">
         <div class="home-s4-card">
           <div class="w-1col-8gap">
             <h3 class="h3">
@@ -67,5 +69,30 @@ import UButtonMain from '@components/UButtonMain.vue';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .home-s4-span-2 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  .home-s4-card {
+    grid-column: span 4;
+    height: px(320);
+    padding: px(24);
+  }
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

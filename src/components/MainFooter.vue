@@ -24,7 +24,7 @@
         </ul>
       </nav>
       <div class="footer-disclaimer-w t-gray-10">
-        <p class="disclaimer">
+        <p class="disclaimer align-justify">
           You are leaving the world of unfair distribution. fair economic could
           cause an addiction. consult your inner mind and make a wise choice.
         </p>
@@ -67,5 +67,20 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

@@ -1,35 +1,27 @@
 <template>
   <HomeSection1 :ref="sections[0]"
-                class="vh"
                 data-section-name="0"
   />
   <HomeSection2 :ref="sections[1]"
-                class="vh"
                 data-section-name="1"
   />
   <HomeSection3 :ref="sections[2]"
-                class="vh"
                 data-section-name="2"
   />
   <HomeSection4 :ref="sections[3]"
-                class="vh"
                 data-section-name="3"
   />
   <HomeSection5 :ref="sections[4]"
-                class="vh"
                 data-section-name="4"
   />
   <HomeSection6 :ref="sections[5]"
-                class="vh"
                 data-section-name="5"
   />
   <KnowledgeBaseSection :ref="sections[6]"
-                        class="vh"
                         data-section-name="6"
   />
   <BackedBy />
   <JoinUs :ref="sections[7]"
-          class="vh"
           data-section-name="7"
   />
 
@@ -180,7 +172,4 @@ seo.status.value = 200;
 </script>
 
 <style lang="scss">
-.vh {
-  height: 100vh;
-}
 </style>

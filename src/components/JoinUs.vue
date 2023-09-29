@@ -47,5 +47,20 @@ import UButtonMain from '@components/UButtonMain.vue';
   grid-column-start: 4;
   grid-column-end: 7;
 }
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>
 

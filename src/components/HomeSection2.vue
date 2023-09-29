@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div class="container">
+  <section class="height-100vh">
+    <div class="container flex-column justify-space-between height-100prc">
       <div class="max-width-810">
         <h2 class="h2 h2-indent">
           Building a new way of shared economy
@@ -51,5 +51,31 @@
 .home-s2-span-3 {
   grid-column-start: 7;
   grid-column-end: 10;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .home-s2-span-1 {
+    grid-column: span 2;
+  }
+
+  .home-s2-span-2 {
+    grid-column-start: 3;
+  }
+
+  .home-s2-span-3 {
+    grid-column-start: 6;
+    grid-column-end: 9;
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>
