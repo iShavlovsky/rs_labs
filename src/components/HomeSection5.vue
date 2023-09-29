@@ -1,13 +1,15 @@
 <template>
-  <section>
-    <div class="container">
+  <section class="height-100vh">
+    <div class="container flex-column justify-center height-100prc">
       <div class="grid-12col-w">
         <div class="home-s5-span-1">
           <h2 class="h2 h2-indent">
             Revenue share is nota new concept— big names adopt it
           </h2>
         </div>
+      </div>
 
+      <div class="grid-12col-w mt-110">
         <div class="home-s5-span-2">
           <UAccordions :arr="accordions"
                        :initial-open-index="0"
@@ -48,5 +50,23 @@ const accordions: AccordionItem[] = [
 
 .home-s5-span-2 {
   grid-column: span 12;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .home-s5-span-1 {
+    max-width: px(628);
+    grid-column: span 8;
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

@@ -2,8 +2,8 @@
   <section>
     <figure class="mid-line"></figure>
     <div class="container">
-      <div class="knowledge-base-title-w">
-        <div class="w-1col-16gap bg-black-padding-top-bot-8px max-width-413">
+      <div class="knowledge-base-title-holder">
+        <div class="knowledge-base-title-w">
           <h2 class="mono-s">
             Knowledge base
           </h2>
@@ -70,17 +70,20 @@ const posts = [
 </script>
 
 <style lang="scss">
-.knowledge-base-title-w {
+.knowledge-base-title-holder {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.bg-black-padding-top-bot-8px {
-  padding-top: em(8);
-  padding-bottom: em(8);
+.knowledge-base-title-w {
   background-color: $c-gray-00;
+  max-width: em(460);
+  display: flex;
+  flex-direction: column;
+  gap: em(16);
+  padding: em(8);
 }
 
 .knowledge-base-articles-collection-w {
@@ -104,5 +107,24 @@ const posts = [
 .read-more-btn-w {
   grid-column-start: 4;
   grid-column-end: 10;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .knowledge-base-title-w {
+    max-width: px(520);
+    gap: px(16);
+    padding: px(8);
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

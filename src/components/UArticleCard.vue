@@ -58,4 +58,19 @@ defineProps<{
     object-fit: cover;
   }
 }
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>

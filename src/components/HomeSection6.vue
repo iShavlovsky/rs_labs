@@ -1,8 +1,8 @@
 <template>
-  <section>
-    <div class="container">
-      <div class="disclaimer-w">
-        <p class="disclaimer">
+  <section class="height-100vh">
+    <div class="container flex-column height-100prc">
+      <div class="home-s6-disclaimer-w flex-column justify-center">
+        <p class="disclaimer align-justify">
           You are leaving the world of unfair distribution. fair economic could
           cause an addiction. consult your inner mind and make a wise choice.
         </p>
@@ -41,8 +41,11 @@
   grid-column: span 2;
 }
 
-.disclaimer-w {
+.home-s6-disclaimer-w {
   color: #DAE9FF;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
 }
 
 .home-s6-lines-w {
@@ -82,5 +85,47 @@
   width: em(105);
   height: em(1);
   background-color: $c-gray-100;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+  .s6-second-linse-w {
+    grid-column-start: 4;
+    grid-column-end: 9;
+  }
+
+  .s6-1-line {
+    height: px(1);
+  }
+
+  .s6-2-line {
+    width: px(1);
+    margin-top: px(4);
+    margin-left: px(4);
+  }
+
+  .s6-3-line {
+    width: px(1);
+    margin-top: px(4);
+    margin-left: px(4);
+    margin-right: px(4);
+  }
+
+  .s6-4-line {
+    width: em(186);
+    height: px(1);
+  }
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

@@ -47,6 +47,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 <style lang="scss">
 
 .navbar-holder {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,5 +82,20 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
   display: flex;
   flex-direction: row;
   gap: em(24);
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

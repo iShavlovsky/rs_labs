@@ -18,7 +18,7 @@ body {
 section {
   position: relative;
   width: 100%;
-  padding: em(48) em(48);
+  padding: em(80) em(48);
 }
 
 .container {
@@ -108,18 +108,43 @@ img {
   padding: em(12);
 }
 
+/* ----------------------- tablet ------------------------------ */
 @include tablet {
   body {
     background-color: green;
   }
+
+  section {
+    padding: px(80) px(48);
+  }
+
+  .grid-12col-w {
+    grid-column-gap: px(8);
+    grid-row-gap: px(16);
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  /* Button and icons */
+
+.ico-16px-w {
+  width: px(16);
+  height: px(16);
 }
 
+}
+
+/* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
   body {
     background-color: blueviolet;
   }
 }
 
+/* ----------------------- mobile ------------------------------ */
 @include mobile {
   body {
     background-color: red;
