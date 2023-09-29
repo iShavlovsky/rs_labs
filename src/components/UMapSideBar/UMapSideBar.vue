@@ -420,7 +420,7 @@ const activeIndex: ComputedRef<number> = computed(() => {
 });
 
 const body: Ref<HTMLElement | undefined> = ref(undefined);
-const scrollPage = useScrollPosition(body, 12, false);
+const scrollPage = useScrollPosition(body, 10, false);
 
 const progressStyles: ComputedRef<CSSProperties> = computed(() => {
     return {

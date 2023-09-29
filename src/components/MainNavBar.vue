@@ -47,6 +47,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 <style lang="scss">
 
 .navbar-holder {
+  width: 100%;
   position: absolute;
   display: flex;
   flex-direction: column;

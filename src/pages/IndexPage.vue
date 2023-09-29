@@ -50,6 +50,7 @@ const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
 
+
 function resetAnimationParams(params: GSAPTimelineVars): GSAPTimelineVars {
     const resetParams: GSAPTimelineVars = {};
     for (const key in params) {
@@ -134,6 +135,15 @@ const handleScrollToBlock = (chapter: number) => {
 
 
 onMounted(() => {
+    gsap?.timeline({
+        scrollTrigger: {
+            markers: true,
+            trigger: sections[2].value?.$el,
+            start: '0% 50%',
+            end: '0% 0%',
+            scrub: 3
+        }
+    });
     const options = {
         root: null,
         rootMargin: '-10% 0px 0px 0px', // Отрицательный отступ сверху на 10%
