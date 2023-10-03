@@ -37,4 +37,19 @@ const props = defineProps({
   border-width: em(0);
   cursor: pointer;
 }
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>

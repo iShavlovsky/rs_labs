@@ -116,11 +116,23 @@ const posts = [
     gap: px(16);
     padding: px(8);
   }
+
+  .read-more-btn-w {
+    grid-column-start: 1;
+    grid-column-end: 9;
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .read-more-btn-w {
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
 
+  .knowledge-base-articles-collection-w {
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

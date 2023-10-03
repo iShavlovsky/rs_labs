@@ -8,7 +8,7 @@
               Join us
             </h2>
           </div>
-          <p class="h1 h1-indent">
+          <p class="h1 txt-tablet-48px mix-indent">
             Join the team of visionaries to build revenue share economy
           </p>
         </div>
@@ -43,24 +43,35 @@ import UButtonMain from '@components/UButtonMain.vue';
 }
 
 .joinus-btn-w {
-  grid-column: span 3;
   grid-column-start: 4;
   grid-column-end: 7;
 }
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
-
+  .joinus-header-w {
+    max-width: px(648);
+    grid-column: span 9;
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .joinus-header-w {
+    grid-column: span 6;
+  }
 
+  .joinus-btn-w {
+    grid-column-start: 2;
+    grid-column-end: 5;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */
 @include mobile {
-
+  .joinus-btn-w {
+    grid-column-end: 6;
+  }
 }
 </style>
 

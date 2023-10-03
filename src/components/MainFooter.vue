@@ -31,9 +31,9 @@
       </div>
       <div class="bottom-footer-info mt-16 mono-m">
         <p>rs tech © 2023</p>
-        <a>terms and privacy</a>
-        <p>Designed by <a href="#">X</a></p>
-        <p>Developed by <a href="#">X</a></p>
+        <a class="justify-self-end">terms and privacy</a>
+        <p >Designed by <a href="#">X</a></p>
+        <p class="justify-self-end">Developed by <a href="#">X</a></p>
       </div>
     </div>
   </footer>
@@ -76,7 +76,17 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .bottom-footer-info {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: px(8);
+    grid-row-gap: px(8);
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  .justify-self-end{
+    justify-self: end;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

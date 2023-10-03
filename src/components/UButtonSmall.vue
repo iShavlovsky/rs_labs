@@ -33,4 +33,21 @@ const props = defineProps({
   border-radius: em(2);
   cursor: pointer;
 }
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .main-small-button{
+    padding: px(8);
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>

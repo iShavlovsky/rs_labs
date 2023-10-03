@@ -89,17 +89,26 @@
   text-indent: em(59);
 }
 
+.mix-indent {
+  text-indent: em(59);
+}
+
 .align-justify {
   text-align: justify;
   text-align-last: justify;
 }
+
 
 /* ------------ text collor ------------ */
 .t-gray-10 {
   color: $c-gray-10;
 }
 
-/* ----------------------- mobile styles ------------------------------ */
+.t-gray-70 {
+  color: $c-gray-70;
+}
+
+/* ----------------------- tablet styles ------------------------------ */
 @include tablet {
   /* ------------ Heading ------------ */
   .h1 {
@@ -136,7 +145,7 @@
   }
 
   .disclaimer {
-    font-size: px(56);
+    font-size: em(120);
   }
 
   /* ------------ text mods ------------ */
@@ -148,6 +157,13 @@
     text-indent: em(59);
   }
 
+  .mix-indent {
+    text-indent: 22.5vw;
+  }
+
+  .txt-tablet-48px{
+    font-size: px(48);
+  }
 }
 
 
@@ -172,11 +188,19 @@
 
   /* ------------ text mods ------------ */
   .h2-indent {
-    text-indent: px(88);
+    text-indent: 14vw;
   }
 
   .h1-indent {
     text-indent: px(59);
+  }
+
+    .mix-indent {
+    text-indent: 14vw;
+  }
+
+  .txt-tablet-48px{
+    font-size: px(34);
   }
 
 }

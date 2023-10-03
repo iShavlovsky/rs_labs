@@ -646,4 +646,45 @@ onUnmounted(() => {
   color: #7B0404;
 }
 
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .map-arrow-nav-w {
+    bottom: px(24);
+  }
+
+  .map-arrow-btn {
+    width: px(16);
+    height: px(16);
+  }
+
+  .bot-arrows-w {
+    gap: px(16);
+    padding-bottom: px(6);
+  }
+
+  .mid-arrows-w {
+    align-self: flex-start;
+    grid-column-start: 7;
+  }
+
+  .right-arrows-w {
+    grid-column-start: 8;
+  }
+
+  .scroll-indicator-holder {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>

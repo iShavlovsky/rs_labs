@@ -35,13 +35,16 @@
 <script lang="ts" setup></script>
 
 <style lang="scss">
+
 .section-home-head {
   padding-top: em(88);
   padding-bottom: em(0);
 }
 
+
 .home-s1-span-1 {
   grid-column: span 1;
+  align-self: last baseline;
 }
 
 .home-s1-span-2 {
@@ -60,6 +63,7 @@
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
+
   .section-home-head {
     padding-top: px(88);
   }
@@ -67,7 +71,6 @@
   .home-s1-span-1 {
     max-width: px(150);
     grid-column: span 2;
-    align-self: last baseline;
   }
 
   .home-s1-span-2 {
@@ -93,7 +96,28 @@
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .home-s1-span-1 {
+    max-width: px(110);
+    grid-column: span 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
 
+  .home-s1-span-2 {
+    max-width: px(440);
+    grid-column-start: 2;
+    grid-column-end: 7;
+  }
+
+  .home-s1-span-3 {
+    max-width: px(210);
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
+
+  .home-s1-span-4 {
+    display: none;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

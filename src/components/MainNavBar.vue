@@ -87,7 +87,24 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
+  .navbar-menu{
+    position: absolute;
+    display: none;
+  }
 
+  .navbar-logo {
+    align-self: center;
+    width: px(53);
+  }
+
+  .navbar-holder {
+    padding: px(4) px(48) px(4) px(48);
+  }
+
+  .nav-bar-btn-w{
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */
@@ -97,6 +114,8 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 
 /* ----------------------- mobile ------------------------------ */
 @include mobile {
-
+  .navbar-holder {
+    padding: px(13) px(16) px(13) px(16);
+  }
 }
 </style>

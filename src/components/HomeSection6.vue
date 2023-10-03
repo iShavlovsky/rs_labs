@@ -14,18 +14,18 @@
                 name="mask.bot-figure"
       />
     </div>
-    <div class="container flex-column height-100prc">
+    <div class="container flex-column justify-space-between height-100prc">
       <div class="home-s6-disclaimer-w flex-column justify-center">
         <div class="disclaimer-w">
           <p class="disclaimer align-justify">
             You are leaving the world of unfair distribution. fair economic could
-            cause an addiction. consult your inner mind and make a wise choice.
+            cause an&nbsp;addiction. consult your inner mind and make a wise choice.
           </p>
         </div>
       </div>
 
       <div class="grid-12col-w mt-160">
-        <figure class="home-s6-lines-w">
+        <figure class="home-s6-lines-w horizmobile-hide">
           <figure class="s6-1-line"></figure>
           <figure class="s6-2-line"></figure>
         </figure>
@@ -38,7 +38,7 @@
         </div>
 
         <figure class="home-s6-lines-w s6-second-linse-w">
-          <figure class="s6-1-line"></figure>
+          <figure class="s6-1-line horizmobile-hide"></figure>
           <figure class="s6-3-line"></figure>
           <figure class="s6-4-line"></figure>
         </figure>
@@ -105,7 +105,7 @@ const anim = () => {
   left: 0;
   top: 0;
   background: url("../assets/images/webp/interior6.webp") no-repeat center center;
-  background-size: contain;
+  background-size: cover;
   overflow: hidden;
 
   .anim-mask {
@@ -176,6 +176,12 @@ const anim = () => {
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
 
+  .home-s6-disclaimer-w {
+    .disclaimer-w {
+      max-width: em(810);
+    }
+  }
+
   .s6-second-linse-w {
     grid-column-start: 4;
     grid-column-end: 9;
@@ -207,7 +213,26 @@ const anim = () => {
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .s6-subtitle-w{
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
 
+  .s6-3-line{
+    height: px(62);
+  }
+
+  .s6-4-line {
+    width: 100%;
+    height: px(1);
+  }
+
+  .s6-second-linse-w {
+    margin-top: px(-8);
+    margin-left: px(-4);
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

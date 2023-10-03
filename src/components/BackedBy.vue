@@ -77,6 +77,24 @@ onMounted(() => {
   overflow: hidden;
 }
 
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .logos-stripe-w {
+    width: 100vw;
+    margin-left: px(-44);
+  }
+}
 
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+  .logos-stripe-w {
+    margin-left: px(-14);
+  }
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
+}
 </style>
 

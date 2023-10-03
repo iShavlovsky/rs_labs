@@ -8,7 +8,7 @@
                  src=""
             >
           </figure>
-          <div class="max-width-330">
+          <div class="max-width-330 mt-16">
             <p class="mono-s">
               revenue share labs build web3 products using innovating revenue share technology.
             </p>
@@ -108,7 +108,29 @@
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .home-s3-span-1 {
+    margin-top: px(8);
+    grid-column: span 2;
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 2;
+  }
 
+  .home-s3-span-2 {
+    gap: px(80);
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
+
+  .home-s3-span-3 {
+    display: none;
+  }
+
+  .home-s3-img1-w {
+    height: px(193);
+    min-height: 30vh;
+    width: 50%;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

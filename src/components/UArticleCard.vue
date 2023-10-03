@@ -61,7 +61,20 @@ defineProps<{
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
+  .articles-card-img-w {
+    height: px(220);
+    margin-top: px(24);
+  }
+  
+  .article-card-subtitle-w {
+    height: px(66);
+    max-width: none;
+    padding-right: px(24);
+  }
 
+  .article-type-and-date-w {
+    padding-right: px(24);
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */

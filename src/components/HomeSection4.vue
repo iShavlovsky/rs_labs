@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="grid-12col-w">
+      <div class="grid-12col-w mt-80">
         <div class="home-s4-card">
           <div class="w-1col-8gap">
             <h3 class="h3">
@@ -88,7 +88,11 @@ import UButtonMain from '@components/UButtonMain.vue';
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
-
+  .home-s4-card {
+    grid-column: span 6;
+    height: px(330);
+    padding: px(24);
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */

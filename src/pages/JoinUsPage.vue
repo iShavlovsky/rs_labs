@@ -1,18 +1,11 @@
 <template>
-  <section>
-    <div class="container">
-      <div class="grid-12col-w">
-        <div class="home-s1-span-2">
-          <h1 class="h2">
-            Join Us
-          </h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <JoinSection1 />
+  <JoinSection2 />
 </template>
 
 <script lang="ts" setup>
+import JoinSection1 from '@/components/JoinSection1.vue';
+import JoinSection2 from '@/components/JoinSection2.vue';
 import useStore from '@composables/useStore';
 
 const { seo } = useStore();

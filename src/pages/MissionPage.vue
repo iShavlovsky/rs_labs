@@ -1,18 +1,20 @@
 <template>
-  <section>
-    <div class="container">
-      <div class="grid-12col-w">
-        <div class="home-s1-span-2">
-          <h1 class="h2">
-            Mission
-          </h1>
-        </div>
-      </div>
-    </div>
-  </section>
+  <MissionSection1 />
+  <MissionSection2 />
+  <MissionSection3 />
+  <MissionSection4 />
+  <BackedBy />
+  <JoinUs />
 </template>
 
 <script lang="ts" setup>
+
+import MissionSection1 from '@/components/MissionSection1.vue';
+import MissionSection2 from '@/components/MissionSection2.vue';
+import MissionSection3 from '@/components/MissionSection3.vue';
+import MissionSection4 from '@/components/MissionSection4.vue';
+import BackedBy from '@/components/BackedBy.vue';
+import JoinUs from '@/components/JoinUs.vue';
 import useStore from '@composables/useStore';
 
 const { seo } = useStore();

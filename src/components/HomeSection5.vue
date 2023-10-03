@@ -58,6 +58,10 @@ const accordions: AccordionItem[] = [
     max-width: px(628);
     grid-column: span 8;
   }
+
+  .home-s5-span-2 {
+    grid-column: span 8;
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */

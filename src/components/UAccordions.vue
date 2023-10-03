@@ -67,6 +67,11 @@
     gap: px(8);
     grid-column: span 3;
   }
+
+  .dd-second-text {
+    grid-column-start: 4;
+    grid-column-end: 8;
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */

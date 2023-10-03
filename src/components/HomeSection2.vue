@@ -71,7 +71,22 @@
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
+  .home-s2-span-1 {
+    margin-top: px(24);
+    grid-row-start: 3;
+  }
 
+  .home-s2-span-2 {
+    margin-top: px(64);
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
+
+  .home-s2-span-3 {
+    margin-top: px(8);
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
 }
 
 /* ----------------------- mobile ------------------------------ */
