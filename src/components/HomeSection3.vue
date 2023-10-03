@@ -4,10 +4,18 @@
       <div class="grid-12col-w">
         <div class="home-s3-span-1">
           <figure class="home-s3-img1-w">
+            <USvgIcon :ref="masks[0]"
+                      class="home-s3-anim1"
+                      name="mask.left-figure-ovrl-min"
+            />
             <img alt="decorative"
                  class="home-s3-img1"
                  src="../assets/images/webp/interior6.webp"
             >
+            <USvgIcon :ref="masks[1]"
+                      class="home-s3-anim2"
+                      name="mask.right-figure-ovrl-min"
+            />
           </figure>
           <div class="max-width-330 mt-16">
             <p class="mono-s">
@@ -20,7 +28,11 @@
           <h2 class="h2">
             Meet revenue share labs
           </h2>
-
+          <button type="button"
+                  @click="anim"
+          >
+            animation
+          </button>
           <div class="w-1col-16gap">
             <p class="body-l">
               The lab is dedicated to build a technological infrastructure to
@@ -35,10 +47,19 @@
 
         <div class="home-s3-span-3">
           <div class="home-s3-img2-w">
+            <USvgIcon :ref="masks[2]"
+                      class="home-s3-anim1"
+                      name="mask.left-figure-ovrl-min"
+            />
+
             <img alt="decorative"
                  class="home-s3-img2"
                  src="../assets/images/webp/interior6.webp"
             >
+            <USvgIcon :ref="masks[3]"
+                      class="home-s3-anim2"
+                      name="mask.right-figure-ovrl-min"
+            />
           </div>
         </div>
       </div>
@@ -47,27 +68,83 @@
 </template>
 
 <script lang="ts" setup>
+import { ComponentPublicInstance, ref, Ref } from 'vue';
+import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+import useGsap from '@composables/useGsap';
 
+let masks: Array<Ref<ComponentPublicInstance | null>> = Array(4).fill(null).map(() => ref(null));
+const { gsap } = useGsap();
 
+const anim = () => {
+    const time = 3;
+    const ease = 'Power0.easeIn';
+    gsap?.to(masks[0].value?.$el,
+        {
+            duration: time,
+            x: `${-80}%`,
+            ease: ease
+        }
+    );
+    gsap?.to(masks[1].value?.$el,
+        {
+            duration: time,
+            x: `${80}%`,
+            ease: ease
+        }
+    );
+    gsap?.to(masks[2].value?.$el,
+        {
+            duration: time,
+            x: `${-80}%`,
+            ease: ease
+        }
+    );
+    gsap?.to(masks[3].value?.$el,
+        {
+            duration: time,
+            x: `${80}%`,
+            ease: ease
+        }
+    );
+};
 </script>
 
 <style lang="scss">
 .home-s3-img2-w {
-  min-height: em(269);
+  position: relative;
+  overflow: hidden;
+  max-height: em(269);
   display: flex;
-
 }
 
 .home-s3-img1-w {
+  position: relative;
+  overflow: hidden;
   min-height: em(596);
   display: flex;
 }
 
-.home-s3-img1 {
+.home-s3-anim1 {
+  width: 110%;
+  position: absolute;
+  top: -1%;
+  left: 0;
+}
+
+.home-s3-anim2 {
+  width: 110%;
+  position: absolute;
+  bottom: -1%;
+  left: 0;
+}
+
+.home-s3-img1, .home-s3-img2 {
   object-fit: cover;
+
 }
 
 .home-s3-span-1 {
+  display: grid;
   grid-column: span 5;
 }
 
@@ -81,6 +158,7 @@
 }
 
 .home-s3-span-3 {
+  display: grid;
   grid-column-start: 11;
   grid-column-end: 13;
 }

@@ -19,18 +19,36 @@
         <div class="disclaimer-w">
           <p class="disclaimer align-justify">
             You are leaving the world of unfair distribution. fair economic could
-            cause an&nbsp;addiction. consult your inner mind and make a wise choice.
+            cause an addiction. consult your inner mind and make a wise choice.
           </p>
         </div>
       </div>
 
       <div class="grid-12col-w mt-160">
         <figure class="home-s6-lines-w horizmobile-hide">
-          <figure class="s6-1-line"></figure>
-          <figure class="s6-2-line"></figure>
+          <div class="s6-1-line-w">
+            <div :ref="lines[0]"
+                 class="s6-1-line"
+            ></div>
+          </div>
+          <div class="s6-2-line-w">
+            <div :ref="lines[1]"
+                 class="s6-1-line"
+            ></div>
+          </div>
         </figure>
 
         <div class="s6-subtitle-w">
+          <button type="button"
+                  @click="animImages"
+          >
+            masks
+          </button>
+          <button type="button"
+                  @click="animlines"
+          >
+            lines
+          </button>
           <p class="mono-s">
             Revenue share labs was established in 2023 and build web3 products using innovating
             revenue share technology
@@ -38,30 +56,38 @@
         </div>
 
         <figure class="home-s6-lines-w s6-second-linse-w">
-          <figure class="s6-1-line horizmobile-hide"></figure>
-          <figure class="s6-3-line"></figure>
-          <figure class="s6-4-line"></figure>
+          <div class="s6-1-line-w horizmobile-hide">
+            <div :ref="lines[2]"
+                 class="s6-1-line"
+            ></div>
+          </div>
+          <div class="s6-3-line-w">
+            <div :ref="lines[3]"
+                 class="s6-1-line"
+            ></div>
+          </div>
+          <div class="s6-4-line-w">
+            <div :ref="lines[4]"
+                 class="s6-1-line"
+            ></div>
+          </div>
         </figure>
       </div>
     </div>
-    <button type="button"
-            @click="anim"
-    >
-      animation
-    </button>
   </section>
 </template>
 
 <script lang="ts" setup>
 import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
-import { ComponentPublicInstance, ref, Ref } from 'vue';
+import { ComponentPublicInstance, onMounted, Ref, ref } from 'vue';
 import useGsap from '@composables/useGsap';
 
-let masks: Array<Ref<ComponentPublicInstance | null>> = Array(3).fill(null).map(() => ref(null));
 
-const { gsap } = useGsap();
+const masks: Array<Ref<ComponentPublicInstance | null>> = Array(3).fill(null).map(() => ref(null));
+const lines: Array<Ref<ComponentPublicInstance | null>> = Array(6).fill(null).map(() => ref(null));
+const { gsap, timeLine } = useGsap();
 
-const anim = () => {
+const animImages = () => {
     const time = 3;
     const ease = 'Power0.easeIn';
     gsap?.to(masks[0].value?.$el,
@@ -94,6 +120,70 @@ const anim = () => {
         }
     );
 };
+
+const animlines = () => {
+    const time = 1;
+    // const ease = 'Power0.easeIn';
+
+    timeLine?.to(lines[0].value,
+        {
+            duration: time - .5,
+            width: `${100}%`
+        }
+    );
+    timeLine?.to(lines[1].value,
+        {
+            duration: time,
+            height: `${100}%`
+        }
+    );
+    timeLine?.to(lines[2].value,
+        {
+            duration: time,
+            width: `${100}%`
+        }, '<'
+    );
+    timeLine?.to(lines[3].value,
+        {
+            duration: time,
+            height: `${100}%`
+        }
+    );
+    timeLine?.to(lines[4].value,
+        {
+            duration: time,
+            width: `${100}%`
+        }, '<'
+    );
+};
+onMounted(() => {
+    gsap?.set(lines[0].value,
+        {
+            width: `${0}%`
+        }
+    );
+    gsap?.set(lines[1].value,
+        {
+            height: `${0}%`
+        }
+    );
+    gsap?.set(lines[2].value,
+        {
+            width: `${0}%`
+        }
+    );
+    gsap?.set(lines[3].value,
+        {
+            height: `${0}%`
+        }
+    );
+    gsap?.set(lines[4].value,
+        {
+            width: `${0}%`
+        }
+    );
+
+});
 </script>
 
 <style lang="scss">

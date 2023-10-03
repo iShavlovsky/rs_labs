@@ -1,12 +1,21 @@
 <template>
   <section>
-    <figure class="mid-line"></figure>
+    <figure class="mid-line">
+      <div ref="line"
+           class="s6-1-line"
+      ></div>
+    </figure>
     <div class="container">
       <div class="knowledge-base-title-holder">
         <div class="knowledge-base-title-w">
           <h2 class="mono-s">
             Knowledge base
           </h2>
+          <button type="button"
+                  @click="animlines"
+          >
+            lines
+          </button>
           <p class="h3">
             Explore the theoretical side of revenue share technology
           </p>
@@ -38,6 +47,8 @@
 <script lang="ts" setup>
 import UArticleCard from '@/components/UArticleCard.vue';
 import UButtonMainStroke from './UButtonMainStroke.vue';
+import { onMounted, ref } from 'vue';
+import useGsap from '@composables/useGsap';
 
 const posts = [
     {
@@ -68,6 +79,30 @@ const posts = [
         }
     }
 ];
+const { gsap } = useGsap();
+
+const line = ref(null);
+const animlines = () => {
+    const time = 3;
+    // const ease = 'Power0.easeIn';
+
+    gsap?.to(line.value,
+        {
+            duration: time - .5,
+            height: `${100}%`
+        }
+    );
+
+};
+onMounted(() => {
+    gsap?.set(line.value,
+        {
+            height: `${0}%`
+        }
+    );
+
+
+});
 </script>
 
 <style lang="scss">
@@ -93,7 +128,6 @@ const posts = [
   top: 0;
   width: em(1);
   height: 100%;
-  background-color: $c-gray-100;
   z-index: -1;
 }
 

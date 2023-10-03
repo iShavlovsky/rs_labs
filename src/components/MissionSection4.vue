@@ -2,18 +2,27 @@
   <section>
     <div class="container">
       <figure class="mission-s4-img-w">
-        <img alt=""
-             src=""
+        <USvgIcon :ref="masks[0]"
+                  class="mission-s4-anim1"
+                  name="mask.mission-top-figure-min"
+        />
+        <img alt="decorative"
+             class="mission-s4-img"
+             src="../assets/images/webp/interior6.webp"
         >
+        <USvgIcon :ref="masks[1]"
+                  class="mission-s4-anim2"
+                  name="mask.mission-bot-figure-min"
+        />
       </figure>
 
       <div class="grid-12col-w mt-80">
         <div class="mission-s4-span-1">
-          <figure class="s6-3-line s4-misiion-top-solo-line"></figure>
+          <figure class="s6-3-line-w s4-misiion-top-solo-line"></figure>
           <figure class="home-s6-lines-w s3-missions-first-linse-w">
-            <figure class="s6-1-line mission-s4-first-line"></figure>
-            <figure class="s6-3-line"></figure>
-            <figure class="s6-1-line"></figure>
+            <figure class="s6-1-line-w mission-s4-first-line"></figure>
+            <figure class="s6-3-line-w"></figure>
+            <figure class="s6-1-line-w"></figure>
           </figure>
         </div>
         <div class="mission-s4-span-2 w-1col-16gap">
@@ -22,6 +31,11 @@
           </h2>
 
           <p class="body-l">
+            <button type="button"
+                    @click="anim"
+            >
+              animation
+            </button>
             As a team of visionary founders with extensive crypto experience and membership in the
             Ethereum advisory board, our goal is to empower individuals within the Web3 ecosystem.
             We have assembled a talented tech team, well-versed in Solidity and with contributions
@@ -49,8 +63,8 @@
 
       <div class="grid-12col-w mt-4">
         <figure class="home-s6-lines-w s3-missions-first-linse-w">
-          <figure class="s6-1-line"></figure>
-          <figure class="s6-2-line"></figure>
+          <figure class="s6-1-line-w"></figure>
+          <figure class="s6-2-line-w"></figure>
         </figure>
 
         <div class="mission-s4-subtitle-w">
@@ -60,9 +74,9 @@
         </div>
 
         <figure class="home-s6-lines-w s3-missions-second-linse-w">
-          <figure class="s6-1-line horizmobile-hide"></figure>
-          <figure class="s6-3-line"></figure>
-          <figure class="s6-4-line mission-s4-4-line"></figure>
+          <figure class="s6-1-line-w horizmobile-hide"></figure>
+          <figure class="s6-3-line-w"></figure>
+          <figure class="s6-4-line-w mission-s4-4-line"></figure>
         </figure>
       </div>
     </div>
@@ -72,13 +86,62 @@
 <script lang="ts" setup>
 
 
+import { ComponentPublicInstance, ref, Ref } from 'vue';
+import useGsap from '@composables/useGsap';
+import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+
+let masks: Array<Ref<ComponentPublicInstance | null>> = Array(2).fill(null).map(() => ref(null));
+const { gsap } = useGsap();
+const anim = () => {
+    const time = 3;
+    const ease = 'Power0.easeIn';
+    gsap?.to(masks[0].value?.$el,
+        {
+            duration: time,
+            y: `${-60}%`,
+            scale: `${1}`,
+            ease: ease
+        }
+    );
+    gsap?.to(masks[1].value?.$el,
+        {
+            duration: time,
+            y: `${60}%`,
+            scale: `${1}`,
+            ease: ease
+        }
+    );
+};
 </script>
 
 <style lang="scss">
 
 .mission-s4-img-w {
+  width: 105%;
+  margin-left: -2.5%;
+  position: relative;
+  overflow: hidden;
   height: em(600);
+
+  .mission-s4-img {
+    object-fit: cover;
+  }
+
+  .mission-s4-anim1 {
+    transform: scaleY(1.5);
+    position: absolute;
+    top: -1%;
+    left: -1%;
+  }
+
+  .mission-s4-anim2 {
+    transform: scaleY(1.5);
+    position: absolute;
+    bottom: -1%;
+    left: -1%;
+  }
 }
+
 
 .mission-s4-span-1 {
   display: flex;
