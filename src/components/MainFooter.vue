@@ -32,8 +32,10 @@
       <div class="bottom-footer-info mt-16 mono-m">
         <p>rs tech © 2023</p>
         <a class="justify-self-end">terms and privacy</a>
-        <p >Designed by <a href="#">X</a></p>
-        <p class="justify-self-end">Developed by <a href="#">X</a></p>
+        <p>Designed by <a href="#">X</a></p>
+        <p class="justify-self-end">
+          Developed by <a href="#">X</a>
+        </p>
       </div>
     </div>
   </footer>
@@ -46,6 +48,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 <style lang="scss">
 
 .footer-holder {
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,7 +87,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .justify-self-end{
+  .justify-self-end {
     justify-self: end;
   }
 }

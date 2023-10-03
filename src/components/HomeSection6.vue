@@ -133,46 +133,6 @@ const anim = () => {
   }
 }
 
-
-.home-s6-lines-w {
-  display: flex;
-
-}
-
-.s6-1-line {
-  width: 100%;
-  height: em(1);
-  background-color: $c-gray-100;
-}
-
-.s6-2-line {
-  width: em(1);
-  max-height: 100%;
-  background-color: $c-gray-100;
-  margin-top: em(4);
-  margin-left: em(4);
-}
-
-.s6-second-linse-w {
-  grid-column-start: 4;
-  grid-column-end: 13;
-}
-
-.s6-3-line {
-  width: em(1);
-  max-height: 100%;
-  background-color: $c-gray-100;
-  margin-top: em(4);
-  margin-left: em(4);
-  margin-right: em(4);
-}
-
-.s6-4-line {
-  width: em(105);
-  height: em(1);
-  background-color: $c-gray-100;
-}
-
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
 
@@ -182,57 +142,12 @@ const anim = () => {
     }
   }
 
-  .s6-second-linse-w {
-    grid-column-start: 4;
-    grid-column-end: 9;
-  }
-
-  .s6-1-line {
-    height: px(1);
-  }
-
-  .s6-2-line {
-    width: px(1);
-    margin-top: px(4);
-    margin-left: px(4);
-  }
-
-  .s6-3-line {
-    width: px(1);
-    margin-top: px(4);
-    margin-left: px(4);
-    margin-right: px(4);
-  }
-
-  .s6-4-line {
-    width: em(186);
-    height: px(1);
-  }
 
 }
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
-  .s6-subtitle-w{
-    grid-column-start: 1;
-    grid-column-end: 6;
-  }
 
-  .s6-3-line{
-    height: px(62);
-  }
-
-  .s6-4-line {
-    width: 100%;
-    height: px(1);
-  }
-
-  .s6-second-linse-w {
-    margin-top: px(-8);
-    margin-left: px(-4);
-    grid-column-start: 1;
-    grid-column-end: 7;
-  }
 }
 
 /* ----------------------- mobile ------------------------------ */

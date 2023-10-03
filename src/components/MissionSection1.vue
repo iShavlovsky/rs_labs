@@ -4,14 +4,12 @@
       <div class="grid-12col-w">
         <div class="mission-s1-span-1">
           <p class="mono-m">
-            We are building a new Internet economy that needs a different financial solution. 
+            We are building a new Internet economy that needs a different financial solution.
           </p>
         </div>
-        
       </div>
 
       <div class="grid-12col-w">
-
         <div class="mission-s1-span-2">
           <h1 class="h1 h1-indent">
             Revenue share is the solution
@@ -23,7 +21,6 @@
             We aim to create relationships between people and companies for the new economy.
           </p>
         </div>
-
       </div>
     </div>
   </section>

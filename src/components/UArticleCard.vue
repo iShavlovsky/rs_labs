@@ -65,7 +65,7 @@ defineProps<{
     height: px(220);
     margin-top: px(24);
   }
-  
+
   .article-card-subtitle-w {
     height: px(66);
     max-width: none;

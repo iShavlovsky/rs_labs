@@ -80,8 +80,8 @@ onMounted(() => {
   overflow: hidden;
   height: 0;
   opacity: 0;
-  transition: opacity 0.35s $var-transition-timing,
-  height 0.37s $var-transition-timing;
+  transition: opacity 1.35s $var-transition-timing,
+  all 1.37s $var-transition-timing;
 
   &.open {
     height: auto;
@@ -94,5 +94,31 @@ onMounted(() => {
   grid-column-start: 8;
   grid-column-end: 10;
   align-self: last baseline;
+}
+
+/* ----------------------- tablet ------------------------------ */
+@include tablet {
+  .dd-accordion-w {
+    padding: px(24) em(0);
+  }
+  .dd-title-w {
+    gap: px(8);
+    grid-column: span 3;
+  }
+
+  .dd-second-text {
+    grid-column-start: 4;
+    grid-column-end: 8;
+  }
+}
+
+/* ----------------------- horizmobile ------------------------------ */
+@include horizmobile {
+
+}
+
+/* ----------------------- mobile ------------------------------ */
+@include mobile {
+
 }
 </style>

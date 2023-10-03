@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="mt-120">
-        <div class="knowledge-base-articles-collection-w">
+        <div class="grid-knowledge-base-12col-w">
           <UArticleCard v-for="(post, i) in posts"
                         :key="i"
                         :article-date="post.date"
@@ -21,6 +21,7 @@
                         :article-type="post.type"
                         :image-alt="post.image.alt"
                         :image-src="post.image.src"
+                        class="card-cols"
           />
         </div>
       </div>
@@ -86,14 +87,6 @@ const posts = [
   padding: em(8);
 }
 
-.knowledge-base-articles-collection-w {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-column-gap: em(8);
-  grid-row-gap: em(80);
-  grid-template-columns: em(330) 1fr em(330);
-}
-
 .mid-line {
   position: absolute;
   left: 50%;
@@ -109,6 +102,29 @@ const posts = [
   grid-column-end: 10;
 }
 
+.grid-knowledge-base-12col-w {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: em(8);
+  grid-row-gap: em(16);
+  grid-template-columns: repeat(12, 1fr);
+
+  .card-cols {
+    &:first-child {
+      grid-column: span 3;
+    }
+
+    &:nth-child(2) {
+      grid-column: span 6;
+    }
+
+    &:last-child {
+      grid-column: span 3;
+    }
+  }
+}
+
+
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
   .knowledge-base-title-w {
@@ -121,7 +137,28 @@ const posts = [
     grid-column-start: 1;
     grid-column-end: 9;
   }
+
+  .grid-knowledge-base-12col-w {
+    grid-template-columns: repeat(8, 1fr);
+    background-color: $c-gray-00;
+    grid-row-gap: px(40);
+
+    .card-cols {
+      &:first-child {
+        grid-column: span 8;
+      }
+
+      &:nth-child(2) {
+        grid-column: span 4;
+      }
+
+      &:last-child {
+        grid-column: span 4;
+      }
+    }
+  }
 }
+
 
 /* ----------------------- horizmobile ------------------------------ */
 @include horizmobile {
@@ -129,14 +166,26 @@ const posts = [
     grid-column-start: 1;
     grid-column-end: 7;
   }
-
-  .knowledge-base-articles-collection-w {
-    grid-template-columns: 0.5fr 1fr 0.5fr;
-  }
 }
 
 /* ----------------------- mobile ------------------------------ */
 @include mobile {
+
+  .grid-knowledge-base-12col-w {
+    width: 100vw;
+    margin-left: px(-16);
+    padding-left: px(16);
+    padding-right: px(16);
+    display: flex;
+    flex-direction: row;
+    gap: px(8);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    .card-cols {
+      min-width: 90vw;
+    }
+  }
 
 }
 </style>

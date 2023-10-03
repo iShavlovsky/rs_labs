@@ -2,6 +2,7 @@
 @import 'styles/wrappers';
 @import 'styles/system-class-mods/index';
 @import 'styles/fontStyle';
+@import 'styles/lines-animation';
 
 /* ----------------------- main styles ------------------------------ */
 
@@ -18,7 +19,8 @@ body {
 
 section {
   position: relative;
-  display: grid;
+  display: flex;
+  flex-direction: row;
   width: 100%;
   padding: em(80) em(48);
 }
@@ -104,7 +106,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  aspect-ratio: attr(width) / attr(height);
+  //aspect-ratio: attr(width) / attr(height);
 }
 
 .input-field {
@@ -114,6 +116,7 @@ img {
   border: em(1) solid $c-gray-96;
   padding: em(12);
 }
+
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
@@ -142,20 +145,20 @@ img {
 
   /* Button and icons */
 
-.ico-16px-w {
-  width: px(16);
-  height: px(16);
-}
+  .ico-16px-w {
+    width: px(16);
+    height: px(16);
+  }
 
-.main-big-button {
-  font-size: px(16);
-  padding: px(32) px(24) px(32) px(24);
-  border-radius: px(2);
-}
+  .main-big-button {
+    font-size: px(16);
+    padding: px(32) px(24) px(32) px(24);
+    border-radius: px(2);
+  }
 
-.accent-big-btn {
-  padding: px(16) px(16) px(16) px(16);
-}
+  .accent-big-btn {
+    padding: px(16) px(16) px(16) px(16);
+  }
 }
 
 /* ----------------------- horizmobile ------------------------------ */

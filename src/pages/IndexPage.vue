@@ -45,11 +45,10 @@ import useStore from '@/composables/useStore';
 import useGsap from '@/composables/useGsap';
 import JoinUs from '@components/JoinUs.vue';
 
-const { timeLine, gsap } = useGsap();
+const { timeLine, gsap, ctx } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
-
 
 function resetAnimationParams(params: GSAPTimelineVars): GSAPTimelineVars {
     const resetParams: GSAPTimelineVars = {};
@@ -101,49 +100,43 @@ const handleScrollToBlock = (chapter: number) => {
 
     const currentSection = sections[currentVisibleSection.value].value?.$el;
     const nextSection = sections[chapter - 1].value?.$el;
+    ctx?.add(() => {
+        timeLine?.to(currentSection, {
+            duration: time,
+            opacity: .1,
+            x: `${-100}%`,
+            ease: 'Power0.easeIn',
+            onComplete: () => {
+                gsap?.fromTo(nextSection,
+                    {
+                        duration: 0,
+                        opacity: .1,
+                        x: `${100}%`,
+                        ease: 'Power0.easeIn'
+                    },
+                    {
+                        duration: time,
+                        opacity: 1,
+                        x: `${0}%`,
+                        ease: 'Power0.easeIn'
+                    }
+                );
+                if (nextSection) nextSection.scrollIntoView();
+            }
+        });
+        timeLine?.to(currentSection, {
+            duration: 0,
+            opacity: 1,
+            x: '0%',
+            ease: 'Power0.easeIn'
+        });
+    });
 
-    timeLine?.to(currentSection, {
-        duration: time,
-        opacity: .1,
-        x: `${-100}%`,
-        ease: 'Power0.easeIn',
-        onComplete: () => {
-            gsap?.fromTo(nextSection,
-                {
-                    duration: 0,
-                    opacity: .1,
-                    x: `${100}%`,
-                    ease: 'Power0.easeIn'
-                },
-                {
-                    duration: time,
-                    opacity: 1,
-                    x: `${0}%`,
-                    ease: 'Power0.easeIn'
-                }
-            );
-            if (nextSection) nextSection.scrollIntoView();
-        }
-    });
-    timeLine?.to(currentSection, {
-        duration: 0,
-        opacity: 1,
-        x: '0%',
-        ease: 'Power0.easeIn'
-    });
 };
 
 
 onMounted(() => {
-    gsap?.timeline({
-        scrollTrigger: {
-            markers: true,
-            trigger: sections[2].value?.$el,
-            start: '0% 50%',
-            end: '0% 0%',
-            scrub: 3
-        }
-    });
+
     const options = {
         root: null,
         rootMargin: '-10% 0px 0px 0px', // Отрицательный отступ сверху на 10%

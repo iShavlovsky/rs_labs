@@ -32,7 +32,12 @@ export const icons = {
     mask: [
         'mid-figure',
         'bot-figure',
-        'top-figure'
+        'top-figure',
+        'left-figure-ovrl-min',
+        'right-figure-ovrl-min',
+        'mission-bot-figure-min',
+        'mission-top-figure-min'
+
     ]
 } as const;
 

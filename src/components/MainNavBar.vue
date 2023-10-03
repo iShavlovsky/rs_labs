@@ -21,7 +21,7 @@
               </RouterLink>
             </li>
             <li class="mono-s">
-              <RouterLink to="/">
+              <RouterLink :to="{ name: 'Join-us' }">
                 team
               </RouterLink>
             </li>
@@ -47,6 +47,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 <style lang="scss">
 
 .navbar-holder {
+  z-index: 100;
   width: 100%;
   position: absolute;
   display: flex;
@@ -87,7 +88,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
 
 /* ----------------------- tablet ------------------------------ */
 @include tablet {
-  .navbar-menu{
+  .navbar-menu {
     position: absolute;
     display: none;
   }
@@ -101,7 +102,7 @@ import UButtonSmallArrow from '@components/UButtonSmallArrow.vue';
     padding: px(4) px(48) px(4) px(48);
   }
 
-  .nav-bar-btn-w{
+  .nav-bar-btn-w {
     grid-column-start: 3;
     grid-column-end: 5;
   }

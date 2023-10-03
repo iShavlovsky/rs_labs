@@ -17,17 +17,17 @@
 }
 
 .height-100prc {
-  height: 100%;
+  min-height: 100%;
 }
 
 @include horizmobile {
   .horizmobile-hide {
     display: none;
   }
-  }
+}
 
 @include mobile {
-.mobile-hide {
-  display: none;
-}
+  .mobile-hide {
+    display: none;
+  }
 }

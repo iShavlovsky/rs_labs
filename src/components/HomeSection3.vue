@@ -4,8 +4,9 @@
       <div class="grid-12col-w">
         <div class="home-s3-span-1">
           <figure class="home-s3-img1-w">
-            <img alt=""
-                 src=""
+            <img alt="decorative"
+                 class="home-s3-img1"
+                 src="../assets/images/webp/interior6.webp"
             >
           </figure>
           <div class="max-width-330 mt-16">
@@ -33,11 +34,12 @@
         </div>
 
         <div class="home-s3-span-3">
-          <figure class="home-s3-img2-w">
-            <img alt=""
-                 src=""
+          <div class="home-s3-img2-w">
+            <img alt="decorative"
+                 class="home-s3-img2"
+                 src="../assets/images/webp/interior6.webp"
             >
-          </figure>
+          </div>
         </div>
       </div>
     </div>
@@ -52,10 +54,17 @@
 <style lang="scss">
 .home-s3-img2-w {
   min-height: em(269);
+  display: flex;
+
 }
 
 .home-s3-img1-w {
   min-height: em(596);
+  display: flex;
+}
+
+.home-s3-img1 {
+  object-fit: cover;
 }
 
 .home-s3-span-1 {

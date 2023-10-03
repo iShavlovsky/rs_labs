@@ -1,8 +1,8 @@
 import { inject, onMounted, onUnmounted } from 'vue';
 import { GsapInject } from '@plugins/gsapCreate';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+import { MotionPathPlugin } from 'gsap/dist/MotionPathPlugin';
 
 interface UseGsapReturn {
     timeLine: GSAPTimeline | null;
@@ -10,6 +10,7 @@ interface UseGsapReturn {
     ScrollTrigger: typeof ScrollTrigger;
     ScrollToPlugin: GSAPPlugin;
     MotionPathPlugin: GSAPPlugin;
+    ctx: gsap.Context | undefined;
 }
 
 export default function (): UseGsapReturn {
@@ -17,15 +18,20 @@ export default function (): UseGsapReturn {
     const gsap: GSAP | undefined = inject(GsapInject);
     let timeLine: GSAPTimeline | null = gsap ? gsap.timeline() : null;
     gsap?.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin);
+    const ctx: gsap.Context | undefined = gsap?.context(() => {
+    });
+    const mm = gsap?.matchMedia();
     if (!isSsr) {
         onMounted(() => {
         });
         onUnmounted(() => {
             if (timeLine) {
+                timeLine.recent();
                 timeLine.kill();
                 timeLine = null;
             }
             ScrollTrigger.getAll().forEach(st => st.kill());
+            ctx?.revert();
         });
     }
 
@@ -34,6 +40,7 @@ export default function (): UseGsapReturn {
         ScrollToPlugin,
         ScrollTrigger,
         timeLine,
-        gsap
+        gsap,
+        ctx
     };
 }
