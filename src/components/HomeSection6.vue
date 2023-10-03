@@ -79,12 +79,11 @@
 
 <script lang="ts" setup>
 import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
-import { ComponentPublicInstance, onMounted, Ref, ref } from 'vue';
+import { ComponentPublicInstance, onMounted, onUnmounted, Ref, ref } from 'vue';
 import useGsap from '@composables/useGsap';
 
-
-const masks: Array<Ref<ComponentPublicInstance | null>> = Array(3).fill(null).map(() => ref(null));
-const lines: Array<Ref<ComponentPublicInstance | null>> = Array(6).fill(null).map(() => ref(null));
+let masks: Array<Ref<ComponentPublicInstance | null>> = Array(3).fill(null).map(() => ref(null));
+let lines: Array<Ref<ComponentPublicInstance | null>> = Array(6).fill(null).map(() => ref(null));
 const { gsap, timeLine } = useGsap();
 
 const animImages = () => {
@@ -183,6 +182,10 @@ onMounted(() => {
         }
     );
 
+});
+onUnmounted(() => {
+    masks = [];
+    lines = [];
 });
 </script>
 
