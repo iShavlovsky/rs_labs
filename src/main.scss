@@ -44,15 +44,6 @@ section {
   grid-template-rows: auto auto;
 }
 
-.grid-3col-article-w {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-column-gap: em(8);
-  grid-row-gap: em(80);
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-}
-
 .grid-12col-w {
   display: grid;
   grid-auto-columns: 1fr;

@@ -18,11 +18,19 @@
 
       <div class="grid-12col-w mt-80">
         <div class="mission-s4-span-1">
-          <figure class="s6-3-line-w s4-misiion-top-solo-line"></figure>
+          <figure class="s6-3-line-w s4-misiion-top-solo-line">
+            <div class="s6-1-line"></div>
+          </figure>
           <figure class="home-s6-lines-w s3-missions-first-linse-w">
-            <figure class="s6-1-line-w mission-s4-first-line"></figure>
-            <figure class="s6-3-line-w"></figure>
-            <figure class="s6-1-line-w"></figure>
+            <figure class="s6-1-line-w mission-s4-first-line">
+              <div class="s6-1-line"></div>
+            </figure>
+            <figure class="s6-3-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
+            <figure class="s6-1-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
           </figure>
         </div>
         <div class="mission-s4-span-2 w-1col-16gap">
@@ -63,8 +71,12 @@
 
       <div class="grid-12col-w mt-4">
         <figure class="home-s6-lines-w s3-missions-first-linse-w">
-          <figure class="s6-1-line-w"></figure>
-          <figure class="s6-2-line-w"></figure>
+          <figure class="s6-1-line-w">
+            <div class="s6-1-line"></div>
+          </figure>
+          <figure class="s6-2-line-w">
+            <div class="s6-1-line"></div>
+          </figure>
         </figure>
 
         <div class="mission-s4-subtitle-w">
@@ -74,9 +86,15 @@
         </div>
 
         <figure class="home-s6-lines-w s3-missions-second-linse-w">
-          <figure class="s6-1-line-w horizmobile-hide"></figure>
-          <figure class="s6-3-line-w"></figure>
-          <figure class="s6-4-line-w mission-s4-4-line"></figure>
+          <figure class="s6-1-line-w horizmobile-hide">
+            <div class="s6-1-line"></div>
+          </figure>
+          <figure class="s6-3-line-w">
+            <div class="s6-1-line"></div>
+          </figure>
+          <figure class="s6-4-line-w mission-s4-4-line">
+            <div class="s6-1-line"></div>
+          </figure>
         </figure>
       </div>
     </div>

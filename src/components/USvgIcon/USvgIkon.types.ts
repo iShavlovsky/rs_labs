@@ -29,6 +29,12 @@ export const icons = {
         'logo-XLA',
         'logo-XSOLLA'
     ],
+    cardslogo: [
+        'cardLogo-12Swap',
+        'cardLogo-Deals',
+        'cardLogo-Farm',
+        'cardLogo-Revenly'
+    ],
     mask: [
         'mid-figure',
         'bot-figure',

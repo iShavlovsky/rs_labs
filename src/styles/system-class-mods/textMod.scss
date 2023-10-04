@@ -2,3 +2,63 @@
 .text-align-center{
   text-align: center;
 }
+
+/* ------------ text collor ------------ */
+.t-gray-10 {
+  color: $c-gray-10;
+}
+
+.t-gray-70 {
+  color: $c-gray-70;
+}
+
+/* ------------ text mods ------------ */
+.h2-indent {
+  text-indent: em(97);
+}
+
+.h1-indent {
+  text-indent: em(59);
+}
+.h2-small-indent {
+  text-indent: em(32);
+}
+.mix-indent {
+  text-indent: em(59);
+}
+
+.align-justify {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+  /* ----------------------- tablet styles ------------------------------ */
+@include tablet {
+
+  
+}
+
+
+@include horizmobile {
+  /* ------------ text mods ------------ */
+  .h2-indent {
+    text-indent: 14vw;
+  }
+
+  .h1-indent {
+    text-indent: px(59);
+  }
+
+  .mix-indent {
+    text-indent: 14vw;
+}
+
+  .txt-tablet-48px{
+    font-size: px(34);
+  }
+
+}
+
+
+@include mobile {
+}
