@@ -1,11 +1,11 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
-import { TStore } from '@/store';
+import { Store } from '@/store';
 
-export default (http: AxiosInstance, useAlertsStore: TStore['alerts']) => {
+export default (http: AxiosInstance, useAlertsStore: Store['alerts']) => {
     http.interceptors.response.use(
         (response: AxiosResponse) => response,
         error => {
-            console.log('error', error);
+
             if (!error.response) {
                 error.response = {
                     status: 500
@@ -13,10 +13,15 @@ export default (http: AxiosInstance, useAlertsStore: TStore['alerts']) => {
             }
 
             if ('errorAlert' in error.config) {
-                const { text, fallback, critical, exclude } = error.config.errorAlert;
+                const {
+                    text,
+                    fallback,
+                    critical,
+                    exclude
+                } = error.config.errorAlert;
                 if (exclude === undefined || !exclude.includes(error.response.status)) {
                     useAlertsStore.add(
-                        `${text}${error.response.data.description}`,
+                        `${text}${error.response.data.error.message}`,
                         critical ?? false
                     );
                     return {

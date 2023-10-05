@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import type { AccordionProps } from '@components/UAccordions/UAccordions.types';
+import type { AccordionProps } from '@/components/UAccordions/UAccordions.types';
 
 const props = defineProps<AccordionProps>();
 const initial = ref<HTMLDetailsElement>();

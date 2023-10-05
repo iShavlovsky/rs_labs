@@ -87,8 +87,8 @@
 
 
 import { ComponentPublicInstance, ref, Ref } from 'vue';
-import useGsap from '@composables/useGsap';
-import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+import useGsap from '@/composables/useGsap';
+import USvgIcon from '@/components/USvgIcon/USvgIcon.vue';
 
 let masks: Array<Ref<ComponentPublicInstance | null>> = Array(2).fill(null).map(() => ref(null));
 const { gsap } = useGsap();

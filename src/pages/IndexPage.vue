@@ -41,10 +41,13 @@ import HomeSection6 from '@/components/HomeSection6.vue';
 import KnowledgeBaseSection from '@/components/KnowledgeBaseSection.vue';
 import BackedBy from '@/components/BackedBy.vue';
 import UMapSideBar from '@/components/UMapSideBar/UMapSideBar.vue';
+import JoinUs from '@/components/JoinUs.vue';
 import useStore from '@/composables/useStore';
 import useGsap from '@/composables/useGsap';
-import JoinUs from '@components/JoinUs.vue';
 
+const { seo, posts } = useStore();
+
+posts.load();
 const { timeLine, gsap, ctx } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
@@ -139,7 +142,7 @@ onMounted(() => {
 
     const options = {
         root: null,
-        rootMargin: '-10% 0px 0px 0px', // Отрицательный отступ сверху на 10%
+        rootMargin: '0px 0px 0px 0px', // Отрицательный отступ сверху на 10%
         threshold: 0.69
     };
 
@@ -166,7 +169,7 @@ onUnmounted(() => {
     sections = [];
 });
 
-const { seo } = useStore();
+
 seo.setPage({
     title: 'RSLabs | Home',
     ogImage: 'http://localhost:3000/OG/OG-Home.webp'

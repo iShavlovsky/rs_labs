@@ -1,6 +1,6 @@
-import { TStore } from '@/store';
+import { Store } from '@/store';
 
-export default (useSeoStore: TStore['seo'], document: Document) => {
+export default (useSeoStore: Store['seo'], document: Document) => {
     const seoStore = useSeoStore;
 
     seoStore.afterPageUpdated(function () {

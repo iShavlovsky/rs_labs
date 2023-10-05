@@ -15,7 +15,7 @@ import MissionSection3 from '@/components/MissionSection3.vue';
 import MissionSection4 from '@/components/MissionSection4.vue';
 import BackedBy from '@/components/BackedBy.vue';
 import JoinUs from '@/components/JoinUs.vue';
-import useStore from '@composables/useStore';
+import useStore from '@/composables/useStore';
 
 const { seo } = useStore();
 

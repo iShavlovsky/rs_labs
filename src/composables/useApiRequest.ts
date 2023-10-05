@@ -1,13 +1,13 @@
 import useApi from './useApi';
-import { TApi } from '@/api';
+import { Api } from '@/api';
 import { ref, UnwrapRef } from 'vue';
 import { FlattenObjectKeys, GetByDotKey, getByDotKey, runFnWithTuple } from '@/utils/objects';
 
-type TApiKeys = FlattenObjectKeys<TApi, true>;
+type TApiKeys = FlattenObjectKeys<Api, true>;
 
 function useApiRequest<T extends TApiKeys>(
     key: T,
-    ...params: Parameters<GetByDotKey<TApi, T>>
+    ...params: Parameters<GetByDotKey<Api, T>>
 ) {
     const api = useApi();
     const apiFn = getByDotKey(api, key);

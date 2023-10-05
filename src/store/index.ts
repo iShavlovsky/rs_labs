@@ -1,16 +1,18 @@
-import initAlertsStore from './alerts';
+import initAlertsStore from './alerts/alerts';
 import initSeoStore from './seo/seo';
-import { TApi } from '@/api';
-import { IStorage } from '@plugins/storage/storage.types';
+import initPostsStore from './posts/posts';
+import { Api } from '@/api';
+import { IStorage } from '@/plugins/storage/storage.types';
 
-const createStore = (api: TApi, storage: IStorage) => {
+const createStore = (api: Api, storage: IStorage) => {
     const alerts = initAlertsStore();
     const seo = initSeoStore();
-
+    const posts = initPostsStore(api.blog);
     return {
         alerts,
-        seo
+        seo,
+        posts
     };
 };
 export default createStore;
-export type TStore = ReturnType<typeof createStore>;
+export type Store = ReturnType<typeof createStore>;

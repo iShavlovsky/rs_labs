@@ -47,7 +47,6 @@
     "eslint-plugin-vue": "^9.17.0",
     "postcss-html": "^1.5.0",
     "postcss-lit": "^1.1.0",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "sass": "^1.68.0",
     "sharp": "^0.32.6",
     "stylelint": "^15.10.3",

@@ -83,7 +83,7 @@ import { ComponentPublicInstance, onMounted, onUnmounted, Ref, ref } from 'vue';
 import useGsap from '@composables/useGsap';
 
 let masks: Array<Ref<ComponentPublicInstance | null>> = Array(3).fill(null).map(() => ref(null));
-let lines: Array<Ref<ComponentPublicInstance | null>> = Array(6).fill(null).map(() => ref(null));
+let lines: Array<Ref<ComponentPublicInstance | null>> = Array(5).fill(null).map(() => ref(null));
 const { gsap, timeLine } = useGsap();
 
 const animImages = () => {
@@ -119,7 +119,7 @@ const animImages = () => {
         }
     );
 };
-
+const properties = ['width', 'height', 'width', 'height', 'width'];
 const animlines = () => {
     const time = 1;
     // const ease = 'Power0.easeIn';
@@ -156,32 +156,11 @@ const animlines = () => {
     );
 };
 onMounted(() => {
-    gsap?.set(lines[0].value,
-        {
-            width: `${0}%`
-        }
-    );
-    gsap?.set(lines[1].value,
-        {
-            height: `${0}%`
-        }
-    );
-    gsap?.set(lines[2].value,
-        {
-            width: `${0}%`
-        }
-    );
-    gsap?.set(lines[3].value,
-        {
-            height: `${0}%`
-        }
-    );
-    gsap?.set(lines[4].value,
-        {
-            width: `${0}%`
-        }
-    );
-
+    lines.forEach((line, index) => {
+        gsap?.set(line.value, {
+            [properties[index]]: '0%'
+        });
+    });
 });
 onUnmounted(() => {
     masks = [];
