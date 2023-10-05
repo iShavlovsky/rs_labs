@@ -2,7 +2,7 @@ import createApp from './dist-ssr/entry-server.js';
 import { renderToString } from 'vue/server-renderer';
 import express from 'express';
 import { readFileSync } from 'fs';
-// import proxy from 'express-http-proxy';
+import proxy from 'express-http-proxy';
 import compression from 'compression';
 import morgan from 'morgan';
 
@@ -10,11 +10,12 @@ const template = readFileSync('./dist/index.html').toString('utf-8');
 const server = express();
 const port = 3000;
 
-// server.use('/api', proxy('https://api.deployteam.ru/', {
-//     proxyReqPathResolver(req) {
-//         return '/api' + req.url;
-//     }
-// }));
+server.use('/api', proxy('http://localhost:1337/', {
+    proxyReqPathResolver(req) {
+        return '/api' + req.url;
+    }
+}));
+
 server.use(compression({
     level: 5,
     threshold: 0,
@@ -33,7 +34,7 @@ server.use(morgan('dev'));
 // server.use(morgan('short'));
 
 server.get('*', async function (req, resp) {
-    resp.setHeader('Content-Security-Policy', 'default-src \'self\'; font-src \'self\' data:; style-src \'self\' \'unsafe-inline\'');
+    resp.setHeader('Content-Security-Policy', 'default-src \'self\'; connect-src \'self\' http://localhost:1337; img-src \'self\' http://localhost:1337; font-src \'self\' data:; style-src \'self\' \'unsafe-inline\'');
 
     const { app, stores } = await createApp({ url: req.url });
     const html = await renderToString(app);

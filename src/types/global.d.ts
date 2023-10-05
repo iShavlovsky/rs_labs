@@ -50,10 +50,27 @@ declare global {
         url: string;
     }
 
+    type ExtractMediaFields<T> = {
+        [K in keyof T]: T[K] extends {
+            data: Media
+        } ? K : never;
+    }[keyof T];
+
+    type OptionalMediaKeys = ExtractMediaFields<Article['attributes']>;
+
+    type MediaAttributeKeys = keyof Media['attributes'];
+
+    type OptionalMediaFields = {
+        [K in OptionalMediaKeys]?: { fields: MediaAttributeKeys[] };
+    };
+
     export interface Article {
         id: number;
         attributes: {
-            createdAt: Date; updatedAt: Date; publishedAt?: Date; title: string;
+            createdAt: Date;
+            updatedAt: Date;
+            publishedAt?: Date;
+            title: string;
             description: string;
             cover: {
                 data: Media
@@ -63,7 +80,68 @@ declare global {
             date: Date;
             body: string;
             slug: string;
+            type: TypeArticle;
         };
     }
 
+    export interface Payload {
+        data: Article[];
+        meta: Pagination
+    }
+
+    export interface ApiParameters {
+        sort?: (string)[] | string | null;
+        filters?: Filter | DeepFilter;
+        populate?: OptionalMediaFields;
+        fields?: (string)[] | null;
+        pagination?: {
+            pageSize?: number;
+            page?: number;
+        };
+        publicationState?: string;
+        locale?: (string)[] | string | null;
+    }
+
+    export interface DeepFilter {
+        [key: string]: Filter
+    }
+
+    export interface Filter {
+        [key: string]: FilterOperators
+    }
+
+    export interface Pagination {
+        pagination?: {
+            page: number;
+            pageSize: number;
+            pageCount: number;
+            total: number;
+        }
+    }
+
+    export interface FilterOperators {
+        $eq?: string;
+        $eqi?: string;
+        $ne?: string;
+        $lt?: string;
+        $lte?: string;
+        $gt?: string;
+        $gte?: string;
+        $in?: string;
+        $notIn?: string;
+        $contains?: string;
+        $notContains?: string;
+        $containsi?: string | (string)[];
+        $notContainsi?: string;
+        $null?: string;
+        $notNull?: string;
+        $between?: string;
+        $startsWith?: string;
+        $startsWithi?: string;
+        $endsWith?: string;
+        $endsWithi?: string;
+        $or?: string;
+        $and?: string;
+        $not?: string;
+    }
 }

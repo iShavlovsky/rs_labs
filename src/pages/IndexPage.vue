@@ -45,9 +45,8 @@ import JoinUs from '@/components/JoinUs.vue';
 import useStore from '@/composables/useStore';
 import useGsap from '@/composables/useGsap';
 
-const { seo, posts } = useStore();
+const { seo } = useStore();
 
-posts.load();
 const { timeLine, gsap, ctx } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));

@@ -5,6 +5,10 @@ import { User } from '../../../../common/schemas-to-ts/User';
 import { User_Plain } from '../../../../common/schemas-to-ts/User';
 import { AdminPanelRelationPropertyModification } from '../../../../common/schemas-to-ts/AdminPanelRelationPropertyModification';
 
+export enum Type {
+  TechArticle = 'Tech article',
+  Announcement = 'Announcement',}
+
 export interface Article {
   id: number;
   attributes: {
@@ -17,6 +21,7 @@ export interface Article {
     body: any;
     users_permissions_user?: { data: User };
     slug?: any;
+    type: Type;
   };
 }
 export interface Article_Plain {
@@ -30,6 +35,7 @@ export interface Article_Plain {
   body: any;
   users_permissions_user?: User_Plain;
   slug?: any;
+  type: Type;
 }
 
 export interface Article_NoRelations {
@@ -43,6 +49,7 @@ export interface Article_NoRelations {
   body: any;
   users_permissions_user?: number;
   slug?: any;
+  type: Type;
 }
 
 export interface Article_AdminPanelLifeCycle {
@@ -56,4 +63,5 @@ export interface Article_AdminPanelLifeCycle {
   body: any;
   users_permissions_user?: AdminPanelRelationPropertyModification<User_Plain>;
   slug?: any;
+  type: Type;
 }

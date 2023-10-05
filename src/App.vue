@@ -2,7 +2,15 @@
   <MainAlerts />
   <MainNavBar />
   <main>
-    <RouterView />
+    <Suspense>
+      <template #default>
+        <RouterView />
+      </template>
+      <template #fallback>
+        <!--TODO: сделать скелетон для страницы статьи-->
+        <div>Loading...</div>
+      </template>
+    </Suspense>
   </main>
   <MainFooter />
 </template>

@@ -28,7 +28,7 @@ globalThis.CKEditorConfig = {
         value: "custom",
         metadatas: {
           intlLabel: {
-            id: "ckeditor5.preset.custom.label",
+            slug: "ckeditor5.preset.custom.label",
             defaultMessage: "RS version",
           },
         },

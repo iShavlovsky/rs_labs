@@ -80,33 +80,6 @@
   text-transform: uppercase;
 }
 
-/* ------------ text mods ------------ */
-.h2-indent {
-  text-indent: em(97);
-}
-
-.h1-indent {
-  text-indent: em(59);
-}
-
-.mix-indent {
-  text-indent: em(59);
-}
-
-.align-justify {
-  text-align: justify;
-  text-align-last: justify;
-}
-
-
-/* ------------ text collor ------------ */
-.t-gray-10 {
-  color: $c-gray-10;
-}
-
-.t-gray-70 {
-  color: $c-gray-70;
-}
 
 /* ----------------------- tablet styles ------------------------------ */
 @include tablet {
@@ -148,22 +121,6 @@
     font-size: em(120);
   }
 
-  /* ------------ text mods ------------ */
-  .h2-indent {
-    text-indent: 22.5vw;
-  }
-
-  .h1-indent {
-    text-indent: em(59);
-  }
-
-  .mix-indent {
-    text-indent: 22.5vw;
-  }
-
-  .txt-tablet-48px{
-    font-size: px(48);
-  }
 }
 
 
@@ -184,23 +141,6 @@
 
   .disclaimer {
     font-size: px(44);
-  }
-
-  /* ------------ text mods ------------ */
-  .h2-indent {
-    text-indent: 14vw;
-  }
-
-  .h1-indent {
-    text-indent: px(59);
-  }
-
-    .mix-indent {
-    text-indent: 14vw;
-  }
-
-  .txt-tablet-48px{
-    font-size: px(34);
   }
 
 }

@@ -6,6 +6,12 @@ export default ({ env }) => ({
         enabled: true
     },
     'schemas-to-ts': {
-        enabled: true
+        enabled: true,
+        config: {
+            acceptedNodeEnvs: ['development'],
+            commonInterfacesFolderName: 'schemas-to-ts',
+            verboseLogs: false,
+            alwaysAddEnumSuffix: false
+        }
     }
 });

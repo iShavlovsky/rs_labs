@@ -135,7 +135,9 @@
           </div>
         </div>
 
-        <div class="scroll-indicator-holder w-1col-8gap">
+        <div class="scroll-indicator-holder w-1col-8gap"
+             role="progressbar"
+        >
           <p class="mono-s">
             Scroll for usual behaviour
           </p>

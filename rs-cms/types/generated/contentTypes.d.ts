@@ -424,6 +424,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           pattern: 'title';
         }
       >;
+    type: Attribute.Enumeration<['Tech article', 'Announcement']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Tech article'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

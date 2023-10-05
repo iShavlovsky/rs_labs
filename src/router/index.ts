@@ -24,14 +24,14 @@ export default (isSsr: boolean) => {
             meta: { content: 'joinUs' }
         },
         {
-            path: '/articles-base',
+            path: '/articles',
             name: RouteNamesEnum.articles,
             component: () => import('@pages/ArticlesBasePage.vue'),
             meta: { content: 'articles' }
         },
         {
             path: '/article/:slug',
-            name: 'article.item',
+            name: RouteNamesEnum.article,
             props: true,
             component: () => import('@pages/ArticlePage.vue'),
             meta: { content: 'article' }

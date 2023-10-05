@@ -1,12 +1,18 @@
-import { AxiosInstance } from 'axios';
+import type { AxiosInstance } from 'axios';
 import createErrorAlertConfig from '@/utils/fallback';
 
+
 export default (http: AxiosInstance) => ({
-    async loadPosts() {
-        const fallbackConfig = createErrorAlertConfig<Article>('Get posts: ');
-        const response = await http.get<Article[]>(
+    async loadPosts(params: ApiParameters) {
+
+        const fallbackConfig = createErrorAlertConfig<Payload>('Get posts: ');
+        const config = {
+            params: params,
+            ...fallbackConfig
+        };
+        const response = await http.get<Payload>(
             '/api/articles',
-            fallbackConfig as CustomRequestConfig<Article>
+            config
         );
         return response.data;
     }

@@ -13,5 +13,5 @@ export enum RouteNamesEnum {
     mission = 'Mission',
     joinUs = 'Join-us',
     articles = 'Articles',
-    // article = "Article.item",
+    article = 'Article.item',
 }

@@ -53,8 +53,12 @@
                 Mission
               </p>
             </div>
-            <figure class="s6-1-line-w"></figure>
-            <figure class="s6-2-line-w"></figure>
+            <figure class="s6-1-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
+            <figure class="s6-2-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
           </figure>
 
           <div class="s6-subtitle-w">
@@ -65,9 +69,15 @@
           </div>
 
           <figure class="home-s6-lines-w s2-missions-second-linse-w">
-            <figure class="s6-1-line-w horizmobile-hide"></figure>
-            <figure class="s6-3-line-w"></figure>
-            <figure class="s6-4-line-w"></figure>
+            <figure class="s6-1-line-w horizmobile-hide">
+              <div class="s6-1-line"></div>
+            </figure>
+            <figure class="s6-3-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
+            <figure class="s6-4-line-w">
+              <div class="s6-1-line"></div>
+            </figure>
           </figure>
         </div>
       </div>

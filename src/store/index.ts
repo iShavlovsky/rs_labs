@@ -7,11 +7,11 @@ import { IStorage } from '@/plugins/storage/storage.types';
 const createStore = (api: Api, storage: IStorage) => {
     const alerts = initAlertsStore();
     const seo = initSeoStore();
-    const posts = initPostsStore(api.blog);
+    const blog = initPostsStore(api.blog);
     return {
         alerts,
         seo,
-        posts
+        blog
     };
 };
 export default createStore;

@@ -70,6 +70,15 @@
         "pattern": "title"
       },
       "customField": "plugin::slug.slug"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Tech article",
+        "Announcement"
+      ],
+      "required": true,
+      "default": "Tech article"
     }
   }
 }

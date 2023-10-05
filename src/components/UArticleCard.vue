@@ -1,17 +1,22 @@
 <template>
-  <div class="article-card-w w-1col-16gap">
+  <RouterLink :to="{
+                name: RouteNamesEnum.article,
+                params: { slug: props.articleSlug },
+              }"
+              class="article-card-w w-1col-16gap"
+  >
     <div class="article-type-and-date-w">
       <p class="mono-s">
         {{ articleType }}
       </p>
       <p class="mono-s">
-        {{ articleDate }}
+        {{ formattedDate }}
       </p>
     </div>
 
     <div class="article-card-subtitle-w">
       <p class="body-m">
-        {{ articleSubtitle }}
+        {{ articleTitle }}
       </p>
     </div>
 
@@ -21,17 +26,34 @@
            class="articles-card-img"
       >
     </figure>
-  </div>
+  </RouterLink>
 </template>
 
 <script lang="ts" setup>
-defineProps<{
+import { computed } from 'vue';
+import { RouteNamesEnum } from '@router/router.types';
+
+const props = defineProps<{
+    articleSlug: string;
     articleType: string;
-    articleDate: string;
-    articleSubtitle: string;
+    articleDate: string | Date;
+    articleTitle: string;
     imageSrc: string;
     imageAlt: string;
 }>();
+
+const formattedDate = computed(() => {
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const date = new Date(props.articleDate);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = months[date.getMonth()];
+
+    return `${day} ${month}`;
+});
 
 </script>
 
