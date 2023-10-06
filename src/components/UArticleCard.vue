@@ -21,10 +21,14 @@
     </div>
 
     <figure class="articles-card-img-w">
-      <img :alt="imageAlt"
-           :src="imageSrc"
-           class="articles-card-img"
-      >
+      <ImageAdaptive :image-alt="imageAttributes.url"
+                     :image-height="imageAttributes.height"
+                     :image-src="`http://localhost:1337${imageAttributes.alternativeText}`"
+                     :image-srcset="srcsetImages"
+                     :image-width="imageAttributes.width"
+                     class="articles-card-img"
+                     image-sizes="(max-width: 479px) 200px, (max-width: 767px) 600px, (max-width: 991px) 800px, 1200px"
+      />
     </figure>
   </RouterLink>
 </template>
@@ -32,14 +36,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { RouteNamesEnum } from '@router/router.types';
+import ImageAdaptive from '@components/UImages/ImageAdaptive.vue';
 
 const props = defineProps<{
     articleSlug: string;
     articleType: string;
     articleDate: string | Date;
     articleTitle: string;
-    imageSrc: string;
-    imageAlt: string;
+    imageAttributes: Media['attributes'];
 }>();
 
 const formattedDate = computed(() => {
@@ -53,6 +57,14 @@ const formattedDate = computed(() => {
     const month = months[date.getMonth()];
 
     return `${day} ${month}`;
+});
+
+const srcsetImages = computed(() => {
+    const { large, medium, small, thumbnail } = props.imageAttributes.formats;
+    return `http://localhost:1337${large.url} 1200w,
+    http://localhost:1337${medium.url} 800w,
+    http://localhost:1337${small.url} 600w,
+    http://localhost:1337${thumbnail.url} 200w`;
 });
 
 </script>

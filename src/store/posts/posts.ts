@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue';
+import { computed, ref, Ref } from 'vue';
 import { Api } from '@/api';
 
 
@@ -6,8 +6,27 @@ export default function blog(blogApi: Api['blog']) {
     const articles: Ref<{
         [x: number]: Article[];
     }> = ref({});
-
     const metaData: Ref<Pagination | null> = ref(null);
+    const loading: Ref<boolean> = ref(false);
+    const pageArticles: Ref<number> = ref(1);
+    const limitArticles: Ref<number> = ref(5);
+
+    const totalArticles = computed(() => metaData.value?.pagination?.total);
+    const totalPages = computed(() => {
+        const totalValue = metaData.value?.pagination?.pageCount;
+        return totalValue
+            ? Array.from({ length: totalValue }, (_, index) => index + 1)
+            : [1];
+    });
+
+    function hasArticle(): number {
+        const { length } = Object.entries(articles.value);
+        if (length === 0) {
+            return length;
+        } else {
+            return Object.entries(articles.value[pageArticles.value]).length;
+        }
+    }
 
     function getArticle(slug: string): Article | null {
         const allArticles = articles.value;
@@ -22,12 +41,16 @@ export default function blog(blogApi: Api['blog']) {
     }
 
 
-    async function load(requests?: ApiParameters): Promise<boolean> {
-        const imgFields = { fields: ['name', 'alternativeText', 'url', 'formats'] as MediaAttributeKeys[] };
+    async function load(requests?: ApiParameters): Promise<void> {
+        const imgFields = { fields: ['name', 'alternativeText', 'url', 'width', 'height', 'formats'] as MediaAttributeKeys[] };
         const params: ApiParameters = {
             ...requests,
             populate: {
                 cover: imgFields
+            },
+            pagination: {
+                page: pageArticles.value,
+                pageSize: limitArticles.value
             }
         };
         //TODO: Искусственная задержка в 2 секунды (2000 миллисекунд)
@@ -38,16 +61,23 @@ export default function blog(blogApi: Api['blog']) {
             const { page } = meta.pagination;
             articles.value = { [page]: data };
             metaData.value = meta;
-            return true;
+            console.log(data);
+            loading.value = true;
         } else {
-            return false;
+            loading.value = false;
         }
-
+        return;
     }
 
     return {
         articles,
+        loading,
+        pageArticles,
+        limitArticles,
         metaData,
+        hasArticle,
+        totalArticles,
+        totalPages,
         getArticle,
         load
     };

@@ -7,8 +7,7 @@ interface ServerAppContext {
 export default async function (context: ServerAppContext) {
     const { app, router, stores } = await createApp(true);
 
-    // await stores.blog.load();
-
+    // stores.blog.load({ sort: 'date:desc' });
     await router.push(context.url);
     await router.isReady();
 

@@ -20,16 +20,16 @@
         </div>
         <!--TODO: скорее всего должна быть частью общего грида-->
         <div class="articles-highlight-w">
-          <UArticleCard v-for="(post, i) in postsHighlight"
-                        :key="i"
-                        :article-date="post.date"
-                        :article-slug="post.slug"
-                        :article-title="post.subtitle"
-                        :article-type="post.type"
-                        :image-alt="post.image.alt"
-                        :image-src="post.image.src"
-                        class="highlight-card"
-          />
+          <!--          <UArticleCard v-for="(post, i) in postsHighlight"-->
+          <!--                        :key="i"-->
+          <!--                        :article-date="post.date"-->
+          <!--                        :article-slug="post.slug"-->
+          <!--                        :article-title="post.subtitle"-->
+          <!--                        :article-type="post.type"-->
+          <!--                        :image-alt="post.image.alt"-->
+          <!--                        :image-src="post.image.src"-->
+          <!--                        class="highlight-card"-->
+          <!--          />-->
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
             <input id="filter-check-reset"
                    v-model="reset"
                    :checked="reset"
-                   :disabled="reset || !loading"
+                   :disabled="reset || !blog.loading"
                    class="filter-checkbox"
                    name="filter"
                    type="checkbox"
@@ -58,7 +58,7 @@
             <input :id="`filter-check-${i + 1}`"
                    v-model="filtersArticles[i].check"
                    :checked="item.check"
-                   :disabled="!loading"
+                   :disabled="!blog.loading"
                    :value="item.type"
                    class="filter-checkbox"
                    name="filter"
@@ -80,31 +80,30 @@
                         :article-slug="post.attributes.slug"
                         :article-title="post.attributes.title"
                         :article-type="post.attributes.type"
-                        :image-alt="post.attributes.cover.data.attributes.alternativeText"
-                        :image-src="`http://localhost:1337${post.attributes.cover.data.attributes.url}`"
-                        class="aricles-base-card"
+                        :image-attributes="post.attributes.cover.data.attributes"
+                        class="card-cols"
           />
         </div>
         <div class="grid-3col-article-w">
-          <UButtonMainStroke v-if="loading"
+          <UButtonMainStroke v-if="blog.loading"
                              :disabled="countArticles"
                              title="show more"
                              @click="loadMore"
           />
           <!--TODO: пагинация возможно не нужна, но пусть это функционал будет-->
-          <div v-if="loading"
+          <div v-if="blog.loading"
                class="article-pagination-link-w"
           >
-            <div v-for="page in totalPages"
+            <div v-for="page in blog.totalPages.value"
                  :key="page"
             >
-              <a :class="[pageArticles === page ? 'pages-link-active' : '']"
+              <a :class="[blog.pageArticles.value === page ? 'pages-link-active' : '']"
                  class="pages-link"
                  href="#articles-grid-w"
                  @click="setPage(page)"
               >{{ page }}
               </a>
-              <span v-if="page < totalPages.length">/</span>
+              <span v-if="page < blog.totalPages.value.length">/</span>
             </div>
           </div>
         </div>
@@ -116,16 +115,13 @@
 <script lang="ts" setup>
 import UArticleCard from '@/components/UArticleCard.vue';
 import useStore from '@composables/useStore';
-import { computed, onMounted, reactive, Ref, ref, watch } from 'vue';
+import { computed, reactive, Ref, ref, watch } from 'vue';
 import { TypeArticle } from '@/types/enums';
 import UButtonMainStroke from '@components/UButtonMainStroke.vue';
 
 const { seo, blog } = useStore();
 // TODO: сделать анимацию перестановки карточек
 const reset: Ref<boolean> = ref(true);
-const loading: Ref<boolean> = ref(false);
-const pageArticles: Ref<number> = ref(1);
-const limitArticles: Ref<number> = ref(3);
 const filtersArticles = reactive([
     {
         check: false,
@@ -141,25 +137,19 @@ const selectedFilters = computed(() =>
     filtersArticles.filter(item => item.check).map(item => item.type)
 );
 const hasFilters = computed(() => filtersArticles.some(element => element.check));
-const totalArticles = computed(() => blog.metaData.value?.pagination?.total);
-const countArticles = computed(() => totalArticles.value === articles.value?.length ?? false);
-const totalPages = computed(() => {
-    const totalValue = blog.metaData.value?.pagination?.pageCount;
-    return totalValue
-        ? Array.from({ length: totalValue }, (_, index) => index + 1)
-        : [1];
-});
+const countArticles = computed(() => blog.totalArticles.value === articles.value?.length ?? false);
+const article = blog.hasArticle();
 
 const loadMore = async () => {
-    if (pageArticles.value >= totalPages.value.length - 1) {
-        pageArticles.value = 1;
+    if (blog.pageArticles.value >= blog.totalPages.value.length - 1) {
+        blog.pageArticles.value = 1;
     }
-    limitArticles.value = limitArticles.value + 2;
+    blog.limitArticles.value = blog.limitArticles.value + 2;
     await loadAllArticles();
 };
 
 const setPage = async (pageNumber: number) => {
-    pageArticles.value = pageNumber;
+    blog.pageArticles.value = pageNumber;
     await loadAllArticles();
 };
 // TODO: как не загружать если уже есть статьи в сторе?
@@ -170,54 +160,34 @@ const loadAllArticles = async () => {
                 $containsi: selectedFilters.value
             }
         },
-        sort: 'date:desc',
-        pagination: {
-            page: pageArticles.value,
-            pageSize: limitArticles.value
-        }
+        sort: 'date:desc'
     };
-
-    await blog.load(articlesParams).then(
-        load => {
-            loading.value = load;
-        }
-    );
+    await blog.load(articlesParams);
 };
 
 const articles = computed(() => {
-    if (loading.value) {
-        return blog.articles.value[pageArticles.value];
+    if (blog.loading.value) {
+        return blog.articles.value[blog.pageArticles.value];
     }
     return null;
 });
 
-const postsHighlight = [
-    {
-        type: 'Tech article',
-        slug: 'streamers-talent-and-gamers-are-gearing-up-for-playgg-will-you-join',
-        date: '08 July',
-        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
-        image: {
-            src: '/src/assets/images/webp/Article-Placeholder.webp',
-            alt: 'Tech article'
-        }
-    }
-];
+if (article < blog.limitArticles.value) {
+    loadAllArticles();
+}
 
-onMounted(() => {
-
-});
 watch(
     filtersArticles,
     async newFiltersBlog => {
         if (newFiltersBlog) {
             reset.value = !hasFilters.value;
-            pageArticles.value = 1;
+            blog.pageArticles.value = 1;
             await loadAllArticles();
         }
     },
-    { immediate: true }
+    { immediate: false }
 );
+
 watch(reset, async newReset => {
     if (newReset) {
         filtersArticles.forEach(el => {

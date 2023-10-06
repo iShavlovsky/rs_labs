@@ -90,7 +90,7 @@
 import USvgIcon from '@/components/USvgIcon/USvgIcon.vue';
 import useStore from '@composables/useStore';
 import { useRoute } from 'vue-router';
-import { computed, ComputedRef, ref, Ref } from 'vue';
+import { computed, ComputedRef } from 'vue';
 import { RouteNamesEnum } from '@router/router.types';
 
 const { seo, blog } = useStore();
@@ -99,8 +99,6 @@ const route = useRoute();
 // const goBack = async () => {
 //     router.go(-1);
 // };
-
-const loading: Ref<boolean> = ref(false);
 const slug: ComputedRef<string> = computed(() => route.params.slug as string);
 const article = computed(() => blog.getArticle(slug.value));
 
@@ -112,11 +110,7 @@ const articleParams: ApiParameters = {
     }
 };
 if (!article.value) {
-    await blog.load(articleParams).then(
-        load => {
-            loading.value = load;
-        }
-    );
+    await blog.load(articleParams);
 }
 
 seo.setPage({
