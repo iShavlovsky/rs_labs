@@ -18,18 +18,18 @@
             </figure>
           </figure>
         </div>
-        <!--TODO: скорее всего должна быть частью общего грида-->
+        <!--TODO: добавить флаг фичи и вывести метод-->
         <div class="articles-highlight-w">
-          <!--          <UArticleCard v-for="(post, i) in postsHighlight"-->
-          <!--                        :key="i"-->
-          <!--                        :article-date="post.date"-->
-          <!--                        :article-slug="post.slug"-->
-          <!--                        :article-title="post.subtitle"-->
-          <!--                        :article-type="post.type"-->
-          <!--                        :image-alt="post.image.alt"-->
-          <!--                        :image-src="post.image.src"-->
-          <!--                        class="highlight-card"-->
-          <!--          />-->
+          <!--                    <UArticleCard v-for="(post, i) in postsHighlight"-->
+          <!--                                  :key="i"-->
+          <!--                                  :article-date="post.date"-->
+          <!--                                  :article-slug="post.slug"-->
+          <!--                                  :article-title="post.subtitle"-->
+          <!--                                  :article-type="post.type"-->
+          <!--                                  :image-alt="post.image.alt"-->
+          <!--                                  :image-src="post.image.src"-->
+          <!--                                  class="highlight-card"-->
+          <!--                    />-->
         </div>
       </div>
     </div>

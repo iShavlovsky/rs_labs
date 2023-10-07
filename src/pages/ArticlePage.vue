@@ -121,9 +121,15 @@ seo.status.value = 200;
 </script>
 
 <style lang="scss">
+
+
 .rich-block {
   grid-column-start: 4;
   grid-column-end: 10;
+
+  br {
+    margin: em(1);
+  }
 }
 
 .article-top-w {
