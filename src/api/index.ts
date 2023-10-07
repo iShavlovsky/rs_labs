@@ -1,15 +1,11 @@
-// import createOpportunityApi from './opportunity'
-import createCartAuth from './auth';
+import createBlog from './blog';
 import type { AxiosInstance } from 'axios';
 
 const createApi = (http: AxiosInstance) => {
-    // let opportunity = createOpportunityApi(http);
-    const auth = createCartAuth(http);
-
+    const blog = createBlog(http);
     return {
-    // opportunity,
-        auth
+        blog
     };
 };
 export default createApi;
-export type TApi = ReturnType<typeof createApi>;
+export type Api = ReturnType<typeof createApi>;

@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue';
-import { TApi } from '@/api';
+import { Api } from '@/api';
 
-const ApiInject = Symbol() as InjectionKey<TApi>;
+const ApiInject = Symbol() as InjectionKey<Api>;
 export default ApiInject;

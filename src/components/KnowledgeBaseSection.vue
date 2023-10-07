@@ -23,13 +23,13 @@
       </div>
       <div class="mt-120">
         <div class="grid-knowledge-base-12col-w">
-          <UArticleCard v-for="(post, i) in posts"
-                        :key="i"
-                        :article-date="post.date"
-                        :article-subtitle="post.subtitle"
-                        :article-type="post.type"
-                        :image-alt="post.image.alt"
-                        :image-src="post.image.src"
+          <UArticleCard v-for="post in articles"
+                        :key="post.id"
+                        :article-date="post.attributes.date"
+                        :article-slug="post.attributes.slug"
+                        :article-title="post.attributes.title"
+                        :article-type="post.attributes.type"
+                        :image-attributes="post.attributes.cover.data.attributes"
                         class="card-cols"
           />
         </div>
@@ -47,41 +47,26 @@
 <script lang="ts" setup>
 import UArticleCard from '@/components/UArticleCard.vue';
 import UButtonMainStroke from './UButtonMainStroke.vue';
-import { onMounted, ref } from 'vue';
-import useGsap from '@composables/useGsap';
+import { computed, onMounted, ref } from 'vue';
+import useGsap from '@/composables/useGsap';
+import useStore from '@/composables/useStore';
 
-const posts = [
-    {
-        type: 'Tech article',
-        date: '08 July',
-        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
-        image: {
-            src: '/src/assets/images/webp/Article-Placeholder.webp',
-            alt: 'Tech article'
-        }
-    },
-    {
-        type: 'Tech article',
-        date: '08 July',
-        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
-        image: {
-            src: '/src/assets/images/webp/Article-Placeholder.webp',
-            alt: 'Tech article'
-        }
-    },
-    {
-        type: 'Tech article',
-        date: '08 July',
-        subtitle: 'Revenue Share model expands the crypto world. Visionary approach to new economic environment',
-        image: {
-            src: '/src/assets/images/webp/Article-Placeholder.webp',
-            alt: 'Tech article'
-        }
-    }
-];
 const { gsap } = useGsap();
-
+const { blog } = useStore();
+const article = blog.hasArticle();
 const line = ref(null);
+
+if (article < 3) {
+    blog.load({ sort: 'date:desc' });
+}
+const articles = computed(() => {
+    if (blog.loading.value) {
+        const allArticles = blog.articles.value[blog.pageArticles.value];
+        return allArticles ? allArticles.slice(0, 3) : null;
+    }
+    return null;
+});
+
 const animlines = () => {
     const time = 3;
     // const ease = 'Power0.easeIn';
@@ -100,8 +85,6 @@ onMounted(() => {
             height: `${0}%`
         }
     );
-
-
 });
 </script>
 

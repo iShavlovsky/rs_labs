@@ -69,8 +69,8 @@
 
 <script lang="ts" setup>
 import { ComponentPublicInstance, ref, Ref } from 'vue';
-import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
-import useGsap from '@composables/useGsap';
+import USvgIcon from '@/components/USvgIcon/USvgIcon.vue';
+import useGsap from '@/composables/useGsap';
 
 let masks: Array<Ref<ComponentPublicInstance | null>> = Array(4).fill(null).map(() => ref(null));
 const { gsap } = useGsap();

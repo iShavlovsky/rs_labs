@@ -43,7 +43,6 @@ export const icons = {
         'right-figure-ovrl-min',
         'mission-bot-figure-min',
         'mission-top-figure-min'
-
     ]
 } as const;
 

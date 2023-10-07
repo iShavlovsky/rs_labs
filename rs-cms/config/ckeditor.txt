@@ -1,0 +1,223 @@
+globalThis.CKEditorConfig = {
+
+  configs:{
+    toolbar:{
+      // styles:``,
+      // field:{},
+      // editorConfig:{}
+    },
+    custom:{
+
+      /* Styles for this specific editor.
+      This will be passed into the editor's parent container. */
+
+      styles:`
+                --ck-focus-ring:3px dashed #5CB176;
+
+                .ck.ck-content.ck-editor__editable {
+                  &.ck-focused:not(.ck-editor__nested-editable) {
+                    border: var(--ck-focus-ring) !important;
+                  }
+                }
+            `,
+
+
+      /* Custom field option */
+      field: {
+        key: "custom",
+        value: "custom",
+        metadatas: {
+          intlLabel: {
+            slug: "ckeditor5.preset.custom.label",
+            defaultMessage: "RS version",
+          },
+        },
+      },
+      /* CKEditor configuration */
+      editorConfig:{
+        /* All available built-in plugins
+        you can find in admin/src/components/Input/CKEditor/configs/base.js */
+        plugins: [
+                    CKEditor5.essentials.Essentials,
+                    CKEditor5.alignment.Alignment,
+                    CKEditor5.autoformat.Autoformat,
+                    CKEditor5.blockQuote.BlockQuote,
+                    CKEditor5.basicStyles.Bold,
+                    CKEditor5.heading.Heading,
+                    CKEditor5.image.Image,
+                    CKEditor5.image.ImageCaption,
+                    CKEditor5.image.ImageStyle,
+                    CKEditor5.image.ImageToolbar,
+                    CKEditor5.image.ImageUpload,
+                    CKEditor5.indent.Indent,
+                    CKEditor5.basicStyles.Italic,
+                    CKEditor5.link.Link,
+                    CKEditor5.list.List,
+                    CKEditor5.mediaEmbed.MediaEmbed,
+                    CKEditor5.paragraph.Paragraph,
+                    CKEditor5.table.Table,
+                    CKEditor5.table.TableToolbar,
+                    CKEditor5.sourceEditing.SourceEditing,
+                    CKEditor5.strapiPlugins.StrapiMediaLib,
+                    CKEditor5.strapiPlugins.StrapiUploadAdapter,
+                    CKEditor5.basicStyles.Code,
+                    CKEditor5.codeBlock.CodeBlock,
+                    CKEditor5.list.TodoList,
+                    CKEditor5.basicStyles.Strikethrough,
+                    CKEditor5.horizontalLine.HorizontalLine,
+                    CKEditor5.htmlEmbed.HtmlEmbed,
+                    CKEditor5.htmlSupport.HtmlComment,
+                    CKEditor5.htmlSupport.GeneralHtmlSupport,
+                    CKEditor5.htmlSupport.DataSchema,
+                    CKEditor5.htmlSupport.DataFilter,
+                    CKEditor5.style.Style,
+
+        ],
+        language:{
+          ignorei18n: true,
+          ui:'en',
+          content:'en'
+        },
+        alignment: {
+                    options: [ 'left', 'right', 'center', 'justify' ]
+                },
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'strikethrough',
+            'link',
+            '|',
+            'bulletedList',
+            'numberedList',
+            'todoList',
+            '|',
+            'alignment',
+            '|',
+            'code',
+            'codeBlock',
+            '|',
+            'uploadImage',
+            'strapiMediaLib',
+            'insertTable',
+            'blockQuote',
+            'horizontalLine',
+            '|',
+            'sourceEditing',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'undo',
+            'redo'
+          ],
+          shouldNotGroupWhenFull: true
+        },
+        heading: {
+          options: [
+                    { model: 'paragraph', view: { name: 'p', classes: 'rich-class-p'}, title: 'paragraph', class: 'ck-heading_paragraph', converterPriority: 'low'},
+                    { model: 'heading2', view: { name: 'h2', classes: 'rich-class-h2'}, title: 'H2', class: 'ck-heading_heading2', converterPriority: 'high'},
+                    { model: 'heading3', view: { name: 'h3', classes: 'rich-class-h3'}, title: 'H3', class: 'ck-heading_heading3', converterPriority: 'high'},
+                    { model: 'heading4', view: { name: 'h4', classes: 'rich-class-h4'}, title: 'H4', class: 'ck-heading_heading4', converterPriority: 'high'}
+          ]
+        },
+        image: {
+              toolbar: ['imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|', 'imageTextAlternative'],
+              styles: {
+                options: ['inline', 'alignLeft', 'alignRight', 'alignCenter', 'alignBlockLeft', 'alignBlockRight', 'block', 'side']
+              },
+            class: 'your-image-class',
+            resizeOptions: [
+              {
+                name: "resizeImage:original",
+                label: "Default image width",
+                value: null,
+              },
+              {
+                name: "resizeImage:50",
+                label: "50% page width",
+                value: "50",
+              },
+              {
+                name: "resizeImage:75",
+                label: "75% page width",
+                value: "75",
+              },
+            ],
+            toolbar: [
+              "imageTextAlternative",
+              "toggleImageCaption",
+              "linkImage",
+              "|",
+              "imageStyle:inline",
+              "imageStyle:wrapText",
+              "imageStyle:breakText",
+              "imageStyle:side",
+              "|",
+              "resizeImage",
+            ],
+            insert: {
+              integrations: ["insertImageViaUrl"],
+            },
+          },
+          htmlSupport: {
+              allow: [
+                  {
+                      name: /.*/,
+                      attributes: true,
+                      classes: true,
+                      styles: true
+                  }
+              ]
+          },
+          contentStyle: {
+              element: {
+                'rich-class-h1': 'h1',
+                'rich-class-h2': 'h2',
+                'rich-class-h3': 'h3',
+                'rich-class-h4': 'h4',
+                'rich-class-h5': 'h5',
+                'rich-class-h6': 'h6',
+                'rich-class-p': 'p',
+                'rich-class-table': 'table',
+                'rich-class-img': 'img',
+              },
+            },
+            list: {
+              classes: {
+                listItem: 'your-list-item-class',
+                orderedList: 'your-ordered-list-class',
+                unorderedList: 'your-unordered-list-class'
+              }
+            },
+          table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells',
+            '|',
+            'toggleTableCaption'
+          ],
+          tableAttributes: {
+              class: 'your-table-class'
+            },
+          attributes: {
+              class: 'your-table-class'
+          }
+        },
+      }
+    }
+  },
+
+  /* Here you can customize the plugin's theme.
+  This will be passed as "createGlobalStyle". */
+  theme:{
+    // common:``,
+    // light:``,
+    // dark:``,
+    // additional:``
+  }
+
+}

@@ -41,62 +41,19 @@ import HomeSection6 from '@/components/HomeSection6.vue';
 import KnowledgeBaseSection from '@/components/KnowledgeBaseSection.vue';
 import BackedBy from '@/components/BackedBy.vue';
 import UMapSideBar from '@/components/UMapSideBar/UMapSideBar.vue';
+import JoinUs from '@/components/JoinUs.vue';
 import useStore from '@/composables/useStore';
 import useGsap from '@/composables/useGsap';
-import JoinUs from '@components/JoinUs.vue';
+
+const { seo } = useStore();
 
 const { timeLine, gsap, ctx } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
 
-function resetAnimationParams(params: GSAPTimelineVars): GSAPTimelineVars {
-    const resetParams: GSAPTimelineVars = {};
-    for (const key in params) {
-        if (typeof params[key] === 'function') {
-            continue;
-        }
-        if (key === 'duration') {
-            resetParams[key] = 0;
-            continue;
-        }
-        if (key === 'opacity' || key === 'alpha') {
-            resetParams[key] = 1;
-            continue;
-        }
-        if (key === 'ease') {
-            continue;
-        }
-        if (typeof params[key] === 'number') {
-            resetParams[key] = 0;
-        } else if (typeof params[key] === 'boolean') {
-            resetParams[key] = false;
-        } else if (typeof params[key] === 'string') {
-            if (params[key].includes('%')) {
-                resetParams[key] = '0%';
-            } else {
-                resetParams[key] = '';
-            }
-        } else if (Array.isArray(params[key])) {
-            resetParams[key] = [];
-        } else if (typeof params[key] === 'object') {
-            resetParams[key] = {};
-        }
-    }
-    return resetParams;
-}
-
-
 const handleScrollToBlock = (chapter: number) => {
     const time: number = 0.50;
-    const first: GSAPTimelineVars = {
-        duration: time,
-        opacity: .1,
-        x: `${-100}%`,
-        ease: 'Power0.easeIn'
-    };
-    const reset = resetAnimationParams(first);
-    console.log(reset);
 
     const currentSection = sections[currentVisibleSection.value].value?.$el;
     const nextSection = sections[chapter - 1].value?.$el;
@@ -131,15 +88,13 @@ const handleScrollToBlock = (chapter: number) => {
             ease: 'Power0.easeIn'
         });
     });
-
 };
 
 
 onMounted(() => {
-
     const options = {
         root: null,
-        rootMargin: '-10% 0px 0px 0px', // Отрицательный отступ сверху на 10%
+        rootMargin: '0px 0px 0px 0px', // Отрицательный отступ сверху на 10%
         threshold: 0.69
     };
 
@@ -166,7 +121,7 @@ onUnmounted(() => {
     sections = [];
 });
 
-const { seo } = useStore();
+
 seo.setPage({
     title: 'RSLabs | Home',
     ogImage: 'http://localhost:3000/OG/OG-Home.webp'

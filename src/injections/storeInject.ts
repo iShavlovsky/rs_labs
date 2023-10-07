@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue';
-import { TStore } from '@/store';
+import { Store } from '@/store';
 
-const StoreInject = Symbol() as InjectionKey<TStore>;
+const StoreInject = Symbol() as InjectionKey<Store>;
 export default StoreInject;

@@ -1,6 +1,4 @@
-import { ICustomRequestConfig } from '@/interfaces';
-
-function createErrorAlertConfig<T>(message: string): ICustomRequestConfig<T> {
+function createErrorAlertConfig<T>(message: string): CustomRequestConfig<T> {
     return {
         errorAlert: {
             text: message,

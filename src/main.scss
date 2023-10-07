@@ -69,6 +69,11 @@ section {
   padding: em(32) em(24) em(32) em(24);
   border-radius: em(2);
   cursor: pointer;
+
+  &:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+  }
 }
 
 .accent-big-btn {
