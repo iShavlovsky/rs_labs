@@ -1,30 +1,32 @@
 <template>
   <div class="blur"></div>
-  <HomeSection1 :ref="sections[0]"
-                data-section-name="0"
-  />
-  <HomeSection2 :ref="sections[1]"
-                data-section-name="1"
-  />
-  <HomeSection3 :ref="sections[2]"
-                data-section-name="2"
-  />
-  <HomeSection4 :ref="sections[3]"
-                data-section-name="3"
-  />
-  <HomeSection5 :ref="sections[4]"
-                data-section-name="4"
-  />
-  <HomeSection6 :ref="sections[5]"
-                data-section-name="5"
-  />
-  <KnowledgeBaseSection :ref="sections[6]"
-                        data-section-name="6"
-  />
-  <BackedBy />
-  <JoinUs :ref="sections[7]"
-          data-section-name="7"
-  />
+  <div class="perspective">
+    <HomeSection1 :ref="sections[0]"
+                  data-section-name="0"
+    />
+    <HomeSection2 :ref="sections[1]"
+                  data-section-name="1"
+    />
+    <HomeSection3 :ref="sections[2]"
+                  data-section-name="2"
+    />
+    <HomeSection4 :ref="sections[3]"
+                  data-section-name="3"
+    />
+    <HomeSection5 :ref="sections[4]"
+                  data-section-name="4"
+    />
+    <HomeSection6 :ref="sections[5]"
+                  data-section-name="5"
+    />
+    <KnowledgeBaseSection :ref="sections[6]"
+                          data-section-name="6"
+    />
+    <BackedBy />
+    <JoinUs :ref="sections[7]"
+            data-section-name="7"
+    />
+  </div>
 
   <UMapSideBar :current-section="currentVisibleSection"
                @map-position="handleScrollToBlock"
@@ -153,7 +155,7 @@ seo.status.value = 200;
 </script>
 
 <style lang="scss">
-main {
+.perspective {
   perspective: 300em;
 }
 
@@ -163,9 +165,10 @@ section {
 }
 
 .blur {
+  border: 3px solid greenyellow;
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
   pointer-events: none;
 }
