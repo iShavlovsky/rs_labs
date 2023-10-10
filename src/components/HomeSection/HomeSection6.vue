@@ -176,7 +176,7 @@ onUnmounted(() => {
   z-index: -1;
   left: 0;
   top: 0;
-  background: url("../assets/images/webp/interior6.webp") no-repeat center center;
+  background: url("../../assets/images/webp/interior6.webp") no-repeat center center;
   background-size: cover;
   overflow: hidden;
 

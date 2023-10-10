@@ -10,7 +10,7 @@
             />
             <img alt="decorative"
                  class="home-s3-img1"
-                 src="../assets/images/webp/interior6.webp"
+                 src="../../assets/images/webp/interior6.webp"
             >
             <USvgIcon :ref="masks[1]"
                       class="home-s3-anim2"
@@ -54,7 +54,7 @@
 
             <img alt="decorative"
                  class="home-s3-img2"
-                 src="../assets/images/webp/interior6.webp"
+                 src="../../assets/images/webp/interior6.webp"
             >
             <USvgIcon :ref="masks[3]"
                       class="home-s3-anim2"
@@ -64,13 +64,14 @@
         </div>
       </div>
     </div>
+    <div class="trigger-3"></div>
   </section>
 </template>
 
 <script lang="ts" setup>
 import { ComponentPublicInstance, ref, Ref } from 'vue';
-import USvgIcon from '@/components/USvgIcon/USvgIcon.vue';
-import useGsap from '@/composables/useGsap';
+import USvgIcon from '@components/USvgIcon/USvgIcon.vue';
+import useGsap from '@composables/useGsap';
 
 let masks: Array<Ref<ComponentPublicInstance | null>> = Array(4).fill(null).map(() => ref(null));
 const { gsap } = useGsap();
@@ -110,6 +111,14 @@ const anim = () => {
 </script>
 
 <style lang="scss">
+
+.trigger-3 {
+  position: absolute;
+  height: 100vh;
+  bottom: -100vh;
+  border: 2px solid red;
+}
+
 .home-s3-img2-w {
   position: relative;
   overflow: hidden;

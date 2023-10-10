@@ -1,4 +1,5 @@
 <template>
+  <div class="blur"></div>
   <HomeSection1 :ref="sections[0]"
                 data-section-name="0"
   />
@@ -32,12 +33,12 @@
 
 <script lang="ts" setup>
 import { ComponentPublicInstance, onMounted, onUnmounted, Ref, ref } from 'vue';
-import HomeSection1 from '@/components/HomeSection1.vue';
-import HomeSection2 from '@/components/HomeSection2.vue';
-import HomeSection3 from '@/components/HomeSection3.vue';
-import HomeSection4 from '@/components/HomeSection4.vue';
-import HomeSection5 from '@/components/HomeSection5.vue';
-import HomeSection6 from '@/components/HomeSection6.vue';
+import HomeSection1 from '@components/HomeSection/HomeSection1.vue';
+import HomeSection2 from '@components/HomeSection/HomeSection2.vue';
+import HomeSection3 from '@components/HomeSection/HomeSection3.vue';
+import HomeSection4 from '@components/HomeSection/HomeSection4.vue';
+import HomeSection5 from '@components/HomeSection/HomeSection5.vue';
+import HomeSection6 from '@components/HomeSection/HomeSection6.vue';
 import KnowledgeBaseSection from '@/components/KnowledgeBaseSection.vue';
 import BackedBy from '@/components/BackedBy.vue';
 import UMapSideBar from '@/components/UMapSideBar/UMapSideBar.vue';
@@ -51,6 +52,27 @@ const { timeLine, gsap, ctx } = useGsap();
 const currentVisibleSection = ref<number>(0);
 let sections: Array<Ref<ComponentPublicInstance | null>> = Array(8).fill(null).map(() => ref(null));
 let observer: IntersectionObserver | null = null;
+
+
+const animationScroll = () => {
+
+    let tl = gsap?.timeline({
+        scrollTrigger: {
+            trigger: '.trigger-3',
+            start: '-60% 40%',
+            end: 'top top',
+            scrub: 0,
+            markers: true
+        }
+    });
+    tl?.to('.blur', {
+        blur: 5
+    });
+    tl?.to(sections[2].value?.$el, {
+        y: `${25}%`,
+        rotationX: `${-90}deg`
+    }, '<');
+};
 
 const handleScrollToBlock = (chapter: number) => {
     const time: number = 0.50;
@@ -92,6 +114,7 @@ const handleScrollToBlock = (chapter: number) => {
 
 
 onMounted(() => {
+    animationScroll();
     const options = {
         root: null,
         rootMargin: '0px 0px 0px 0px', // Отрицательный отступ сверху на 10%
@@ -130,4 +153,20 @@ seo.status.value = 200;
 </script>
 
 <style lang="scss">
+main {
+  perspective: 300em;
+}
+
+section {
+  transform-origin: top;
+  transform-style: flat;
+}
+
+.blur {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 </style>
