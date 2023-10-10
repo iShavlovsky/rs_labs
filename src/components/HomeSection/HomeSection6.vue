@@ -1,77 +1,81 @@
 <template>
   <section class="height-100vh">
-    <div class="animation-img-w">
-      <USvgIcon :ref="masks[0]"
-                class="anim-mask"
-                name="mask.top-figure"
-      />
-      <USvgIcon :ref="masks[1]"
-                class="anim-mask"
-                name="mask.mid-figure"
-      />
-      <USvgIcon :ref="masks[2]"
-                class="anim-mask"
-                name="mask.bot-figure"
-      />
-    </div>
-    <div class="container flex-column justify-space-between height-100prc">
-      <div class="home-s6-disclaimer-w flex-column justify-center">
-        <div class="disclaimer-w">
-          <p class="disclaimer align-justify">
-            You are leaving the world of unfair distribution. fair economic could
-            cause an addiction. consult your inner mind and make a wise choice.
-          </p>
-        </div>
+    <div class="container-anim"
+         style="background: #790404;"
+    >
+      <div class="animation-img-w">
+        <USvgIcon :ref="masks[0]"
+                  class="anim-mask"
+                  name="mask.top-figure"
+        />
+        <USvgIcon :ref="masks[1]"
+                  class="anim-mask"
+                  name="mask.mid-figure"
+        />
+        <USvgIcon :ref="masks[2]"
+                  class="anim-mask"
+                  name="mask.bot-figure"
+        />
       </div>
-
-      <div class="grid-12col-w mt-160">
-        <figure class="home-s6-lines-w horizmobile-hide">
-          <div class="s6-1-line-w">
-            <div :ref="lines[0]"
-                 class="s6-1-line"
-            ></div>
+      <div class="container flex-column justify-space-between height-100prc">
+        <div class="home-s6-disclaimer-w flex-column justify-center">
+          <div class="disclaimer-w">
+            <p class="disclaimer align-justify">
+              You are leaving the world of unfair distribution. fair economic could
+              cause an addiction. consult your inner mind and make a wise choice.
+            </p>
           </div>
-          <div class="s6-2-line-w">
-            <div :ref="lines[1]"
-                 class="s6-1-line"
-            ></div>
-          </div>
-        </figure>
-
-        <div class="s6-subtitle-w">
-          <button type="button"
-                  @click="animImages"
-          >
-            masks
-          </button>
-          <button type="button"
-                  @click="animlines"
-          >
-            lines
-          </button>
-          <p class="mono-s">
-            Revenue share labs was established in 2023 and build web3 products using innovating
-            revenue share technology
-          </p>
         </div>
 
-        <figure class="home-s6-lines-w s6-second-linse-w">
-          <div class="s6-1-line-w horizmobile-hide">
-            <div :ref="lines[2]"
-                 class="s6-1-line"
-            ></div>
+        <div class="grid-12col-w mt-160">
+          <figure class="home-s6-lines-w horizmobile-hide">
+            <div class="s6-1-line-w">
+              <div :ref="lines[0]"
+                   class="s6-1-line"
+              ></div>
+            </div>
+            <div class="s6-2-line-w">
+              <div :ref="lines[1]"
+                   class="s6-1-line"
+              ></div>
+            </div>
+          </figure>
+
+          <div class="s6-subtitle-w">
+            <button type="button"
+                    @click="animImages"
+            >
+              masks
+            </button>
+            <button type="button"
+                    @click="animlines"
+            >
+              lines
+            </button>
+            <p class="mono-s">
+              Revenue share labs was established in 2023 and build web3 products using innovating
+              revenue share technology
+            </p>
           </div>
-          <div class="s6-3-line-w">
-            <div :ref="lines[3]"
-                 class="s6-1-line"
-            ></div>
-          </div>
-          <div class="s6-4-line-w">
-            <div :ref="lines[4]"
-                 class="s6-1-line"
-            ></div>
-          </div>
-        </figure>
+
+          <figure class="home-s6-lines-w s6-second-linse-w">
+            <div class="s6-1-line-w horizmobile-hide">
+              <div :ref="lines[2]"
+                   class="s6-1-line"
+              ></div>
+            </div>
+            <div class="s6-3-line-w">
+              <div :ref="lines[3]"
+                   class="s6-1-line"
+              ></div>
+            </div>
+            <div class="s6-4-line-w">
+              <div :ref="lines[4]"
+                   class="s6-1-line"
+              ></div>
+            </div>
+          </figure>
+        </div>
       </div>
     </div>
   </section>

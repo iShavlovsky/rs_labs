@@ -1,6 +1,8 @@
 <template>
   <section class="height-100vh">
-    <div class="container flex-column justify-space-between height-100prc">
+    <div class="container flex-column justify-space-between height-100prc container-anim"
+         style="background: #008b72;"
+    >
       <div class="grid-12col-w">
         <div class="home-s4-span-1">
           <h2 class="h1">

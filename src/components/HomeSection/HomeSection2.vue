@@ -1,6 +1,8 @@
 <template>
   <section class="height-100vh">
-    <div class="container flex-column justify-space-between height-100prc">
+    <div class="container flex-column justify-space-between height-100prc container-anim"
+         style="background: #1c7c6c;"
+    >
       <div class="max-width-810">
         <h2 class="h2 h2-indent">
           Building a new way of shared economy

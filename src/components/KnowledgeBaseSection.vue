@@ -1,43 +1,47 @@
 <template>
   <section>
-    <figure class="mid-line">
-      <div ref="line"
-           class="s6-1-line"
-      ></div>
-    </figure>
-    <div class="container">
-      <div class="knowledge-base-title-holder">
-        <div class="knowledge-base-title-w">
-          <h2 class="mono-s">
-            Knowledge base
-          </h2>
-          <button type="button"
-                  @click="animlines"
-          >
-            lines
-          </button>
-          <p class="h3">
-            Explore the theoretical side of revenue share technology
-          </p>
+    <div class="container-anim"
+         style="background: rgba(255,83,25,0.1);"
+    >
+      <figure class="mid-line">
+        <div ref="line"
+             class="s6-1-line"
+        ></div>
+      </figure>
+      <div class="container">
+        <div class="knowledge-base-title-holder">
+          <div class="knowledge-base-title-w">
+            <h2 class="mono-s">
+              Knowledge base
+            </h2>
+            <button type="button"
+                    @click="animlines"
+            >
+              lines
+            </button>
+            <p class="h3">
+              Explore the theoretical side of revenue share technology
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="mt-120">
-        <div class="grid-knowledge-base-12col-w">
-          <UArticleCard v-for="post in articles"
-                        :key="post.id"
-                        :article-date="post.attributes.date"
-                        :article-slug="post.attributes.slug"
-                        :article-title="post.attributes.title"
-                        :article-type="post.attributes.type"
-                        :image-attributes="post.attributes.cover.data.attributes"
-                        class="card-cols"
-          />
+        <div class="mt-120">
+          <div class="grid-knowledge-base-12col-w">
+            <UArticleCard v-for="post in articles"
+                          :key="post.id"
+                          :article-date="post.attributes.date"
+                          :article-slug="post.attributes.slug"
+                          :article-title="post.attributes.title"
+                          :article-type="post.attributes.type"
+                          :image-attributes="post.attributes.cover.data.attributes"
+                          class="card-cols"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="grid-12col-w mt-40">
-        <div class="read-more-btn-w">
-          <UButtonMainStroke :title="'Read more'" />
+        <div class="grid-12col-w mt-40">
+          <div class="read-more-btn-w">
+            <UButtonMainStroke :title="'Read more'" />
+          </div>
         </div>
       </div>
     </div>

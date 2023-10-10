@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="container">
+    <div class="container container-anim"
+         style="background: #9cc7ee;"
+    >
       <div class="grid-12col-w">
         <div class="home-s3-span-1">
           <figure class="home-s3-img1-w">
@@ -64,7 +66,6 @@
         </div>
       </div>
     </div>
-    <div class="trigger-3"></div>
   </section>
 </template>
 
@@ -111,14 +112,6 @@ const anim = () => {
 </script>
 
 <style lang="scss">
-
-.trigger-3 {
-  position: absolute;
-  height: 100vh;
-  bottom: -100vh;
-  border: 2px solid red;
-}
-
 .home-s3-img2-w {
   position: relative;
   overflow: hidden;

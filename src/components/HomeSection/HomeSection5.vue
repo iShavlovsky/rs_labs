@@ -1,6 +1,8 @@
 <template>
   <section class="height-100vh">
-    <div class="container flex-column justify-center height-100prc">
+    <div class="container flex-column justify-center height-100prc container-anim"
+         style="background: rgba(255,83,25,0.49);"
+    >
       <div class="grid-12col-w">
         <div class="home-s5-span-1">
           <h2 class="h2 h2-indent">

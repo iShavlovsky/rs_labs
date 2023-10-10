@@ -1,8 +1,8 @@
 <template>
-  <section class="section-home-head height-100vh"
-           style="background: #007aff;"
-  >
-    <div class="container flex-column justify-space-between height-100prc">
+  <section class="section-home-head height-100vh">
+    <div class="container flex-column justify-space-between height-100prc container-anim"
+         style="background: #007aff;"
+    >
       <div class="grid-12col-w">
         <div class="home-s1-span-1">
           <p class="mono-m">
@@ -31,20 +31,12 @@
         </div>
       </div>
     </div>
-    <div class="trigger-1"></div>
   </section>
 </template>
 
 <script lang="ts" setup></script>
 
 <style lang="scss">
-
-.trigger-1 {
-  position: absolute;
-  height: 100vh;
-  bottom: -100vh;
-  border: 2px solid red;
-}
 
 .section-home-head {
   padding-top: em(88);

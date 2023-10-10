@@ -13,6 +13,11 @@ interface UseGsapReturn {
     ctx: gsap.Context | undefined;
 }
 
+interface PluginThisContext {
+    target: GSAPTweenTarget;
+    interp: (progress: number) => string;
+}
+
 export default function (): UseGsapReturn {
     const isSsr: boolean | undefined = inject('isSsr');
     const gsap: GSAP | undefined = inject(GsapInject);
@@ -22,38 +27,41 @@ export default function (): UseGsapReturn {
     });
     const mm = gsap?.matchMedia();
 
-    //TODO: привести к типам плагин для блюра
     (function () {
-        const blurProperty = gsap.utils.checkPrefix('backdrop-filter'),
-            blurExp = /blur\((.+)?px\)/,
-            getBlurMatch = target => (gsap.getProperty(target, blurProperty) || '').match(blurExp) || [];
+        const blurProperty = gsap!.utils.checkPrefix('backdropFilter');
+        const blurExp: RegExp = /blur\((.+)?px\)/;
+        const getBlurMatch = (target: GSAPTweenTarget): RegExpMatchArray => {
+            return <RegExpMatchArray>((gsap?.getProperty(target, blurProperty) as string) || '').match(blurExp) || [];
+        };
 
-        gsap.registerPlugin({
+        gsap?.registerPlugin({
             name: 'blur',
-            get(target) {
+            get(this: PluginThisContext, target: GSAPTweenTarget): number {
                 return +(getBlurMatch(target)[1]) || 0;
             },
-            init(target, endValue) {
-                let data = this,
-                    filter = gsap.getProperty(target, blurProperty),
-                    endBlur = 'blur(' + endValue + 'px)',
-                    match = getBlurMatch(target)[0],
-                    index;
+            init(this: PluginThisContext, target: GSAPTweenTarget, endValue: number | string): void {
+                let filter: string = gsap?.getProperty(target, blurProperty) as string;
+                const endBlur: string = `blur(${endValue}px)`;
+                const [match]: (string | undefined)[] = getBlurMatch(target);
+                let index: number;
+
                 if (filter === 'none') {
                     filter = '';
                 }
+
                 if (match) {
                     index = filter.indexOf(match);
-                    endValue = filter.substr(0, index) + endBlur + filter.substr(index + match.length);
+                    endValue = `${filter.substring(0, index)}${endBlur}${filter.substring(index + match.length)}`;
                 } else {
-                    endValue = filter + endBlur;
+                    endValue = `${filter}${endBlur}`;
                     filter += filter ? ' blur(0px)' : 'blur(0px)';
                 }
-                data.target = target;
-                data.interp = gsap.utils.interpolate(filter, endValue);
+
+                this.target = target;
+                this.interp = gsap?.utils.interpolate(filter, endValue as string);
             },
-            render(progress, data) {
-                data.target.style[blurProperty] = data.interp(progress);
+            render(progress: number, data: PluginThisContext): void {
+                (data.target as HTMLElement).style[blurProperty as never] = data.interp(progress);
             }
         });
     })();

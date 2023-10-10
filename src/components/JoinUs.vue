@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="container">
+    <div class="container container-anim"
+         style="background: #2ec2a6;"
+    >
       <div class="grid-12col-w">
         <div class="joinus-header-w">
           <div class="joinus-h2-w">
